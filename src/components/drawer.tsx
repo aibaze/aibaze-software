@@ -32,7 +32,7 @@ export default function drawerDemo() {
           </div>
           <nav>
             <ul className="mt-7 text-left">
-              {siteConfig.header.map((item, index) => (
+            {/*   {siteConfig.header.map((item, index) => (
                 <li key={index} className="my-3">
                   {item.trigger ? (
                     <span className="font-semibold">{item.trigger}</span>
@@ -42,7 +42,7 @@ export default function drawerDemo() {
                     </Link>
                   )}
                 </li>
-              ))}
+              ))} */}
             </ul>
           </nav>
         </DrawerHeader>
