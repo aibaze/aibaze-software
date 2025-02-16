@@ -78,7 +78,7 @@ type CardDataProps = {
   subtitle: ReactNode;
   id: number;
   title: string;
-  content: string;
+  content?: string;
   image?: string;
   video?: string;
   icon?: React.ReactNode;
