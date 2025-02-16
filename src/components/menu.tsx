@@ -64,7 +64,8 @@ export default function NavigationMenuDemo() {
                 </NavigationMenuContent>
               </>
             ) : (
-              <Link
+              <></>
+             /*  <Link
                 href={item.href || ""}
                 target="_arya"
                 legacyBehavior
@@ -73,7 +74,7 @@ export default function NavigationMenuDemo() {
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   {item.label}
                 </NavigationMenuLink>
-              </Link>
+              </Link> */
             )}
           </NavigationMenuItem>
         ))}
