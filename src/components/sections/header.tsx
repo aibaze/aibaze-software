@@ -41,7 +41,7 @@ export default function Header() {
           className="relative mr-6 flex items-center space-x-2"
         >
           <Icons.logo className="w-auto h-[40px]" />
-          {/*           <span className="font-bold text-xl">{siteConfig.name}</span> */}
+                 <span className="font-bold text-xl">{siteConfig.name}</span> 
         </Link>
 
         <div className="hidden lg:block">
