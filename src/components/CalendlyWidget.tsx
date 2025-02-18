@@ -12,6 +12,7 @@ export default function CalendlyWidget({
   url = 'https://calendly.com/soytomasgoldenberg/agenticaller',
   height = '700px'
 }: CalendlyWidgetProps) {
+  console.log('CalendlyWidget rendering');
   const isInitialized = useRef(false);
 
   const initCalendly = () => {
