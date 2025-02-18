@@ -46,7 +46,7 @@ export default function Header() {
 
         <div className="hidden lg:block">
           <div className="flex items-center ">
-            <nav className="mr-10">
+            <nav className="mr-56">
               <Menu />
             </nav>
           </div>

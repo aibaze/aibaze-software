@@ -23,69 +23,27 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/company/aibaze-agency",
   },
   header: [
- {
-      trigger: "Features",
-      content: {
-        main: {
-          icon: <Icons.logo className="h-6 w-6" />,
-          title: "AI-Powered Automation",
-          description: "Streamline your workflow with intelligent automation.",
-          href: "#",
-        },
-        items: [
-          {
-            href: "#",
-            title: "Task Automation",
-            description: "Automate repetitive tasks and save time.",
-          },
-          {
-            href: "#",
-            title: "Workflow Optimization",
-            description: "Optimize your processes with AI-driven insights.",
-          },
-          {
-            href: "#",
-            title: "Intelligent Scheduling",
-            description: "AI-powered scheduling for maximum efficiency.",
-          },
-        ],
-      },
-    },
+    {trigger: "Contact", href: "/contact"},
     {
       trigger: "Solutions",
       content: {
         items: [
           {
-            title: "For Small Businesses",
+            title: "Custom Phone AI Agents",
             href: "#",
             description: "Tailored automation solutions for growing companies.",
           },
           {
-            title: "Enterprise",
+            title: "Phone AI Agents Training",
             href: "#",
             description: "Scalable AI automation for large organizations.",
           },
           {
-            title: "Developers",
+            title: "White Labeled Platform",
             href: "#",
             description: "API access and integration tools for developers.",
           },
-          {
-            title: "Healthcare",
-            href: "#",
-            description: "Specialized automation for healthcare workflows.",
-          },
-          {
-            title: "Finance",
-            href: "#",
-            description: "AI-driven process automation for financial services.",
-          },
-          {
-            title: "Education",
-            href: "#",
-            description:
-              "Streamline administrative tasks in educational institutions.",
-          },
+         
         ],
       },
     },

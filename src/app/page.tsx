@@ -13,6 +13,7 @@ import Problem from "@/components/sections/problem";
 import Solution from "@/components/sections/solution";
 import Testimonials from "@/components/sections/testimonials";
 import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
+import CalendlyWidget from '@/components/CalendlyWidget';
 
 export default function Home() {
   return (
@@ -25,6 +26,8 @@ export default function Home() {
       <Pricing />
       {/*  <FAQ /> */}
       <CTA />
+      <CalendlyWidget/>
+      <iframe className="airtable-embed" src="https://airtable.com/embed/appnliIniznmrUiU3/pagspRYRZnNNaAhvJ/form" frameBorder="0" width="100%" height="533" style={{ background: "transparent", border: "1px solid #ccc" }}></iframe>
       <Footer />
     </main>
   );
