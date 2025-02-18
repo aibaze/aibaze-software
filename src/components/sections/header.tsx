@@ -35,14 +35,14 @@ export default function Header() {
       }
     >
       <div className="flex justify-between items-center container">
-        <Link
+        <a
           href="/"
           title="brand-logo"
           className="relative mr-6 flex items-center space-x-2"
         >
           <Icons.logo className="w-auto h-[40px]" />
-                 <span className="font-bold text-xl">{siteConfig.name}</span> 
-        </Link>
+          <span className="font-bold text-xl">{siteConfig.name}</span> 
+        </a>
 
         <div className="hidden lg:block">
           <div className="flex items-center ">

@@ -1,7 +1,10 @@
+'use client';
+
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -9,19 +12,29 @@ import { cn } from "@/lib/utils";
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
->(({ className, children, ...props }, ref) => (
-  <NavigationMenuPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative z-10 flex max-w-max flex-1 items-center justify-center",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <NavigationMenuViewport />
-  </NavigationMenuPrimitive.Root>
-));
+>(({ className, children, ...props }, ref) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <NavigationMenuPrimitive.Root
+      ref={ref}
+      className={cn(
+        "relative z-10 flex max-w-max flex-1 items-center justify-center",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <NavigationMenuViewport />
+    </NavigationMenuPrimitive.Root>
+  );
+});
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
 
 const NavigationMenuList = React.forwardRef<
@@ -54,15 +67,12 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({ className, children, hasContent, href, ...props }, ref) => {
   if (href) {
     return (
-      <Link href={href} legacyBehavior passHref>
-        <NavigationMenuPrimitive.Trigger
-          ref={ref}
-          className={cn(navigationMenuTriggerStyle(), "group", className)}
-          {...props}
-        >
-          {children}
-        </NavigationMenuPrimitive.Trigger>
-      </Link>
+      <a 
+        href={href} 
+        className={cn(navigationMenuTriggerStyle(), "group", className)}
+      >
+        {children}
+      </a>
     );
   }
 

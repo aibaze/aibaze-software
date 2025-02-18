@@ -115,7 +115,7 @@ export function HeroCTA({ hideText = false }) {
           href="/signup"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto text-white flex gap-2"
+            "w-full sm:w-auto text-black flex gap-2"
           )}
         >
           <Icons.logo className="h-1 w-1" />
