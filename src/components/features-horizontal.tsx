@@ -188,7 +188,7 @@ export default function Features({
               }`}
             >
               <Accordion.Root
-                className="grid md:grid-cols-4 gap-x-10 py-8"
+                className="grid md:grid-cols-4 gap-x-10 py-8 mx-auto max-w-7xl"
                 type="single"
                 defaultValue={`item-${currentIndex}`}
                 value={`item-${currentIndex}`}
@@ -199,7 +199,7 @@ export default function Features({
                 {data.map((item, index) => (
                   <AccordionItem
                     key={item.id}
-                    className="relative mb-8"
+                    className="relative mb-8 flex flex-col items-center"
                     value={`item-${index}`}
                   >
                     {linePosition === "left" || linePosition === "right" ? (
@@ -246,20 +246,20 @@ export default function Features({
                       </div>
                     ) : null}
 
-                    <AccordionTrigger>
-                      <div className="flex items-center relative flex-col">
+                    <AccordionTrigger className="w-full">
+                      <div className="flex items-center relative flex-col w-full">
                         <div className="item-box size-16 bg-primary/10 rounded-full sm:mx-6 mx-2 shrink-0 flex items-center justify-center">
                           {item.icon}
                         </div>
-                        <div className="font-bold text-xl my-3 ">
+                        <div className="font-bold text-xl my-3 text-center">
                           {item.title}
                         </div>
-                        <div className="font-bold text-lg my-3 text-primary ">
+                        <div className="font-bold text-lg my-3 text-primary text-center">
                           {item.subtitle}
                         </div>
-                        <div className="font-bold text-xl my-3 ">
+                        <div className="font-bold text-xl my-3 text-center">
                         </div>
-                        <div className="justify-center text-center mb-4">
+                        <div className="justify-center text-center mb-4 w-full">
                           {item.content}
                         </div>
                       </div>
