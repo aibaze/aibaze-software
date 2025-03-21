@@ -112,7 +112,7 @@ export function HeroCTA({ hideText = false }) {
         transition={{ delay: 0.8, duration: 0.8, ease }}
       >
         <Link
-          href="/signup"
+          href={siteConfig.ctaLink}
           className={cn(
             buttonVariants({ variant: "default" }),
             "w-full sm:w-auto text-black flex"

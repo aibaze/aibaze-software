@@ -27,7 +27,6 @@ export default function Home() {
       <Pricing />
       {/*  <FAQ /> */}
       <CTA />
-      <Contact showForm={false}/>
       <Footer />
     </main>
   );

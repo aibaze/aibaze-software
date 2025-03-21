@@ -86,7 +86,7 @@ export default function PricingSection() {
               <hr className="w-full my-4" />
 
               <Link
-                href={plan.href}
+                href={siteConfig.ctaLink}
                 className={cn(
                   buttonVariants({
                     variant: "outline",

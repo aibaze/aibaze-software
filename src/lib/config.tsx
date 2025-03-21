@@ -10,6 +10,7 @@ export const siteConfig = {
   description: "AI Phone Call Automation",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: ["AI AGENT", "AI Phone", "CUSTOMER SUPPORT", "AI Agency"],
+  ctaLink:"https://calendar.app.google/SdCB8dsnamqTVUbCA",
   keys: {
     mixpanel: process.env.NEXT_PUBLIC_MIXPALNEL_TOKEN || "",
   },
