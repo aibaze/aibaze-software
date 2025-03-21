@@ -155,15 +155,28 @@ function HeroImage() {
   );
 }
 
-export default function Hero2() {
+export default function Hero() {
   return (
-    <section id="hero">
-      <div className="relative flex w-full flex-col items-center justify-start px-4 pt-32 sm:px-6 sm:pt-24 md:pt-32 lg:px-8">
+    <section id="hero" className="relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.3  // Adjust this value to make the image more/less visible
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 pt-32 sm:px-6 sm:pt-24 md:pt-32 lg:px-8">
         <HeroPill />
         <HeroTitles />
         <HeroCTA />
         <div style={{ marginBottom: "70px" }} />
-        {/*   <HeroImage /> */}
+        {/*   <HeroImage />  */}
         <div className="pointer-events-none absolute inset-x-0 -bottom-12 h-1/3 bg-gradient-to-t from-background via-background to-transparent lg:h-1/4"></div>
       </div>
     </section>

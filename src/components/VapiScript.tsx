@@ -4,7 +4,7 @@ import Script from "next/script";
 
 const VapiScript = () => {
     const buttonConfig = {
-        position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
+        position: "top-right",
         offset: "40px", // decide how far the button should be from the edge
         width: "50px", // min-width of the button
         height: "50px", // height of the button
