@@ -177,7 +177,6 @@ export default function Hero() {
         <HeroCTA />
         <div style={{ marginBottom: "70px" }} />
         {/*   <HeroImage />  */}
-        <div className="pointer-events-none absolute inset-x-0 -bottom-12 h-1/3 bg-gradient-to-t from-background via-background to-transparent lg:h-1/4"></div>
       </div>
     </section>
   );

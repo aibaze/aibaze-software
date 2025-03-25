@@ -4,7 +4,6 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { cn, constructMetadata } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import VapiScript from "@/components/VapiScript";
 
 export const metadata: Metadata = constructMetadata({});
 
@@ -43,7 +42,6 @@ export default function RootLayout({
           <ThemeToggle />
           <TailwindIndicator />
         </ThemeProvider>
-        <VapiScript/>
       </body>
     </html>
   );

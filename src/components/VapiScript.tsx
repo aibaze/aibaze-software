@@ -1,11 +1,12 @@
 // components/VapiScript.tsx
 "use client";
+import { useEffect } from "react";
 import Script from "next/script";
 
 const VapiScript = () => {
     const buttonConfig = {
-        position: "right",
-        offset: "40px", // decide how far the button should be from the edge
+        position: "bottom-right",
+        offset: "50px", // decide how far the button should be from the edge
         width: "50px", // min-width of the button
         height: "50px", // height of the button
         idle: { // button state when the call is not active.
@@ -30,7 +31,24 @@ const VapiScript = () => {
           icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg`,
         },
       };
+
+      useEffect(() => {
+        // This runs after the component mounts
+        const interval = setInterval(() => {
+            // Look for the Vapi button element and force its z-index
+            const vapiButton = document.getElementById('vapi-support-btn') 
+            if (vapiButton) {
+              vapiButton.style.zIndex = "9999";
+              // @ts-ignore
+                clearInterval(interval);
+            }
+        }, 1000); // Check every second
+        
+        return () => clearInterval(interval);
+    }, []);
   return (
+   
+
     <Script
       src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"
       strategy="afterInteractive"
@@ -42,6 +60,7 @@ const VapiScript = () => {
         });
       }}
     />
+
   );
 };
 

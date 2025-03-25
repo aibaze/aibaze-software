@@ -15,12 +15,15 @@ import Testimonials from "@/components/sections/testimonials";
 import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
 import CalendlyWidget from '@/components/CalendlyWidget';
 import Contact from "@/components/sections/contact";
+import VapiScript from "@/components/VapiScript";
 
 export default function Home() {
   return (
     <main>
       <Header />
       <Hero />
+      <VapiScript/>
+
       <HowItWorks />
       <Features />
       {/* <Testimonials /> temporary comment */}
