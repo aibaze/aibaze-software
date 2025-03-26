@@ -75,7 +75,7 @@ export const siteConfig = {
         },
       ],
       description: "No cost, no obligation ROI assessment",
-      buttonText: "Book Your Strategy Session",
+      buttonText: "Book Your Discovery Call",
       isPopular: true,
     },
   ],

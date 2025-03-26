@@ -21,7 +21,9 @@ export default function CtaSection() {
             "w-full sm:w-auto text-background flex gap-2"
           )}
         >
-          Claim Your Free Strategy Session
+           <strong>
+                  Book Your Discovery Call
+                </strong>
         </Link>
       </div>
     </Section>

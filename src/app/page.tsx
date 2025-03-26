@@ -1,3 +1,4 @@
+'use client'
 import Blog from "@/components/sections/blog";
 import CTA from "@/components/sections/cta";
 import FAQ from "@/components/sections/faq";
@@ -16,14 +17,26 @@ import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
 import CalendlyWidget from '@/components/CalendlyWidget';
 import Contact from "@/components/sections/contact";
 import VapiScript from "@/components/VapiScript";
+const getIsMobile = () => {
+  if (typeof window !== 'undefined') {
+  const isMobile = window.innerWidth < 768;
+  return isMobile;
+
+  }
+  return false;
+};
 
 export default function Home() {
+  const isMobile =getIsMobile()
+
   return (
     <main>
       <Header />
       <Hero />
       <VapiScript/>
+      {!isMobile ? (
       <Logos/>
+      ):<div style={{marginBottom:"100px"}}></div>}
       <HowItWorks />
       <Features />
       {/* <Testimonials /> temporary comment */}

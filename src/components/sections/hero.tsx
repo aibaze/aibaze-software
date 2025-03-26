@@ -25,7 +25,7 @@ if (typeof window !== "undefined") {
 function HeroPill() {
   return (
     <motion.a
-      href="/blog/introducing-acme-ai"
+      href="/contact"
       className="flex w-auto items-center space-x-2 rounded-full bg-primary/20 px-2 py-1 ring-1 ring-accent whitespace-pre"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ function HeroPill() {
         🔥 New
       </div>
       <p className="text-xs font-medium text-primary sm:text-sm">
-        AI Voice Agents with 300% ROI
+        24/7 AI Voice Agents 
       </p>
       <svg
         width="12"
@@ -120,9 +120,9 @@ export function HeroCTA({ hideText = false }) {
             boxShadow: "0 0 80px 10px hsl(154, 89%, 74%)",
           }}
         >
-          <strong>
-            CLAIM YOUR FREE STRATEGY SESSION
-          </strong>
+            <strong>
+                  Book Your Discovery Call
+                </strong>
         </Link>
       </motion.div>
       {!hideText && (
@@ -191,7 +191,7 @@ export default function Hero() {
         <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 pt-32 sm:px-6 sm:pt-24 md:pt-32 lg:px-8">
           <HeroPill />
           <HeroTitles />
-          <HeroCTA />
+          <HeroCTA hideText={true} />
           <div style={{ marginBottom: "70px" }} />
           {/*   <HeroImage />  */}
         </div>

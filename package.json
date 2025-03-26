@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy-prod":"pnpm install && git add . && git commit -am'automatic-deploy-commit' && git push origin main",
-    "deploy-staging":"pnpm install && git add . && git commit -am'automatic-deploy-commit' && git push origin staging"
+    "deploy-prod": "pnpm install && git add . && git commit -am'automatic-deploy-commit' && git push origin main",
+    "deploy-staging": "pnpm install && git add . && git commit -am'automatic-deploy-commit' && git push origin staging"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
