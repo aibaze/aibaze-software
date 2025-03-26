@@ -115,11 +115,13 @@ export function HeroCTA({ hideText = false }) {
           href={siteConfig.ctaLink}
           className={cn(
             buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto text-black flex"
+            "w-full sm:w-auto text-black flex text-bold text-black "
           )}
         >
-          <Icons.logo className="h-1" />
+          <strong>
+
           FREE DISCOVERY CALL
+          </strong>
         </Link>
       </motion.div>
       {!hideText && (

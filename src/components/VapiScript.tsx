@@ -33,35 +33,66 @@ const VapiScript = () => {
       };
 
       useEffect(() => {
-        // This runs after the component mounts
-        const interval = setInterval(() => {
-            // Look for the Vapi button element and force its z-index
-            const vapiButton = document.getElementById('vapi-support-btn') 
-            if (vapiButton) {
-              vapiButton.style.zIndex = "9999";
-              // @ts-ignore
-                clearInterval(interval);
+        // Function to get call count from localStorage
+        const getCallCount = () => {
+            if (typeof window !== 'undefined') {
+                const callCount = localStorage.getItem('vapiCallCount');
+                return callCount ? parseInt(callCount, 10) : 0;
             }
-        }, 1000); // Check every second
+            return 0;
+        };
         
-        return () => clearInterval(interval);
+        // Only apply z-index fix if user hasn't called more than 3 times
+        const callCount = getCallCount();
+        console.log(callCount);
+        setTimeout(() => {
+                // Look for the Vapi button element and force its z-index
+          const vapiButton = document.getElementById('vapi-support-btn');
+          if (vapiButton) {
+                      // @ts-ignore
+            vapiButton.style.zIndex =    "9999" ;
+            if(callCount > 7  && callCount ){
+              vapiButton.style.display =  "none"
+            }
+          }
+        }, 1000); // Check every second
+            
     }, []);
-  return (
-   
 
-    <Script
-      src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"
-      strategy="afterInteractive"
-      onLoad={() => {
-        (window as any).vapiSDK.run({
-          apiKey: "a6f1a862-5d3d-41c3-a1a8-312a44238312",         // Substitute with your Public key from Vapi Dashboard.
-          assistant:  "d03824fe-2261-4929-8b01-124e01f40a26", 
-          config: buttonConfig              // Optional: Modify as required.
-        });
-      }}
-    />
+    // Function to increment call count when a call starts
+    const incrementCallCount = () => {
+      console.log("call started");
+        if (typeof window !== 'undefined') {
+            const currentCount = localStorage.getItem('vapiCallCount');
+            const newCount = currentCount ? parseInt(currentCount, 10) + 1 : 1;
+            localStorage.setItem('vapiCallCount', newCount.toString());
+        }
+    };
 
-  );
+    return (
+        <Script
+            src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"
+            strategy="afterInteractive"
+            onLoad={() => {
+                (window as any).vapiSDK.run({
+                    apiKey: "a6f1a862-5d3d-41c3-a1a8-312a44238312",         // Substitute with your Public key from Vapi Dashboard.
+                    assistant:  "d03824fe-2261-4929-8b01-124e01f40a26", 
+                    config: buttonConfig,              // Optional: Modify as required.
+                });
+                
+                // If Vapi doesn't support onCallStarted, we need to find another way to track calls
+                // This is a backup approach:
+                document.addEventListener('click', (e) => {
+                  if(e.target){
+                    if(e.target instanceof HTMLElement && e.target.id.includes("vapi")){
+                      incrementCallCount();
+                    }
+                  }
+                   
+                });
+            }}
+        />
+    );
 };
 
 export default VapiScript;

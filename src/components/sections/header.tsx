@@ -49,6 +49,19 @@ export default function Header() {
             <nav className="mr-56">
               <Menu />
             </nav>
+            <div className="gap-2 flex">
+             
+              <Link
+                       href={siteConfig.ctaLink}
+
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "w-full sm:w-auto text-background flex gap-2"
+                )}
+              >
+                Get Started for Free
+              </Link>
+            </div>
           </div>
         </div>
         <div className="mt-2 cursor-pointer block lg:hidden">
