@@ -67,7 +67,7 @@ function HeroTitles() {
           staggerChildren: 0.2,
         }}
       >
-        {["Transforming ", "Communication ", "With AI", "Phone Agents"].map(
+        {["Elite", "Voice Agents", "Automated", "Sales"].map(
           (text, index) => (
             <motion.span
               key={index}

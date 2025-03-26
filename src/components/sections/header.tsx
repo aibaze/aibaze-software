@@ -46,14 +46,13 @@ export default function Header() {
 
         <div className="hidden lg:block">
           <div className="flex items-center ">
-            <nav className="mr-56">
+            <nav className="mr-5">
               <Menu />
             </nav>
             <div className="gap-2 flex">
              
               <Link
-                       href={siteConfig.ctaLink}
-
+                href={siteConfig.ctaLink}
                 className={cn(
                   buttonVariants({ variant: "default" }),
                   "w-full sm:w-auto text-background flex gap-2"

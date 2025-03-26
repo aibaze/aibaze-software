@@ -23,7 +23,7 @@ export default function Home() {
       <Header />
       <Hero />
       <VapiScript/>
-
+<Logos/>
       <HowItWorks />
       <Features />
       {/* <Testimonials /> temporary comment */}
