@@ -7,15 +7,15 @@ export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
   name: "Agenticaller",
-  description: "AI Phone Call Automation",
+  description: "Enterprise AI Voice Agent Solutions",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-  keywords: ["AI AGENT", "AI Phone", "CUSTOMER SUPPORT", "AI Agency"],
+  keywords: ["AI Voice Agents", "Automated Sales", "Lead Qualification", "ROI-Driven Automation"],
   ctaLink:"https://calendar.app.google/SdCB8dsnamqTVUbCA",
   keys: {
     mixpanel: process.env.NEXT_PUBLIC_MIXPALNEL_TOKEN || "",
   },
   links: {
-    email: "support@agenticaller.com",
+    email: "info.agenticaller@gmail.com",
     twitter: "https://x.com/agenticaller_agency",
     discord: "#",
     github: "#",
@@ -58,25 +58,24 @@ export const siteConfig = {
       yearlyPrice: "$0",
       features: [
         {
-          title: "Free Discovery Session.",
-          text: "Explore your unique business needs and uncover new opportunities.",
+          title: "Comprehensive Business Analysis",
+          text: "We analyze your current processes to identify key automation opportunities with highest ROI potential.",
         },
         {
-          title: "Free Proposal & Consultation",
-          text: "We provide a detailed proposal and consultation at no cost to you.",
-        },
-
-        {
-          title: "No-Obligation Consultation",
-          text: "Not sure if it’s the right fit? Let’s chat first—you decide what’s next.",
+          title: "Custom ROI Projection",
+          text: "Receive a detailed cost-benefit analysis and projected ROI timeline for your AI voice agents.",
         },
         {
-          title: "Phone Call Assistant Development",
-          text: "We develop a custom AI phone assistant to match your business needs.",
+          title: "Technical Implementation Roadmap",
+          text: "Get a clear implementation plan with timeline, resource requirements, and integration specifications.",
+        },
+        {
+          title: "AI Voice Agent Demo",
+          text: "Experience a live demonstration of an AI voice agent customized for your specific industry needs.",
         },
       ],
-      description: "Free discovery consultation",
-      buttonText: "Book Now",
+      description: "No cost, no obligation ROI assessment",
+      buttonText: "Book Your Strategy Session",
       isPopular: true,
     },
   ],
@@ -134,48 +133,28 @@ export const siteConfig = {
     },
   ],
   faqs: [
+  
     {
-      question: "What is our AI Automation Agency?",
+      question: "How do your AI voice agents integrate with our existing systems?",
       answer: (
         <span>
-          We are a dedicated AI Automation agency that builds custom agents
-          tailored to your business needs. Whether you need lead generation and
-          nurturing, social media automation, or any other type of AI-driven
-          solution, our team designs and implements systems that streamline
-          operations and drive growth.
+          Our AI voice agents seamlessly integrate with your existing phone systems, CRM platforms, scheduling tools, and other business software. We handle all technical aspects of integration, requiring minimal IT resources from your team. This ensures a smooth transition with no disruption to your current operations.
         </span>
       ),
     },
     {
-      question: "How can I get started with your services?",
+      question: "What types of businesses benefit most from your AI voice agents?",
       answer: (
         <span>
-          Getting started is simple! Contact us via our website or schedule a
-          consultation to discuss your business requirements. We&apos;ll work
-          with you to develop a custom AI solution that perfectly fits your
-          operational goals.
+          Our solution delivers exceptional results for businesses with high call volumes, recurring appointment scheduling, lead qualification needs, or customer support requirements. This includes industries like real estate, healthcare, financial services, SaaS, and professional services. If your business relies on phone communication for sales or operations, our AI voice agents can drive significant improvements.
         </span>
       ),
     },
     {
-      question: "What types of AI automation services do you offer?",
+      question: "How do you ensure voice quality and natural conversation flow?",
       answer: (
         <span>
-          Our expertise covers a wide range of AI automation services, including
-          custom lead generation and nurturing agents, social media automation
-          tools, customer service bots, and many other tailored solutions
-          designed to optimize your business processes.
-        </span>
-      ),
-    },
-    {
-      question: "Are your solutions suitable for businesses of all sizes?",
-      answer: (
-        <span>
-          Absolutely. Our custom AI agents are designed to scale with your
-          business—from startups to large enterprises. We ensure that each
-          solution is tailored to address your specific needs, regardless of
-          your company&apos;s size.
+          Our AI voice agents use state-of-the-art natural language processing and voice synthesis technology that's virtually indistinguishable from human conversation. We customize each agent with your specific brand voice, terminology, and conversation flows. Regular optimization ensures the system continuously improves based on real conversation data.
         </span>
       ),
     },
@@ -183,10 +162,7 @@ export const siteConfig = {
       question: "What kind of support do you provide after implementation?",
       answer: (
         <span>
-          We offer comprehensive post-implementation support, including
-          maintenance, training, and ongoing updates. Our dedicated support team
-          is always available to help ensure your custom AI agents continue to
-          operate efficiently and effectively.
+          We provide comprehensive post-implementation support including 24/7 monitoring, regular performance reporting, ongoing optimization, and dedicated account management. Our team continuously analyzes conversation data to identify opportunities for improvement, ensuring your AI voice agents deliver maximum ROI month after month.
         </span>
       ),
     },

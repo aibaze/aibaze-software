@@ -23,12 +23,12 @@ export default function Home() {
       <Header />
       <Hero />
       <VapiScript/>
-<Logos/>
+      <Logos/>
       <HowItWorks />
       <Features />
       {/* <Testimonials /> temporary comment */}
       <Pricing />
-      {/*  <FAQ /> */}
+      <FAQ />
       <CTA />
       <Footer />
     </main>

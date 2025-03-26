@@ -58,7 +58,7 @@ export default function Header() {
                   "w-full sm:w-auto text-background flex gap-2"
                 )}
               >
-                Get Started for Free
+                Book Your Strategy Session
               </Link>
             </div>
           </div>

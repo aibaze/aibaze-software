@@ -32,10 +32,10 @@ function HeroPill() {
       transition={{ duration: 0.8, ease }}
     >
       <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center text-xs font-medium text-primary sm:text-sm">
-        📣 Announcement
+        🔥 New
       </div>
       <p className="text-xs font-medium text-primary sm:text-sm">
-        Introducing AgentiCaller
+        AI Voice Agents with 300% ROI
       </p>
       <svg
         width="12"
@@ -67,7 +67,7 @@ function HeroTitles() {
           staggerChildren: 0.2,
         }}
       >
-        {["Elite", "Voice Agents", "Automated", "Sales"].map(
+        {["AI Voice", "Agents", "That Convert", "24/7"].map(
           (text, index) => (
             <motion.span
               key={index}
@@ -95,8 +95,7 @@ function HeroTitles() {
           ease,
         }}
       >
-        Automate operations and scale with AI Agents that work like the best
-        employee—(but faster).
+        AI voice agents that reduce costs by 60%, qualify leads 24/7, and deliver measurable ROI within 90 days.
       </motion.p>
     </div>
   );
@@ -117,10 +116,12 @@ export function HeroCTA({ hideText = false }) {
             buttonVariants({ variant: "default" }),
             "w-full sm:w-auto text-black flex text-bold text-black "
           )}
+          style={{
+            boxShadow: "0 0 80px 10px hsl(154, 89%, 74%)",
+          }}
         >
           <strong>
-
-          FREE DISCOVERY CALL
+            CLAIM YOUR FREE STRATEGY SESSION
           </strong>
         </Link>
       </motion.div>
@@ -131,7 +132,7 @@ export function HeroCTA({ hideText = false }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
         >
-          Free consultation with our AI experts
+          Includes ROI assessment & custom voice agent demo
         </motion.p>
       )}
     </>
@@ -160,25 +161,40 @@ function HeroImage() {
 export default function Hero() {
   return (
     <section id="hero" className="relative">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 z-0"
+      <div
         style={{
-          backgroundImage: "url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.3  // Adjust this value to make the image more/less visible
+          position: 'relative',
+          overflow: 'hidden',
         }}
-      />
-      
-      {/* Content */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 pt-32 sm:px-6 sm:pt-24 md:pt-32 lg:px-8">
-        <HeroPill />
-        <HeroTitles />
-        <HeroCTA />
-        <div style={{ marginBottom: "70px" }} />
-        {/*   <HeroImage />  */}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.3,
+            zIndex: -1,
+          }}
+        >
+          <source src="/hero-vid.mov" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Content */}
+        <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 pt-32 sm:px-6 sm:pt-24 md:pt-32 lg:px-8">
+          <HeroPill />
+          <HeroTitles />
+          <HeroCTA />
+          <div style={{ marginBottom: "70px" }} />
+          {/*   <HeroImage />  */}
+        </div>
       </div>
     </section>
   );

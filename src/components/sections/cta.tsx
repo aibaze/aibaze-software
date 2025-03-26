@@ -9,8 +9,8 @@ export default function CtaSection() {
   return (
     <Section
       id="cta"
-      title="Ready to get started?"
-      subtitle="Book your free consultation today."
+      title="Ready to Transform Your Business Operations?"
+      subtitle="Take the first step toward 24/7 automated customer engagement."
       className="bg-primary/10 rounded-xl py-16"
     >
       <div className="flex flex-col w-full sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
@@ -21,7 +21,7 @@ export default function CtaSection() {
             "w-full sm:w-auto text-background flex gap-2"
           )}
         >
-          Get started for free
+          Claim Your Free Strategy Session
         </Link>
       </div>
     </Section>
