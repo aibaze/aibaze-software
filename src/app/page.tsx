@@ -17,6 +17,7 @@ import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
 import CalendlyWidget from '@/components/CalendlyWidget';
 import Contact from "@/components/sections/contact";
 import VapiScript from "@/components/VapiScript";
+import OurProducts from "@/components/sections/our-products";
 const getIsMobile = () => {
   if (typeof window !== 'undefined') {
   const isMobile = window.innerWidth < 768;
@@ -42,6 +43,7 @@ export default function Home() {
       {/* <Testimonials /> temporary comment */}
       <Pricing />
       <FAQ />
+      <OurProducts />
       <CTA />
       <Footer />
     </main>

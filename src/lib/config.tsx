@@ -11,6 +11,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: ["AI Voice Agents", "Automated Sales", "Lead Qualification", "ROI-Driven Automation"],
   ctaLink:"https://calendar.app.google/SdCB8dsnamqTVUbCA",
+  saasLink:"https://site.agenticaller.com?from=agency-website",
   keys: {
     mixpanel: process.env.NEXT_PUBLIC_MIXPALNEL_TOKEN || "",
   },

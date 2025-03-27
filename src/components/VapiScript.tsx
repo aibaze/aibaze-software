@@ -61,7 +61,6 @@ const VapiScript = () => {
 
     // Function to increment call count when a call starts
     const incrementCallCount = () => {
-      console.log("call started");
         if (typeof window !== 'undefined') {
             const currentCount = localStorage.getItem('vapiCallCount');
             const newCount = currentCount ? parseInt(currentCount, 10) + 1 : 1;
@@ -75,8 +74,8 @@ const VapiScript = () => {
             strategy="afterInteractive"
             onLoad={() => {
                 (window as any).vapiSDK.run({
-                    apiKey: "a6f1a862-5d3d-41c3-a1a8-312a44238312",         // Substitute with your Public key from Vapi Dashboard.
-                    assistant:  "d03824fe-2261-4929-8b01-124e01f40a26", 
+                    apiKey: process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "",         // Using environment variable
+                    assistant: process.env.NEXT_PUBLIC_VAPI_ASISTANT_ID || "",     // Using environment variable
                     config: buttonConfig,              // Optional: Modify as required.
                 });
                 
