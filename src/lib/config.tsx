@@ -154,7 +154,7 @@ export const siteConfig = {
       question: "How do you ensure voice quality and natural conversation flow?",
       answer: (
         <span>
-          Our AI voice agents use state-of-the-art natural language processing and voice synthesis technology that's virtually indistinguishable from human conversation. We customize each agent with your specific brand voice, terminology, and conversation flows. Regular optimization ensures the system continuously improves based on real conversation data.
+          Our AI voice agents use state-of-the-art natural language processing and voice synthesis technology that&apos;s virtually indistinguishable from human conversation. We customize each agent with your specific brand voice, terminology, and conversation flows. Regular optimization ensures the system continuously improves based on real conversation data.
         </span>
       ),
     },

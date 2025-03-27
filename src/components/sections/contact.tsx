@@ -10,7 +10,7 @@ export default function Contact({showForm=false}:{showForm?:boolean}) {
           <div className="max-w-3xl mx-auto text-center ">
             <h1 className="h1 mb-4">Contact Us</h1>
             <h1 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-400">
-              Schedule a <a target='_blank' href={siteConfig.ctaLink} className="text-blue-500 hover:text-blue-700">call</a> or fill out <a target='_blank' href="https://airtable.com/appnliIniznmrUiU3/pagspRYRZnNNaAhvJ/form" className="text-blue-500 hover:text-blue-700">this form</a> 
+              Schedule a <a target="_blank" href={siteConfig.ctaLink} className="text-blue-500 hover:text-blue-700">call</a> or fill out <a target="_blank" href="https://airtable.com/appnliIniznmrUiU3/pagspRYRZnNNaAhvJ/form" className="text-blue-500 hover:text-blue-700">this form</a> 
             </h1>
           </div>
           {/* Airtable Form */}
