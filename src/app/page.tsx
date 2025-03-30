@@ -36,7 +36,6 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <VapiScript/>
       {!isMobile ? (
         <Logos/>
       ):<div style={{marginBottom:"100px"}}></div>}

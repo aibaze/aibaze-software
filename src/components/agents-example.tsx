@@ -159,7 +159,8 @@ vapi.on("message", (message) => {
                             {callStatus === callStatuses.CONNECTED && "Hang Up"}
                             {(!callStatus  || callStatus === callStatuses.ERROR) && `Talk with ${agent.name?.substring(0, 6)}`}
                         </strong>
-                      </motion.button>):(
+                      </motion.button>):
+                      (
                       <motion.button
                         disabled={callStatus === callStatuses.CONNECTING || callStatus === callStatuses.CONNECTED}
                         onClick={() => handleAgentClick(agent.id,agent.assistantId)}
@@ -167,8 +168,17 @@ vapi.on("message", (message) => {
                         buttonVariants({ variant: "default" }),
                         " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[90%]"
                         )}
+                        animate={!callStatus ? {
+                          scale: [1, 1.05, 1],
+                        } : {}}
+                        transition={!callStatus ?{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        } : {}}
                         whileHover={{
-                        boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)"
+                        boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)",
+                        scale: 1.1 // Slightly larger scale on hover to emphasize interaction
                         }}
                         >
                         <strong>
