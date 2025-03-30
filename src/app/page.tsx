@@ -18,6 +18,8 @@ import CalendlyWidget from '@/components/CalendlyWidget';
 import Contact from "@/components/sections/contact";
 import VapiScript from "@/components/VapiScript";
 import OurProducts from "@/components/sections/our-products";
+import AgentsExample from "@/components/agents-example";
+
 const getIsMobile = () => {
   if (typeof window !== 'undefined') {
   const isMobile = window.innerWidth < 768;
@@ -36,8 +38,9 @@ export default function Home() {
       <Hero />
       <VapiScript/>
       {!isMobile ? (
-      <Logos/>
+        <Logos/>
       ):<div style={{marginBottom:"100px"}}></div>}
+      <AgentsExample/>
       <HowItWorks />
       <Features />
       {/* <Testimonials /> temporary comment */}
