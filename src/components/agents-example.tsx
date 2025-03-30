@@ -69,7 +69,10 @@ vapi.on("message", (message) => {
 
 
   
+  
   const handleAgentClick =async (agentId: number, assistantId: string) => {
+    toast.error("You have no call credits left.", { duration: 5000 });
+    return
     if(callStatus === callStatuses.CONNECTED){
         return await vapi.stop();
     }
