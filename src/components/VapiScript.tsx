@@ -44,10 +44,10 @@ const VapiScript = () => {
         
         // Only apply z-index fix if user hasn't called more than 3 times
         const callCount = getCallCount();
-        console.log(callCount);
         setTimeout(() => {
                 // Look for the Vapi button element and force its z-index
           const vapiButton = document.getElementById('vapi-support-btn');
+          console.log(vapiButton,callCount);
           if (vapiButton) {
                       // @ts-ignore
             vapiButton.style.zIndex =    "9999" ;
