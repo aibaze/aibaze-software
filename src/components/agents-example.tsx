@@ -2,11 +2,12 @@
 
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Vapi from "@vapi-ai/web";
+import toast, { Toaster } from 'react-hot-toast';
 
 // Voice agent data with male and female options
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
@@ -35,7 +36,6 @@ const callStatuses = {
 export default function AgentsExample() {
   const [selectedAgent, setSelectedAgent] = useState<number | null>(null);
   const [callStatus, setCallStatus] = useState<string>("");
- const [error, setError] = useState<string>("");
 
   vapi.on("call-start", () => {
     console.log("Call has started.");
@@ -63,7 +63,7 @@ vapi.on("message", (message) => {
 
   
   vapi.on("error", (e) => {
-    setError(e.message);
+    toast.error(e.message, { duration: 5000 });
     console.error(e.message,"error handler");
   });
 
@@ -81,18 +81,18 @@ vapi.on("message", (message) => {
      await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/auth/verify-ip-request").then(res => res.json()).then(data => {
         hasCallCredits = data.maxQuotaReached ? false : true;
         if(data.status === "fail"){
-            setError(data.message);
+            toast.error(data.message, { duration: 5000 });
         }
      });
 
      if(!hasCallCredits){
-        setError("You have no call credits left.");
+        toast.error("You have no call credits left.", { duration: 5000 });
         return
      }
      const call = await vapi.start(assistantId);
      console.log(call);  
     } catch (error: any) {
-     setError(error?.message || "An error occurred.");
+        toast.error(error?.message || "An error occurred.", { duration: 5000 });
      setCallStatus(callStatuses.ERROR);
     }
 
@@ -100,6 +100,9 @@ vapi.on("message", (message) => {
 
   return (
     <div className="py-4">
+      {/* Add the Toaster component to render toast notifications */}
+      <Toaster position="top-center" />
+      
       <div className="container mx-auto px-2">
         <div className="text-center mb-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Revolutionize Your Sales Pipeline</h2>
