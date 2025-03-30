@@ -6,27 +6,81 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Vapi from "@vapi-ai/web";
 
 // Voice agent data with male and female options
+const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
+
 const agentData = [
     {
       id: 1,
-      name: "Liam - Cold Outreach Expert",
+      name: "Liam  - Cold Outreach Expert",
       image: "https://i.ibb.co/ynTxSR8m/Liam.png",
+      assistantId: "75d8b5db-7fbf-4cb7-beb1-42a7fa4ad9ec",
     },
     {
       id: 2,
-      name: "Bella - Lead Qualification Specialist",
+      name: "Jessie - Lead Qualification Specialist",
       image: "https://i.ibb.co/DDwkgL0q/Jessie.png",
+      assistantId: "07f1d354-902f-4c73-a57b-77b15f04a0dd",
     },
 ];
+
+const callStatuses = {
+    CONNECTING: "CONNECTING",
+    CONNECTED: "CONNECTED",
+    ERROR: "ERROR"
+}
 
 export default function AgentsExample() {
   const [selectedAgent, setSelectedAgent] = useState<number | null>(null);
   const [callStatus, setCallStatus] = useState<string>("");
 
-  const handleAgentClick = (agentId: number) => {
+
+  vapi.on("call-start", () => {
+    console.log("Call has started.");
+    setCallStatus(callStatuses.CONNECTED);
+  });
+
+  vapi.on("call-end", () => {
+    console.log("Call has ended.");
+    setCallStatus("");
+    setSelectedAgent(null);
+  });
+
+  // Various assistant messages can come back (like function calls, transcripts, etc)
+vapi.on("message", (message) => {
+    console.log(message,"message handler");
+  });
+
+  vapi.on("speech-start", () => {
+    console.log("Assistant speech has started.");
+  });
+
+  vapi.on("speech-end", () => {
+    console.log("Assistant speech has ended.");
+  });
+
+  
+  vapi.on("error", (e) => {
+    console.error(e.message,"error handler");
+  });
+  
+  const handleAgentClick =async (agentId: number, assistantId: string) => {
+    if(callStatus === callStatuses.CONNECTED){
+        return await vapi.stop();
+    }
     setSelectedAgent(agentId === selectedAgent ? null : agentId);
+    setCallStatus(callStatuses.CONNECTING);
+
+    try {
+
+     const call = await vapi.start(assistantId);
+     console.log(call);  
+    } catch (error) {
+     setCallStatus(callStatuses.ERROR);
+    }
+
   };
 
   return (
@@ -43,7 +97,6 @@ export default function AgentsExample() {
           {/* Left-aligned stacked agents display (50% of screen width) */}
           <div className="w-1/2 flex flex-row items-center mt-10 gap-10">
             {agentData.map((agent) => (
-            <>
               <div 
                 key={agent.id}
                 className={`relative cursor-pointer transition-transform duration-300 ${selectedAgent === agent.id ? 'scale-105' : ''}`}
@@ -67,27 +120,45 @@ export default function AgentsExample() {
                       colorTo="hsl(var(--primary)/0)"
                     />
                   )}
- <button
-            onClick={() => handleAgentClick(agent.id)}
-            className={cn(
-            buttonVariants({ variant: "default" }),
-            " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[90%]"
-            )}
-            style={{
-            boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)",
-            }}
-            >
-            <strong>
-                Talk with {agent.name?.substring(0, 5)}
-                </strong>
-                </button>
-
-           
-         
+                  
+                  {selectedAgent === agent.id ? (     
+                    <motion.button
+                        disabled={callStatus === callStatuses.CONNECTING || agent.id !== selectedAgent && callStatus === callStatuses.CONNECTED}
+                        onClick={() => handleAgentClick(agent.id,agent.assistantId)}
+                        className={cn(
+                        buttonVariants({ variant: "default" }),
+                        " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[90%]"
+                        )}
+                        style={callStatus === callStatuses.CONNECTED ? {backgroundColor: "hsl(7, 92.90%, 50.60%, 0.5)"}:{}}
+                        whileHover={{
+                        boxShadow: callStatus !== callStatuses.CONNECTED  ? "0 0 50px 5px hsl(154, 89%, 74%)" : "0 0 50px 5px hsl(7, 92.90%, 50.60%)"
+                        }}
+                        >
+                        <strong>
+                            {callStatus === callStatuses.CONNECTING && "Connecting..."}
+                            {callStatus === callStatuses.CONNECTED && "Hang Up"}
+                            {(!callStatus  || callStatus === callStatuses.ERROR) && `Talk with ${agent.name?.substring(0, 6)}`}
+                        </strong>
+                      </motion.button>):(
+                      <motion.button
+                        disabled={callStatus === callStatuses.CONNECTING || callStatus === callStatuses.CONNECTED}
+                        onClick={() => handleAgentClick(agent.id,agent.assistantId)}
+                        className={cn(
+                        buttonVariants({ variant: "default" }),
+                        " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[90%]"
+                        )}
+                        whileHover={{
+                        boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)"
+                        }}
+                        >
+                        <strong>
+                            Talk with {agent.name?.substring(0, 6)}
+                        </strong>
+                      </motion.button>
+                    )}
+                
                 </div>
               </div>
-
-            </>
             ))}
           </div>
           
@@ -116,6 +187,8 @@ export default function AgentsExample() {
                 priority
               />
             </motion.div>
+
+
            
 
        
