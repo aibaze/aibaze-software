@@ -14,7 +14,7 @@ const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
 const agentData = [
     {
       id: 1,
-      name: "Liam  - Cold Outreach Expert",
+      name: "Liam - Cold Outreach Expert",
       image: "https://i.ibb.co/ynTxSR8m/Liam.png",
       assistantId: "75d8b5db-7fbf-4cb7-beb1-42a7fa4ad9ec",
     },
@@ -35,7 +35,7 @@ const callStatuses = {
 export default function AgentsExample() {
   const [selectedAgent, setSelectedAgent] = useState<number | null>(null);
   const [callStatus, setCallStatus] = useState<string>("");
-
+ const [error, setError] = useState<string>("");
 
   vapi.on("call-start", () => {
     console.log("Call has started.");
@@ -63,8 +63,11 @@ vapi.on("message", (message) => {
 
   
   vapi.on("error", (e) => {
+    setError(e.message);
     console.error(e.message,"error handler");
   });
+
+
   
   const handleAgentClick =async (agentId: number, assistantId: string) => {
     if(callStatus === callStatuses.CONNECTED){
@@ -72,12 +75,24 @@ vapi.on("message", (message) => {
     }
     setSelectedAgent(agentId === selectedAgent ? null : agentId);
     setCallStatus(callStatuses.CONNECTING);
-
+    
     try {
+     let hasCallCredits = false;
+     await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/auth/verify-ip-request").then(res => res.json()).then(data => {
+        hasCallCredits = data.maxQuotaReached ? false : true;
+        if(data.status === "fail"){
+            setError(data.message);
+        }
+     });
 
+     if(!hasCallCredits){
+        setError("You have no call credits left.");
+        return
+     }
      const call = await vapi.start(assistantId);
      console.log(call);  
-    } catch (error) {
+    } catch (error: any) {
+     setError(error?.message || "An error occurred.");
      setCallStatus(callStatuses.ERROR);
     }
 
@@ -161,7 +176,7 @@ vapi.on("message", (message) => {
               </div>
             ))}
           </div>
-          
+
           {/* Right side with spinning image */}
           <div className="w-1/2 flex items-center justify-center flex-col gap-10">
             <motion.div 
@@ -187,11 +202,6 @@ vapi.on("message", (message) => {
                 priority
               />
             </motion.div>
-
-
-           
-
-       
           </div>
         </div>
       </div>
