@@ -38,6 +38,14 @@ export default function AgentsExample() {
   const [callStatus, setCallStatus] = useState<string>("");
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
+  const handleError = (errorMessage: string) => {
+    toast.error(errorMessage, { duration: 5000 });
+    setCallStatus(callStatuses.ERROR);
+    setIsSpeaking(false);
+    setSelectedAgent(null);
+    console.error(errorMessage,"error handler");
+  }
+
 
   vapi.on("call-start", () => {
     console.log("Call has started.");
@@ -51,7 +59,7 @@ export default function AgentsExample() {
     setTimeout(() => {
       setIsSpeaking(false);
       setSelectedAgent(null);
-    }, 1000);
+    }, 500);
   });
 
   // Various assistant messages can come back (like function calls, transcripts, etc)
@@ -71,10 +79,9 @@ export default function AgentsExample() {
   });
 
   
+  
   vapi.on("error", (e) => {
-    toast.error(e.message, { duration: 5000 });
-    setCallStatus(callStatuses.ERROR);
-    console.error(e.message,"error handler");
+    handleError(e.message);
   });
 
 
@@ -93,22 +100,19 @@ export default function AgentsExample() {
      await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/auth/verify-ip-request").then(res => res.json()).then(data => {
         hasCallCredits = data.maxQuotaReached ? false : true;
         if(data.status === "fail"){
-            setCallStatus(callStatuses.ERROR);
-            toast.error(data.message, { duration: 5000 });
+            handleError(data.message);
             return
         }
      });
 
      if(!hasCallCredits){
-        setCallStatus(callStatuses.ERROR);
-        toast.error("You have no call credits left.", { duration: 5000 });
+        handleError("You have no call credits left.");
         return
      }
      const call = await vapi.start(assistantId);
      console.log(call);  
     } catch (error: any) {
-      toast.error(error?.message || "An error occurred.", { duration: 5000 });
-     setCallStatus(callStatuses.ERROR);
+      handleError(error?.message || "An error occurred.");
     }
 
   };
