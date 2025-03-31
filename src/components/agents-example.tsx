@@ -89,10 +89,7 @@ export default function AgentsExample() {
   
   
   const handleAgentClick =async (agentId: number, assistantId: string) => {
-    mixpanel.track("Agent Clicked", {
-      agentId: agentId,
-      assistantId: assistantId,
-    });
+ 
     if(callStatus === callStatuses.CONNECTED){
         return await vapi.stop();
     }
