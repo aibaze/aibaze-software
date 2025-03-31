@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Vapi from "@vapi-ai/web";
 import toast, { Toaster } from 'react-hot-toast';
-
+import mixpanel from "mixpanel-browser";
 // Voice agent data with male and female options
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
 
@@ -89,7 +89,10 @@ export default function AgentsExample() {
   
   
   const handleAgentClick =async (agentId: number, assistantId: string) => {
-
+    mixpanel.track("Agent Clicked", {
+      agentId: agentId,
+      assistantId: assistantId,
+    });
     if(callStatus === callStatuses.CONNECTED){
         return await vapi.stop();
     }
@@ -113,7 +116,6 @@ export default function AgentsExample() {
      if(!hasCallCredits ){
       return  handleError("You have no call credits left.");
      }
-     console.log(hasCallCredits,"hasCallCredits");
      const call = await vapi.start(assistantId);
      console.log(call);  
     } catch (error: any) {
