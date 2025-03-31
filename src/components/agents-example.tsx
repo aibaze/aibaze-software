@@ -55,7 +55,7 @@ export default function AgentsExample() {
   });
 
   // Various assistant messages can come back (like function calls, transcripts, etc)
-vapi.on("message", (message) => {
+  vapi.on("message", (message) => {
     console.log(message,"message handler");
    
   });
@@ -117,12 +117,7 @@ vapi.on("message", (message) => {
     <div className="py-4">
       {/* Add the Toaster component to render toast notifications */}
       <Toaster position="top-center" />
-      <canvas style={{
-               border: "1px solid black",
-               margin: "20px",
-               width: "400px",
-               height: "200px"
-            }} id="visualizer" width="400" height="200"></canvas>
+    
       <div className="container mx-auto px-2">
         <div className="text-center mb-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Revolutionize Your Sales Pipeline</h2>
