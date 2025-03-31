@@ -31,10 +31,10 @@ function HeroPill() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center text-xs font-medium text-primary sm:text-sm">
+      <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center font-medium text-primary sm:text-sm">
         🔥 New
       </div>
-      <p className="text-xs font-medium text-primary sm:text-sm">
+      <p className="font-medium text-primary text-sm">
         24/7 AI Voice Agents 
       </p>
       <svg
@@ -118,6 +118,7 @@ export function HeroCTA({ hideText = false }) {
           )}
           style={{
             boxShadow: "0 0 80px 10px hsl(154, 89%, 74%)",
+            fontWeight: "bold",
           }}
         >
             <strong>
