@@ -2,7 +2,7 @@
 
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -36,34 +36,44 @@ const callStatuses = {
 export default function AgentsExample() {
   const [selectedAgent, setSelectedAgent] = useState<number | null>(null);
   const [callStatus, setCallStatus] = useState<string>("");
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+
 
   vapi.on("call-start", () => {
     console.log("Call has started.");
     setCallStatus(callStatuses.CONNECTED);
+  
   });
 
   vapi.on("call-end", () => {
     console.log("Call has ended.");
     setCallStatus("");
-    setSelectedAgent(null);
+    setTimeout(() => {
+      setIsSpeaking(false);
+      setSelectedAgent(null);
+    }, 1000);
   });
 
   // Various assistant messages can come back (like function calls, transcripts, etc)
 vapi.on("message", (message) => {
     console.log(message,"message handler");
+   
   });
 
   vapi.on("speech-start", () => {
     console.log("Assistant speech has started.");
+    setIsSpeaking(true);
   });
 
   vapi.on("speech-end", () => {
+    setIsSpeaking(false);
     console.log("Assistant speech has ended.");
   });
 
   
   vapi.on("error", (e) => {
     toast.error(e.message, { duration: 5000 });
+    setCallStatus(callStatuses.ERROR);
     console.error(e.message,"error handler");
   });
 
@@ -83,18 +93,21 @@ vapi.on("message", (message) => {
      await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/auth/verify-ip-request").then(res => res.json()).then(data => {
         hasCallCredits = data.maxQuotaReached ? false : true;
         if(data.status === "fail"){
+            setCallStatus(callStatuses.ERROR);
             toast.error(data.message, { duration: 5000 });
+            return
         }
      });
 
      if(!hasCallCredits){
+        setCallStatus(callStatuses.ERROR);
         toast.error("You have no call credits left.", { duration: 5000 });
         return
      }
      const call = await vapi.start(assistantId);
      console.log(call);  
     } catch (error: any) {
-        toast.error(error?.message || "An error occurred.", { duration: 5000 });
+      toast.error(error?.message || "An error occurred.", { duration: 5000 });
      setCallStatus(callStatuses.ERROR);
     }
 
@@ -104,7 +117,12 @@ vapi.on("message", (message) => {
     <div className="py-4">
       {/* Add the Toaster component to render toast notifications */}
       <Toaster position="top-center" />
-      
+      <canvas style={{
+               border: "1px solid black",
+               margin: "20px",
+               width: "400px",
+               height: "200px"
+            }} id="visualizer" width="400" height="200"></canvas>
       <div className="container mx-auto px-2">
         <div className="text-center mb-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Revolutionize Your Sales Pipeline</h2>
@@ -150,6 +168,29 @@ vapi.on("message", (message) => {
                         " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[90%]"
                         )}
                         style={callStatus === callStatuses.CONNECTED ? {backgroundColor: "hsl(7, 92.90%, 50.60%, 0.5)"}:{}}
+                        animate={isSpeaking && callStatus === callStatuses.CONNECTED ? {
+                          scale: [1, 1.08, 0.98, 1.05, 1],
+                          boxShadow: [
+                            "0 0 0px 0px hsl(7, 92.90%, 50.60%, 0.2)",
+                            "0 0 22.5px 7.2px hsl(7, 92.90%, 50.60%, 0.8)",
+                            "0 0 9px 2.7px hsl(7, 92.90%, 50.60%, 0.4)",
+                            "0 0 18px 5.4px hsl(7, 92.90%, 50.60%, 0.6)",
+                            "0 0 0px 0px hsl(7, 92.90%, 50.60%, 0.2)"
+                          ],
+                          backgroundColor: [
+                            "hsl(7, 92.90%, 50.60%,.5)",
+                            "hsl(7, 92.90%, 50.60%,.5)",
+                            "hsl(7, 92.90%, 50.60%,.5)",
+                            "hsl(7, 92.90%, 50.60%,.5)",
+                            "hsl(7, 92.90%, 60%,.5)",
+                                                      ]
+                        } : {}}
+                        transition={isSpeaking && callStatus === callStatuses.CONNECTED ? {
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          times: [0, 0.2, 0.4, 0.7, 1]
+                        } : {}}
                         whileHover={{
                         boxShadow: callStatus !== callStatuses.CONNECTED  ? "0 0 50px 5px hsl(154, 89%, 74%)" : "0 0 50px 5px hsl(7, 92.90%, 50.60%)"
                         }}
@@ -170,12 +211,16 @@ vapi.on("message", (message) => {
                         )}
                         animate={!callStatus ? {
                           scale: [1, 1.05, 1],
-                        } : {}}
+                        } : {
+                         
+                        }}
                         transition={!callStatus ?{
                           duration: 1.5,
                           repeat: Infinity,
                           ease: "easeInOut"
                         } : {}}
+                        style={ {backgroundColor:  "0 0 50px 5px hsl(154, 89%, 74%)"}}
+
                         whileHover={{
                         boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)",
                         scale: 1.1 // Slightly larger scale on hover to emphasize interaction
@@ -196,14 +241,15 @@ vapi.on("message", (message) => {
           <div className="w-1/2 flex items-center justify-center flex-col gap-10">
             <motion.div 
               className="relative w-100 h-100"
-              animate={{ 
-                rotate: selectedAgent !== null ? 360 : 0,
-              }}
-              transition={{ 
+              animate={callStatus === callStatuses.CONNECTED ? { 
+                rotate: 360 ,
+                scale: [1, 1.05, 1],
+               } : {}}
+              transition={callStatus === callStatuses.CONNECTED ? { 
                 duration: 20,
-                repeat: selectedAgent !== null ? Infinity : 0,
+                repeat:Infinity ,
                 ease: "linear"
-              }}
+              } :{}}
               style={{
                 willChange: "transform"
               }}
@@ -217,6 +263,7 @@ vapi.on("message", (message) => {
                 priority
               />
             </motion.div>
+         
           </div>
         </div>
       </div>
