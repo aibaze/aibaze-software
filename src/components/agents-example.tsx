@@ -60,7 +60,7 @@ export default function AgentsExample() {
     setTimeout(() => {
       setIsSpeaking(false);
       setSelectedAgent(null);
-    }, 500);
+    }, 100);
   });
 
   // Various assistant messages can come back (like function calls, transcripts, etc)
@@ -165,6 +165,7 @@ export default function AgentsExample() {
                   
                   {selectedAgent === agent.id ? (     
                     <motion.button
+                        id="selected-agent-button"
                         disabled={callStatus === callStatuses.CONNECTING || agent.id !== selectedAgent && callStatus === callStatuses.CONNECTED}
                         onClick={() => handleAgentClick(agent.id,agent.assistantId)}
                         className={cn(
@@ -207,6 +208,7 @@ export default function AgentsExample() {
                       </motion.button>):
                       (
                       <motion.button
+                        id="agent-button"
                         disabled={callStatus === callStatuses.CONNECTING || callStatus === callStatuses.CONNECTED}
                         onClick={() => handleAgentClick(agent.id,agent.assistantId)}
                         className={cn(
