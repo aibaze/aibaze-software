@@ -44,6 +44,7 @@ export default function AgentsExample() {
     setIsSpeaking(false);
     setSelectedAgent(null);
     console.error(errorMessage,"error handler");
+      return
   }
 
 
@@ -81,7 +82,7 @@ export default function AgentsExample() {
   
   
   vapi.on("error", (e) => {
-    handleError(e.message);
+   return handleError(e.message);
   });
 
 
@@ -101,18 +102,22 @@ export default function AgentsExample() {
         hasCallCredits = data.maxQuotaReached ? false : true;
         if(data.status === "fail"){
             handleError(data.message);
+            hasCallCredits=false
             return
         }
+     }).catch(error => {
+      hasCallCredits=false
+      return handleError(error?.message || "An error occurred.");
      });
 
-     if(!hasCallCredits){
-        handleError("You have no call credits left.");
-        return
+     if(!hasCallCredits ){
+      return  handleError("You have no call credits left.");
      }
+     console.log(hasCallCredits,"hasCallCredits");
      const call = await vapi.start(assistantId);
      console.log(call);  
     } catch (error: any) {
-      handleError(error?.message || "An error occurred.");
+      return handleError(error?.message || "An error occurred.");
     }
 
   };
@@ -216,7 +221,7 @@ export default function AgentsExample() {
                           repeat: Infinity,
                           ease: "easeInOut"
                         } : {}}
-                        style={{ backgroundColor: buttonVariants({ variant: "default" }).backgroundColor || "hsl(var(--primary))" }}
+                        style={{ backgroundColor: "hsl(var(--primary))" }}
                         whileHover={{
                         boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)",
                         scale: 1.1 // Slightly larger scale on hover to emphasize interaction
