@@ -135,13 +135,13 @@ export default function AgentsExample() {
           </p>
         </div>
         
-        <div className="flex mx-auto">
-          {/* Left-aligned stacked agents display (50% of screen width) */}
-          <div className="w-1/2 flex flex-row items-center mt-10 gap-10">
+        <div className="flex flex-col md:flex-row mx-auto">
+          {/* Left-aligned stacked agents display (full width on mobile, 50% on desktop) */}
+          <div className="w-full md:w-1/2 flex flex-col md:flex-row items-center mt-10 md:gap-10 gap-16">
             {agentData.map((agent) => (
               <div 
                 key={agent.id}
-                className={`relative cursor-pointer transition-transform duration-300 ${selectedAgent === agent.id ? 'scale-105' : ''}`}
+                className={`relative cursor-pointer transition-transform duration-300 w-full md:w-auto ${selectedAgent === agent.id ? 'scale-105' : ''}`}
               >
               
                 <div className="flex flex-col items-center justify-center">
@@ -169,7 +169,7 @@ export default function AgentsExample() {
                         onClick={() => handleAgentClick(agent.id,agent.assistantId)}
                         className={cn(
                         buttonVariants({ variant: "default" }),
-                        " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[90%]"
+                        " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[80%] md:w-[90%]"
                         )}
                         style={callStatus === callStatuses.CONNECTED ? {backgroundColor: "hsl(7, 92.90%, 50.60%, 0.5)"}:{}}
                         animate={isSpeaking && callStatus === callStatuses.CONNECTED ? {
@@ -211,7 +211,7 @@ export default function AgentsExample() {
                         onClick={() => handleAgentClick(agent.id,agent.assistantId)}
                         className={cn(
                         buttonVariants({ variant: "default" }),
-                        " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[90%]"
+                        " text-black flex text-bold text-black justify-center items-center absolute bottom-[35px] w-[80%] md:w-[90%]"
                         )}
                         animate={!callStatus ? {
                           scale: [1, 1.05, 1],
@@ -238,8 +238,8 @@ export default function AgentsExample() {
             ))}
           </div>
 
-          {/* Right side with spinning image */}
-          <div className="w-1/2 flex items-center justify-center flex-col gap-10">
+          {/* Right side with spinning image - hidden on mobile */}
+          <div className="hidden md:flex w-full md:w-1/2 items-center justify-center flex-col gap-10">
             <motion.div 
               className="relative w-100 h-100"
               animate={callStatus === callStatuses.CONNECTED ? { 
