@@ -211,16 +211,13 @@ vapi.on("message", (message) => {
                         )}
                         animate={!callStatus ? {
                           scale: [1, 1.05, 1],
-                        } : {
-                         
-                        }}
+                        } : {}}
                         transition={!callStatus ?{
                           duration: 1.5,
                           repeat: Infinity,
                           ease: "easeInOut"
                         } : {}}
-                        style={ {backgroundColor:  "0 0 50px 5px hsl(154, 89%, 74%)"}}
-
+                        style={{ backgroundColor: "hsl(154, 89%, 74%)" }}
                         whileHover={{
                         boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)",
                         scale: 1.1 // Slightly larger scale on hover to emphasize interaction
