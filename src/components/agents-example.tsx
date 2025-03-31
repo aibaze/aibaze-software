@@ -258,7 +258,7 @@ export default function AgentsExample() {
               }}
             >
               <Image
-                src="/herocircle.webp"
+                src="https://i.ibb.co/S4FDTFH9/freepik-background-1678.png"
                 alt="Spinning gradient ring"
                 width={500}
                 height={500}
