@@ -217,7 +217,7 @@ vapi.on("message", (message) => {
                           repeat: Infinity,
                           ease: "easeInOut"
                         } : {}}
-                        style={{ backgroundColor: "hsl(154, 89%, 74%)" }}
+                        style={{ backgroundColor: buttonVariants({ variant: "default" }).backgroundColor || "hsl(var(--primary))" }}
                         whileHover={{
                         boxShadow: "0 0 50px 5px hsl(154, 89%, 74%)",
                         scale: 1.1 // Slightly larger scale on hover to emphasize interaction
