@@ -19,6 +19,7 @@ import Contact from "@/components/sections/contact";
 import VapiScript from "@/components/VapiScript";
 import OurProducts from "@/components/sections/our-products";
 import AgentsExample from "@/components/agents-example";
+import VideoSection from "@/components/sections/video-section";
 
 const getIsMobile = () => {
   if (typeof window !== 'undefined') {
@@ -47,6 +48,7 @@ export default function Home() {
       <FAQ />
       <OurProducts />
       <CTA />
+      <VideoSection />
       <Footer />
     </main>
   );
