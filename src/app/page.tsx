@@ -46,9 +46,9 @@ export default function Home() {
       {/* <Testimonials /> temporary comment */}
       <Pricing />
       <FAQ />
+      <VideoSection />
       <OurProducts />
       <CTA />
-      <VideoSection />
       <Footer />
     </main>
   );
