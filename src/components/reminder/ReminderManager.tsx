@@ -145,23 +145,23 @@ export default function ReminderManager() {
     }
   };
 
-  // Common input class with improved padding
-  const inputClass = "py-3 px-4 block w-full text-gray-900 rounded-lg border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-indigo-50";
-  const iconInputClass = "pl-10 py-3 px-4 block w-full text-gray-900 rounded-lg border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-indigo-50";
+  // Common input class with improved padding - using brand colors
+  const inputClass = "py-3 px-4 block w-full text-foreground rounded-lg border border-border shadow-sm focus:border-primary focus:ring-primary bg-background/50";
+  const iconInputClass = "pl-10 py-3 px-4 block w-full text-foreground rounded-lg border border-border shadow-sm focus:border-primary focus:ring-primary bg-background/50";
 
   return (
-    <div className="flex gap-8 p-6 bg-gradient-to-br from-indigo-100 to-purple-100 min-h-screen">
+    <div className="flex gap-8 p-6 bg-gradient-to-br from-primary/10 to-accent/10 min-h-screen">
       {/* Form Section - Now on the left */}
-      <div className="w-1/2 bg-white rounded-xl shadow-xl p-8 border border-indigo-100">
-        <h2 className="text-3xl font-bold mb-6 text-indigo-800">Create Call Reminder</h2>
+      <div className="w-1/2 bg-card rounded-xl shadow-xl p-8 border border-border">
+        <h2 className="text-3xl font-bold mb-6 text-primary">Create Call Reminder</h2>
         {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md text-red-600">
+          <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md text-destructive">
             {error}
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Title
             </label>
             <input
@@ -175,12 +175,12 @@ export default function ReminderManager() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Phone Number
             </label>
             <div className="relative rounded-md shadow-sm">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-gray-500 sm:text-sm">📞</span>
+                <span className="text-muted-foreground sm:text-sm">📞</span>
               </div>
               <input
                 type="tel"
@@ -194,7 +194,7 @@ export default function ReminderManager() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Callee Name
             </label>
             <input
@@ -208,7 +208,7 @@ export default function ReminderManager() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Internal Label
             </label>
             <input
@@ -221,7 +221,7 @@ export default function ReminderManager() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Call Purpose (Im calling to...) [Up to 3 sentences]
             </label>
             <textarea
@@ -234,7 +234,7 @@ export default function ReminderManager() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Short Summary (Im calling to...) [Up to 1 sentence]
             </label>
             <textarea
@@ -247,12 +247,12 @@ export default function ReminderManager() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Time
             </label>
             <div className="relative rounded-md shadow-sm">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-gray-500 sm:text-sm">⏰</span>
+                <span className="text-muted-foreground sm:text-sm">⏰</span>
               </div>
               <input
                 type="time"
@@ -262,11 +262,11 @@ export default function ReminderManager() {
                 required
               />
             </div>
-            <p className="mt-1 text-xs text-gray-500">Select the time for the call reminder</p>
+            <p className="mt-1 text-xs text-muted-foreground">Select the time for the call reminder</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Recurrence
             </label>
             <select
@@ -283,11 +283,11 @@ export default function ReminderManager() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full ${loading ? 'bg-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700'} text-white py-4 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center font-medium text-lg`}
+            className={`w-full ${loading ? 'bg-primary/70' : 'bg-primary hover:bg-primary/90'} text-primary-foreground py-4 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center font-medium text-lg`}
           >
             {loading ? (
               <>
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -303,11 +303,11 @@ export default function ReminderManager() {
       </div>
 
       {/* Preview Section - Now on the right */}
-      <div className="w-1/2 bg-white rounded-xl shadow-xl p-8 border border-indigo-100">
-        <h2 className="text-3xl font-bold mb-6 text-indigo-800">Your Call Reminders</h2>
+      <div className="w-1/2 bg-card rounded-xl shadow-xl p-8 border border-border">
+        <h2 className="text-3xl font-bold mb-6 text-primary">Your Call Reminders</h2>
         {loading && !error && (
           <div className="flex justify-center items-center py-10">
-            <svg className="animate-spin h-10 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin h-10 w-10 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -315,30 +315,30 @@ export default function ReminderManager() {
         )}
         <div className="space-y-4">
           {reminders.map((reminder) => (
-            <div key={reminder.id} className="bg-indigo-50 p-6 rounded-lg border border-indigo-100 hover:shadow-md transition-shadow duration-200">
+            <div key={reminder.id} className="bg-accent/10 p-6 rounded-lg border border-border hover:shadow-md transition-shadow duration-200">
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white mr-3">
+                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-indigo-800">{reminder.title}</p>
-                      <p className="text-sm text-indigo-600">{reminder.calleeName} • {reminder.phoneNumber}</p>
+                      <p className="font-semibold text-foreground">{reminder.title}</p>
+                      <p className="text-sm text-primary">{reminder.calleeName} • {reminder.phoneNumber}</p>
                       {reminder.internalLabel && (
-                        <p className="text-xs text-indigo-400 font-medium">{reminder.internalLabel}</p>
+                        <p className="text-xs text-muted-foreground font-medium">{reminder.internalLabel}</p>
                       )}
                     </div>
                   </div>
-                  <div className="mt-3 bg-white p-3 rounded-md border border-indigo-100">
-                    <p className="text-indigo-600">{reminder.callPurpose}</p>
+                  <div className="mt-3 bg-card p-3 rounded-md border border-border">
+                    <p className="text-foreground">{reminder.callPurpose}</p>
                     {reminder.callPurposeSummary && (
-                      <p className="text-sm text-indigo-400 mt-2 italic">Summary: {reminder.callPurposeSummary}</p>
+                      <p className="text-sm text-muted-foreground mt-2 italic">Summary: {reminder.callPurposeSummary}</p>
                     )}
                   </div>
-                  <div className="flex items-center mt-2 text-sm text-indigo-500">
+                  <div className="flex items-center mt-2 text-sm text-muted-foreground">
                     <span className="flex items-center">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -356,7 +356,7 @@ export default function ReminderManager() {
                 </div>
                 <button
                   onClick={() => handleDelete(reminder.id)}
-                  className="text-red-600 hover:text-red-800 bg-red-100 ml-2 px-3 py-2 rounded-md hover:bg-red-200 transition-colors duration-200 font-medium"
+                  className="text-destructive hover:text-destructive/90 bg-destructive/10 ml-2 px-3 py-2 rounded-md hover:bg-destructive/20 transition-colors duration-200 font-medium"
                 >
                   Delete
                 </button>
@@ -364,14 +364,14 @@ export default function ReminderManager() {
             </div>
           ))}
           {!loading && reminders.length === 0 && (
-            <div className="text-center py-12 bg-indigo-50 rounded-lg">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="text-center py-12 bg-accent/10 rounded-lg">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
-              <p className="text-indigo-600 font-medium">No call reminders yet</p>
-              <p className="text-indigo-400 text-sm mt-2">Create your first call reminder using the form</p>
+              <p className="text-primary font-medium">No call reminders yet</p>
+              <p className="text-muted-foreground text-sm mt-2">Create your first call reminder using the form</p>
             </div>
           )}
         </div>
