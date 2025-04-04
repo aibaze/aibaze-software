@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { agenticallerApi } from '@/api';
+import { parseISO, parse, formatISO } from 'date-fns';
 
 // Function to generate MongoDB-like ObjectId
 function generateObjectId() {
@@ -37,7 +38,7 @@ export default function ReminderManager() {
     callPurpose: '',
     calleeName: '',
     callPurposeSummary: '',
-    recurrence: 'daily',
+    recurrence: 'one-time',
     phoneNumber: '',
     time: ''
   });
@@ -86,18 +87,46 @@ export default function ReminderManager() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({formData})
+    console.log({formData});
     
-    // Create a Date object for backend
-    const reminderDateTime = formData.time ? 
-      new Date(`${new Date().toDateString()} ${formData.time}`) : 
-      new Date();
+    // Parse the time in local timezone and convert to UTC properly
+    let timeString = '';
+    
+    if (formData.time) {
+      // Parse the time input (which is in HH:MM format)
+      const [hours, minutes] = formData.time.split(':').map(Number);
+      
+      // Create a date object with today's date and the specified time in local timezone
+      const localDateTime = new Date();
+      localDateTime.setHours(hours, minutes, 0, 0);
+      
+      // The most straightforward way to convert local time to UTC
+      // is to use the built-in toISOString method.
+      // JavaScript Date objects handle timezone conversions automatically
+      timeString = localDateTime.toISOString();
+      
+      // For debugging
+      console.log('Local time:', localDateTime.toString());
+      console.log('UTC time:', timeString);
+      
+      // Example conversion for GMT+7:
+      // If local time is 23:50 GMT+7, UTC time should be 16:50
+      const localTimeFormatted = localDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const utcTimeObj = new Date(timeString);
+      const utcTimeFormatted = utcTimeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+      console.log(`Time conversion: ${localTimeFormatted} local → ${utcTimeFormatted} UTC`);
+    } else {
+      // If no time provided, use current time in UTC
+      timeString = new Date().toISOString();
+    }
     
     const newReminder: Reminder = {
       id: Date.now().toString(),
       ...formData,
-      time: reminderDateTime.toISOString()
+      time: timeString
     };
+    
+    console.log({newReminder});
     
     setLoading(true);
     setError(null);
@@ -129,6 +158,22 @@ export default function ReminderManager() {
       setReminders([...reminders, newReminder]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Get the user's current timezone for display
+  const getUserTimezone = () => {
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const date = new Date();
+      const offset = date.getTimezoneOffset();
+      const offsetHours = Math.abs(Math.floor(offset / 60));
+      const offsetMinutes = Math.abs(offset % 60);
+      const offsetSign = offset < 0 ? '+' : '-';
+      const formattedOffset = `GMT${offsetSign}${offsetHours.toString().padStart(2, '0')}:${offsetMinutes.toString().padStart(2, '0')}`;
+      return `${timezone} (${formattedOffset})`;
+    } catch (error) {
+      return 'Unknown timezone';
     }
   };
 
@@ -272,7 +317,9 @@ export default function ReminderManager() {
                 required
               />
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">Select the time for the call reminder</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Select the time for the call reminder in your local timezone: <span className="font-medium text-primary">{getUserTimezone()}</span>
+            </p>
           </div>
 
           <div>
@@ -284,6 +331,7 @@ export default function ReminderManager() {
               onChange={(e) => setFormData({ ...formData, recurrence: e.target.value })}
               className={inputClass}
             >
+              <option value="one-time">One Time</option>
               <option value="daily">Daily</option>
               <option value="weekly">Weekly</option>
               <option value="monthly">Monthly</option>
