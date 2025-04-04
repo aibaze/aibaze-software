@@ -38,6 +38,12 @@ const videos: VideoData[] = [
     title: "How to add Knowledge bases in VAPI with TRIEVE | Tutorial in 6 minutes",
     embedUrl: "https://www.youtube.com/embed/chGi_7LuvNk?si=nxkL3wRzKuxFaPQo",
     thumbnailUrl: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg"
+   },
+   {
+    id: "video5",
+    title: "80K/mo AI voice Agents for Real Estate [Full-Explained]",
+    embedUrl: "https://www.youtube.com/embed/9fBjqlfeWWk?si=u5GYzb_xzvxw_9t_",
+    thumbnailUrl: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg"
    }
 ];
 
