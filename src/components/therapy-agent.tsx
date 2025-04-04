@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import Vapi from "@vapi-ai/web";
 import toast, { Toaster } from 'react-hot-toast';
 import mixpanel from "mixpanel-browser";
-import {agenticallerApi} from "@/api/vapi";
+import {agenticallerApi} from "@/api";
 
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
 
