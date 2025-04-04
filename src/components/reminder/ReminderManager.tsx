@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { agenticallerApi } from '@/api/vapi';
+import { agenticallerApi } from '@/api';
 
 // Function to generate MongoDB-like ObjectId
 function generateObjectId() {
@@ -42,6 +42,11 @@ export default function ReminderManager() {
     time: ''
   });
 
+  // Constant for maximum allowed reminders
+  const MAX_REMINDERS = 3;
+  // Check if the user has reached the maximum limit
+  const hasReachedLimit = reminders.length >= MAX_REMINDERS;
+
   // Fetch reminders for the current user
   const fetchReminders = async (currentUserId: string) => {
     if (!currentUserId) return;
@@ -51,7 +56,6 @@ export default function ReminderManager() {
     
     try {
       const response = await agenticallerApi.get(`/call-reminders/user/${currentUserId}`);
-      console.log({response})
       if (response.data && response.data.data.callReminders) {
         setReminders(response.data.data.callReminders);
       }
@@ -157,6 +161,12 @@ export default function ReminderManager() {
         {error && (
           <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md text-destructive">
             {error}
+          </div>
+        )}
+        {hasReachedLimit && (
+          <div className="mb-4 p-4 bg-amber-100 border border-amber-300 rounded-md text-amber-800">
+            <p className="font-medium">Maximum limit of {MAX_REMINDERS} reminders reached!</p>
+            <p className="text-sm mt-1">If you would like to increase your limit, please contact us at <a href="mailto:info.agenticaller@gmail.com" className="text-blue-600 hover:underline">info.agenticaller@gmail.com</a></p>
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -282,8 +292,8 @@ export default function ReminderManager() {
 
           <button
             type="submit"
-            disabled={loading}
-            className={`w-full ${loading ? 'bg-primary/70' : 'bg-primary hover:bg-primary/90'} text-primary-foreground py-4 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center font-medium text-lg`}
+            disabled={loading || hasReachedLimit}
+            className={`w-full ${loading || hasReachedLimit ? 'bg-primary/70 cursor-not-allowed' : 'bg-primary hover:bg-primary/90'} text-primary-foreground py-4 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center font-medium text-lg`}
           >
             {loading ? (
               <>
@@ -292,6 +302,10 @@ export default function ReminderManager() {
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 Processing...
+              </>
+            ) : hasReachedLimit ? (
+              <>
+                <span className="mr-2">🔒</span> Limit Reached
               </>
             ) : (
               <>
