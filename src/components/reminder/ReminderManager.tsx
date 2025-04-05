@@ -23,6 +23,7 @@ interface Reminder {
   recurrence: string;
   phoneNumber: string;
   time: string; // We'll use string for the UI but convert to Date when sending to backend
+  isActive?: boolean; // Add isActive property
 }
 
 export default function ReminderManager() {
@@ -58,11 +59,15 @@ export default function ReminderManager() {
     try {
       const response = await agenticallerApi.get(`/call-reminders/user/${currentUserId}`);
       if (response.data && response.data.data.callReminders) {
-        setReminders(response.data.data.callReminders);
+        // Filter out inactive reminders (where isActive is false)
+        const activeReminders = response.data.data.callReminders.filter(
+          (reminder: Reminder) => reminder.isActive !== false
+        );
+        setReminders(activeReminders);
       }
     } catch (err) {
       console.error('Error fetching reminders:', err);
-      setError('Failed to load your reminders. Please try again later.');
+      setError('Failed to load your reminders. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -123,7 +128,8 @@ export default function ReminderManager() {
     const newReminder: Reminder = {
       id: Date.now().toString(),
       ...formData,
-      time: timeString
+      time: timeString,
+      isActive: true // Ensure new reminders are active by default
     };
     
     console.log({newReminder});
@@ -147,7 +153,7 @@ export default function ReminderManager() {
         callPurpose: '',
         calleeName: '',
         callPurposeSummary: '',
-        recurrence: 'daily',
+        recurrence: 'one-time',
         phoneNumber: '',
         time: ''
       });
@@ -201,7 +207,7 @@ export default function ReminderManager() {
     <div className="flex gap-8 p-6 bg-gradient-to-br from-primary/10 to-accent/10 min-h-screen">
       {/* Form Section - Now on the left */}
       <div className="w-1/2 bg-card rounded-xl shadow-xl p-8 border border-border">
-        <h2 className="text-3xl font-bold mb-6 text-primary">Create Call Reminder</h2>
+        <h2 className="text-3xl font-bold mb-6 text-primary">Create Medication Reminder</h2>
         {error && (
           <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md text-destructive">
             {error}
@@ -209,14 +215,14 @@ export default function ReminderManager() {
         )}
         {hasReachedLimit && (
           <div className="mb-4 p-4 bg-amber-100 border border-amber-300 rounded-md text-amber-800">
-            <p className="font-medium">Maximum limit of {MAX_REMINDERS} reminders reached!</p>
-            <p className="text-sm mt-1">If you would like to increase your limit, please contact us at <a href="mailto:info.agenticaller@gmail.com" className="text-blue-600 hover:underline">info.agenticaller@gmail.com</a></p>
+            <p className="font-medium">Maximum limit of {MAX_REMINDERS} medication reminders reached!</p>
+            <p className="text-sm mt-1">If you would like to increase your limit for patient care, please contact us at <a href="mailto:info.agenticaller@gmail.com" className="text-blue-600 hover:underline">info.agenticaller@gmail.com</a></p>
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Title
+              Reminder Name
             </label>
             <input
               type="text"
@@ -224,13 +230,13 @@ export default function ReminderManager() {
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               className={inputClass}
               required
-              placeholder="Enter reminder title"
+              placeholder="e.g., Morning Medication, Blood Pressure Check"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Phone Number
+              Patient Phone Number
             </label>
             <div className="relative rounded-md shadow-sm">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -249,7 +255,7 @@ export default function ReminderManager() {
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Callee Name
+              Patient Name
             </label>
             <input
               type="text"
@@ -257,52 +263,52 @@ export default function ReminderManager() {
               onChange={(e) => setFormData({ ...formData, calleeName: e.target.value })}
               className={inputClass}
               required
-              placeholder="Who will you be calling?"
+              placeholder="Patient's full name"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Internal Label
+              Medical Record Number
             </label>
             <input
               type="text"
               value={formData.internalLabel}
               onChange={(e) => setFormData({ ...formData, internalLabel: e.target.value })}
               className={inputClass}
-              placeholder="For internal identification only"
+              placeholder="For healthcare provider reference only"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Call Purpose (Im calling to...) [Up to 3 sentences]
+              Detailed Instructions (I'm calling to...) [Up to 3 sentences]
             </label>
             <textarea
               value={formData.callPurpose}
               onChange={(e) => setFormData({ ...formData, callPurpose: e.target.value })}
               className={inputClass}
               rows={3}
-              placeholder="Remind you about taking your medication now, go to the second floor, enter your room, and take your medication in the second drawer."
+              placeholder="Remind you to take your blood pressure medication. The pill is in the blue container on your kitchen counter. Remember to record your reading in your health journal."
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Short Summary (Im calling to...) [Up to 1 sentence]
+              Brief Reminder (I'm calling to...) [Up to 1 sentence]
             </label>
             <textarea
               value={formData.callPurposeSummary}
               onChange={(e) => setFormData({ ...formData, callPurposeSummary: e.target.value })}
               className={inputClass}
               rows={2}
-              placeholder="Remind you about your medication"
+              placeholder="Remind you to take your blood pressure medication"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Time
+              Medication Time
             </label>
             <div className="relative rounded-md shadow-sm">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -317,13 +323,13 @@ export default function ReminderManager() {
               />
             </div>
             <p className="mt-1 text-xs text-muted-foreground">
-              Select the time for the call reminder in your local timezone: <span className="font-medium text-primary">{getUserTimezone()}</span>
+              Select the time for the medication reminder in your local timezone: <span className="font-medium text-primary">{getUserTimezone()}</span>
             </p>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Recurrence
+              Dosage Schedule
             </label>
             <select
               value={formData.recurrence}
@@ -356,7 +362,7 @@ export default function ReminderManager() {
               </>
             ) : (
               <>
-                <span className="mr-2">📱</span> Create Call Reminder
+                <span className="mr-2">💊</span> Create Medication Reminder
               </>
             )}
           </button>
@@ -365,7 +371,7 @@ export default function ReminderManager() {
 
       {/* Preview Section - Now on the right */}
       <div className="w-1/2 bg-card rounded-xl shadow-xl p-8 border border-border">
-        <h2 className="text-3xl font-bold mb-6 text-primary">Your Call Reminders</h2>
+        <h2 className="text-3xl font-bold mb-6 text-primary">Your Active Medication Reminders</h2>
         {loading && !error && (
           <div className="flex justify-center items-center py-10">
             <svg className="animate-spin h-10 w-10 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -428,11 +434,11 @@ export default function ReminderManager() {
             <div className="text-center py-12 bg-accent/10 rounded-lg">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <p className="text-primary font-medium">No call reminders yet</p>
-              <p className="text-muted-foreground text-sm mt-2">Create your first call reminder using the form</p>
+              <p className="text-primary font-medium">No medication reminders yet</p>
+              <p className="text-muted-foreground text-sm mt-2">Create your first medication reminder using the form</p>
             </div>
           )}
         </div>
