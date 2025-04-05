@@ -13,6 +13,7 @@ function generateObjectId() {
 }
 
 interface Reminder {
+  _id?: string;
   id: string;
   title: string;
   internalLabel: string;
@@ -31,7 +32,7 @@ export default function ReminderManager() {
   const [error, setError] = useState<string | null>(null);
     
   const [reminders, setReminders] = useState<Reminder[]>([]);
-  const [formData, setFormData] = useState<Omit<Reminder, 'id'>>({
+  const [formData, setFormData] = useState<Omit<Reminder, '_id' | 'id'>>({
     title: '',
     internalLabel: '',
     callPurpose: '',
@@ -178,7 +179,7 @@ export default function ReminderManager() {
 
   const handleDelete = async (id: string) => {
     // Optimistically update UI
-    setReminders(reminders.filter(reminder => reminder.id !== id));
+    setReminders(reminders.filter(reminder => reminder._id !== id));
     
     try {
       await agenticallerApi.delete(`/call-reminders/${id}`);
@@ -375,7 +376,7 @@ export default function ReminderManager() {
         )}
         <div className="space-y-4">
           {reminders.map((reminder) => (
-            <div key={reminder.id} className="bg-accent/10 p-6 rounded-lg border border-border hover:shadow-md transition-shadow duration-200">
+            <div key={reminder._id} className="bg-accent/10 p-6 rounded-lg border border-border hover:shadow-md transition-shadow duration-200">
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <div className="flex items-center">
@@ -415,7 +416,7 @@ export default function ReminderManager() {
                   </div>
                 </div>
                 <button
-                  onClick={() => handleDelete(reminder.id)}
+                  onClick={() => handleDelete(reminder._id||"")}
                   className="text-destructive hover:text-destructive/90 bg-destructive/10 ml-2 px-3 py-2 rounded-md hover:bg-destructive/20 transition-colors duration-200 font-medium"
                 >
                   Delete
