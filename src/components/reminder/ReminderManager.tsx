@@ -282,7 +282,7 @@ export default function ReminderManager() {
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Detailed Instructions (I'm calling to...) [Up to 3 sentences]
+              Detailed Instructions (I&apos;m calling to...) [Up to 3 sentences]
             </label>
             <textarea
               value={formData.callPurpose}
@@ -295,7 +295,7 @@ export default function ReminderManager() {
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Brief Reminder (I'm calling to...) [Up to 1 sentence]
+              Brief Reminder (I&apos;m calling to...) [Up to 1 sentence]
             </label>
             <textarea
               value={formData.callPurposeSummary}
