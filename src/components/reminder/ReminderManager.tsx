@@ -181,11 +181,10 @@ export default function ReminderManager() {
     setReminders(reminders.filter(reminder => reminder.id !== id));
     
     try {
-      // You might want to implement a delete API call here
-      // await agenticallerApi.delete(`/call-reminders/${id}`);
+      await agenticallerApi.delete(`/call-reminders/${id}`);
       
-      // After successful deletion, fetch the updated list
-      // await fetchReminders(userId);
+      // Fetch updated reminders after successful deletion
+      await fetchReminders(userId);
     } catch (err) {
       console.error('Error deleting reminder:', err);
       // Revert the optimistic update on error
