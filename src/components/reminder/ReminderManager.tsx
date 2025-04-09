@@ -207,7 +207,7 @@ export default function ReminderManager() {
     <div className="flex gap-8 p-6 bg-gradient-to-br from-primary/10 to-accent/10 min-h-screen">
       {/* Form Section - Now on the left */}
       <div className="w-1/2 bg-card rounded-xl shadow-xl p-8 border border-border">
-        <h2 className="text-3xl font-bold mb-6 text-primary">Create Medication Reminder</h2>
+        <h2 className="text-3xl font-bold mb-6 text-primary">Create Medication Reminder</h2>      
         {error && (
           <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md text-destructive">
             {error}
@@ -367,6 +367,23 @@ export default function ReminderManager() {
             )}
           </button>
         </form>
+            {/* Country support banner */}
+            <div className="mt-6  p-4 bg-blue-50 border border-blue-200 rounded-md text-blue-800">
+          <div className="flex items-start">
+            <div className="flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="ml-3">
+              <h3 className="text-sm font-medium text-blue-800">Supported Countries</h3>
+              <div className="mt-1 text-sm">
+                <p>This service only works with phone numbers from:</p>
+                <p className="mt-1 font-medium">United States, Canada, Brazil, United Kingdom, India, Israel, Japan, Thailand, UAE</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Preview Section - Now on the right */}
