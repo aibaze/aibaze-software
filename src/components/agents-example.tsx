@@ -2,13 +2,14 @@
 
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { motion } from "framer-motion";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Vapi from "@vapi-ai/web";
 import toast, { Toaster } from 'react-hot-toast';
 import mixpanel from "mixpanel-browser";
+import { EmailModal } from "@/components/email-modal";
 // Voice agent data with male and female options
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
 
@@ -37,6 +38,9 @@ export default function AgentsExample() {
   const [selectedAgent, setSelectedAgent] = useState<number | null>(null);
   const [callStatus, setCallStatus] = useState<string>("");
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [pendingAgentId, setPendingAgentId] = useState<number | null>(null);
+  const [pendingAssistantId, setPendingAssistantId] = useState<string | null>(null);
 
   const handleError = (errorMessage: string) => {
     toast.error(errorMessage, { duration: 5000 });
@@ -88,43 +92,99 @@ export default function AgentsExample() {
 
   
   
-  const handleAgentClick =async (agentId: number, assistantId: string) => {
- 
-    if(callStatus === callStatuses.CONNECTED){
-        return await vapi.stop();
-    }
-    setSelectedAgent(agentId === selectedAgent ? null : agentId);
-    setCallStatus(callStatuses.CONNECTING);
-    
-    try {
-     let hasCallCredits = false;
-     await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/auth/verify-ip-request").then(res => res.json()).then(data => {
-        hasCallCredits = data.maxQuotaReached ? false : true;
-        if(data.status === "fail"){
-            handleError(data.message);
-            hasCallCredits=false
-            return
+  const handleEmailSubmit = async (email: string) => {
+    if (pendingAgentId && pendingAssistantId) {
+      try {
+        // Send feedback data
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/feedback`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title: "web-call",
+            description: pendingAssistantId,
+            email: email
+          }),
+        });
+
+        // Start the call
+        setSelectedAgent(pendingAgentId);
+        setCallStatus(callStatuses.CONNECTING);
+        
+        try {
+          let hasCallCredits = false;
+          await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/auth/verify-ip-request").then(res => res.json()).then(data => {
+            hasCallCredits = data.maxQuotaReached ? false : true;
+            if (data.status === "fail") {
+              handleError(data.message);
+              hasCallCredits = false;
+              return;
+            }
+          }).catch(error => {
+            hasCallCredits = false;
+            return handleError(error?.message || "An error occurred.");
+          });
+
+          if (!hasCallCredits) {
+            return handleError("You have no call credits left.");
+          }
+          const call = await vapi.start(pendingAssistantId);
+          console.log(call);
+        } catch (error: any) {
+          return handleError(error?.message || "An error occurred.");
         }
-     }).catch(error => {
-      hasCallCredits=false
-      return handleError(error?.message || "An error occurred.");
-     });
+      } catch (error) {
+        console.error('Error sending feedback:', error);
+        // Still proceed with the call even if feedback fails
+        setSelectedAgent(pendingAgentId);
+        setCallStatus(callStatuses.CONNECTING);
+        
+        try {
+          let hasCallCredits = false;
+          await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/auth/verify-ip-request").then(res => res.json()).then(data => {
+            hasCallCredits = data.maxQuotaReached ? false : true;
+            if (data.status === "fail") {
+              handleError(data.message);
+              hasCallCredits = false;
+              return;
+            }
+          }).catch(error => {
+            hasCallCredits = false;
+            return handleError(error?.message || "An error occurred.");
+          });
 
-     if(!hasCallCredits ){
-      return  handleError("You have no call credits left.");
-     }
-     const call = await vapi.start(assistantId);
-     console.log(call);  
-    } catch (error: any) {
-      return handleError(error?.message || "An error occurred.");
+          if (!hasCallCredits) {
+            return handleError("You have no call credits left.");
+          }
+          const call = await vapi.start(pendingAssistantId);
+          console.log(call);
+        } catch (error: any) {
+          return handleError(error?.message || "An error occurred.");
+        }
+      }
+    }
+  };
+
+  const handleAgentClick = async (agentId: number, assistantId: string) => {
+    if (callStatus === callStatuses.CONNECTED) {
+      return await vapi.stop();
     }
 
+    // Always show modal and store pending agent info
+    setPendingAgentId(agentId);
+    setPendingAssistantId(assistantId);
+    setShowEmailModal(true);
   };
 
   return (
     <div className="py-4">
-      {/* Add the Toaster component to render toast notifications */}
       <Toaster position="top-center" />
+      <EmailModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        onEmailSubmit={handleEmailSubmit}
+      />
     
       <div className="container mx-auto px-2">
         <div className="text-center mb-4">
