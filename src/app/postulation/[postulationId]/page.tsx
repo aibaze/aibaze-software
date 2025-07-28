@@ -98,10 +98,12 @@ const postulations_url = "/users/postulations";
         
         const candidates = filteredCandidates.map((candidate: Candidate,i: number) => {
           const postulation = postulationsResponse.data.postulations.find((postulation: Postulation) => postulation._id === candidate.postulation_id);
+          const mockCandidate = mockCandidates[i % mockCandidates.length];
           return{
-            ...mockCandidates[i % mockCandidates.length], // Use modulo to avoid index out of bounds
+            ...mockCandidate, // Use mock data as base
             ...postulation,
             ...candidate,
+            avatar: candidate.avatar || mockCandidate.avatar, // Ensure avatar is preserved
             questions: postulation?.questions || [],
           }       
          });
@@ -284,8 +286,8 @@ const postulations_url = "/users/postulations";
                         <div className="flex items-center space-x-3">
                           <div className="relative h-12 w-12 ring-2 ring-slate-200">
                             <Image
-                              src={candidate.avatar}
-                              alt={candidate.customer_name}
+                              src={candidate.avatar || "https://randomuser.me/api/portraits/men/1.jpg"}
+                              alt={candidate.customer_name || "Candidate"}
                               fill
                               className="rounded-full object-cover"
                             />

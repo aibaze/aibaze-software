@@ -13,6 +13,8 @@ const nextConfig = {
       { hostname: "unpkg.com" },
       { hostname: "rsms.me" }
     ],
+    unoptimized: false,
+    dangerouslyAllowSVG: true,
   },
 };
 
