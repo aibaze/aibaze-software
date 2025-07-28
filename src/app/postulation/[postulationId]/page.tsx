@@ -99,13 +99,15 @@ const postulations_url = "/users/postulations";
         const candidates = filteredCandidates.map((candidate: Candidate,i: number) => {
           const postulation = postulationsResponse.data.postulations.find((postulation: Postulation) => postulation._id === candidate.postulation_id);
           const mockCandidate = mockCandidates[i % mockCandidates.length];
-          return{
+          const finalCandidate = {
             ...mockCandidate, // Use mock data as base
             ...postulation,
             ...candidate,
             avatar: candidate.avatar || mockCandidate.avatar, // Ensure avatar is preserved
             questions: postulation?.questions || [],
-          }       
+          };
+          console.log('Candidate avatar URL:', finalCandidate.avatar); // Debug log
+          return finalCandidate;
          });
         setCandidates(candidates);
 
