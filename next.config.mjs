@@ -5,6 +5,7 @@ const nextConfig = {
       { hostname: "localhost" }, 
       { hostname: "i.ibb.co" },
       { hostname: "randomuser.me" },
+      { hostname: "i.pravatar.cc" },
       { hostname: "cdn.magicui.design" },
       { hostname: "cdn.jsdelivr.net" },
       { hostname: "assets.calendly.com" },

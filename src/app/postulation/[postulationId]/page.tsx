@@ -103,7 +103,7 @@ const postulations_url = "/users/postulations";
             ...mockCandidate, // Use mock data as base
             ...postulation,
             ...candidate,
-            avatar: candidate.avatar || mockCandidate.avatar, // Ensure avatar is preserved
+            avatar: candidate.avatar || `https://i.pravatar.cc/150?img=${i + 1}`, // Use pravatar.cc instead of randomuser.me
             questions: postulation?.questions || [],
           };
           console.log('Candidate avatar URL:', finalCandidate.avatar); // Debug log
@@ -288,7 +288,7 @@ const postulations_url = "/users/postulations";
                         <div className="flex items-center space-x-3">
                           <div className="relative h-12 w-12 ring-2 ring-slate-200">
                             <Image
-                              src={candidate.avatar || "https://randomuser.me/api/portraits/men/1.jpg"}
+                              src={candidate.avatar || "https://i.pravatar.cc/150?img=1"}
                               alt={candidate.customer_name || "Candidate"}
                               fill
                               className="rounded-full object-cover"

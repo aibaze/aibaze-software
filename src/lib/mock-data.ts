@@ -36,14 +36,14 @@ export interface Postulation {
 
 export const mockCandidates = [
   {
-    avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    avatar: "https://i.pravatar.cc/150?img=2",
     experience_years: 12,
     location: "Dubai, UAE",
     availability: "2 weeks notice",
     linkedin_url: "https://linkedin.com/in/melina-viera",
   },
   {
-    avatar: "https://randomuser.me/api/portraits/women/1.jpg",
+    avatar: "https://i.pravatar.cc/150?img=1",
     experience_years: 8,
     location: "Abu Dhabi, UAE",
     availability: "Immediate",
@@ -58,7 +58,7 @@ export const mockCandidates = [
     relevant_skill_2: "Strategic Planning",
     customer_phone: "+971509876543",
     email: "sarah.chen@gmail.com",
-    avatar: "https://randomuser.me/api/portraits/women/3.jpg",
+    avatar: "https://i.pravatar.cc/150?img=3",
     experience_years: 10,
     location: "Dubai, UAE",
     availability: "1 month notice",
