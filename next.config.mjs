@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { hostname: "localhost" }, 
-      { hostname: "i.ibb.co" }
+      { hostname: "i.ibb.co" },
+      { hostname: "randomuser.me" }
     ],
   },
 };
