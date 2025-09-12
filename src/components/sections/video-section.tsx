@@ -17,7 +17,7 @@ const videos: VideoData[] = [
    },
    {
     id: "video2",
-    title: "How to build an AI Voice Appointment Setter | For any Website 2025",
+    title: "How to build an AI SaaS Platform | For any Startup 2025",
     embedUrl: "https://www.youtube.com/embed/I9GGC8VGNts?si=fFVemY9XpR0SK3IH",
     thumbnailUrl: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg"
    },
@@ -29,7 +29,7 @@ const videos: VideoData[] = [
    },
    {
     id: "video4",
-    title: "Why your voice agent is broken and How to fix it: RAG | Step-by-step ( Real Estate client )",
+    title: "Why your AI SaaS is broken and How to fix it: RAG | Step-by-step ( Real Estate client )",
     embedUrl: "https://www.youtube.com/embed/_H460PF-lpM?si=W6YN7t_iE-RuwTsl",
     thumbnailUrl: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg"
    },
@@ -41,7 +41,7 @@ const videos: VideoData[] = [
    },
    {
     id: "video5",
-    title: "80K/mo AI voice Agents for Real Estate [Full-Explained]",
+    title: "80K/mo AI SaaS Platform for Real Estate [Full-Explained]",
     embedUrl: "https://www.youtube.com/embed/9fBjqlfeWWk?si=u5GYzb_xzvxw_9t_",
     thumbnailUrl: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg"
    }

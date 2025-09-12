@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const agenticallerApi = axios.create({
+const aibazeApi = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api/v1`,
 });
 
@@ -9,4 +9,4 @@ const api = axios.create({
 });
 
 
-export  {agenticallerApi,api};
+export  {aibazeApi,api};

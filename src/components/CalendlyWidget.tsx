@@ -7,7 +7,7 @@ export default function CalendlyWidget() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div 
         className="calendly-inline-widget" 
-        data-url="https://calendly.com/soytomasgoldenberg/agenticaller?hide_gdpr_banner=1" 
+        data-url="https://calendly.com/soytomasgoldenberg/aibaze?hide_gdpr_banner=1" 
         style={{ minWidth: '320px', height: '700px' }}
       />
       <Script 

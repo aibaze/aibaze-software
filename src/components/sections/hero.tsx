@@ -26,16 +26,16 @@ function HeroPill() {
   return (
     <motion.a
       href="/contact"
-      className="flex w-auto items-center space-x-2 rounded-full bg-primary/20 px-2 py-1 ring-1 ring-accent whitespace-pre"
+      className="flex w-auto items-center space-x-2 rounded-full bg-primary/20 px-2 py-1 pt-0 ring-1 ring-accent whitespace-pre"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
       <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center font-medium text-primary sm:text-sm">
-        🔥 New
+        🔥 Limited:
       </div>
       <p className="font-medium text-primary text-sm">
-        24/7 AI Voice Agents 
+        Book a Free Strategy Session
       </p>
       <svg
         width="12"
@@ -67,11 +67,11 @@ function HeroTitles() {
           staggerChildren: 0.2,
         }}
       >
-        {["AI Voice", "Agents", "That Convert", "24/7"].map(
+        {["Your Tech Partner for", "AI-Powered", "Solutions"].map(
           (text, index) => (
             <motion.span
               key={index}
-              className="inline-block px-1 md:px-2 text-balance font-semibold"
+              className={`inline-block px-1 md:px-2 text-balance font-semibold ${index === 1 ? "text-primary" : ""}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -95,7 +95,7 @@ function HeroTitles() {
           ease,
         }}
       >
-        AI voice agents that reduce costs by 60%, qualify leads 24/7, and deliver measurable ROI within 90 days.
+     We help businesses build, launch, and grow next-gen AI software businesses.
       </motion.p>
     </div>
   );
@@ -133,7 +133,7 @@ export function HeroCTA({ hideText = false }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
         >
-          Includes ROI assessment & custom voice agent demo
+          Includes strategy session & custom SaaS demo
         </motion.p>
       )}
     </>
@@ -153,7 +153,7 @@ function HeroImage() {
         videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
         thumbnailSrc="/dashboard.png"
         thumbnailAlt="Hero Video"
-        className="border rounded-lg shadow-lg max-w-screen-lg mt-16"
+        className="border rounded-lg shadow-lg max-w-screen-md mt-16"
       />
     </motion.div>
   );
@@ -189,12 +189,12 @@ export default function Hero() {
         </video>
         
         {/* Content */}
-        <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 pt-32 sm:px-6 sm:pt-24 md:pt-32 lg:px-8">
+        <div className="relative z-10 flex w-full flex-col items-center justify-start px-4  sm:px-6 sm:pt-8 md:pt-16 ">
           <HeroPill />
           <HeroTitles />
           <HeroCTA hideText={true} />
-          <div style={{ marginBottom: "70px" }} />
-          {/*   <HeroImage />  */}
+        
+           <HeroImage /> 
         </div>
       </div>
     </section>

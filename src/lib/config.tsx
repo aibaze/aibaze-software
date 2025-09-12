@@ -6,18 +6,18 @@ import { RiInstagramFill } from "react-icons/ri";
 export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
-  name: "Agenticaller",
-  description: "Enterprise AI Voice Agent Solutions",
+  name: "Aibaze",
+  description: "AI SaaS Development Agency - Build Your Next AI SaaS Business",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-  keywords: ["AI Voice Agents", "Automated Sales", "Lead Qualification", "ROI-Driven Automation"],
+  keywords: ["AI SaaS Development", "SaaS Business", "Startup Development", "AI Software", "SaaS Agency"],
   ctaLink:"https://calendar.app.google/SdCB8dsnamqTVUbCA",
-  saasLink:"https://site.agenticaller.com?from=agency-website",
+  saasLink:"https://site.aibaze.com?from=agency-website",
   keys: {
     mixpanel: process.env.NEXT_PUBLIC_MIXPALNEL_TOKEN || "",
   },
   links: {
-    email: "info.agenticaller@gmail.com",
-    twitter: "https://x.com/agenticaller_agency",
+    email: "info.aibaze@gmail.com",
+    twitter: "https://x.com/aibaze_agency",
     discord: "#",
     github: "#",
     instagram:
@@ -31,19 +31,19 @@ export const siteConfig = {
       content: {
         items: [
           {
-            title: "Custom Phone AI Agents",
+            title: "AI SaaS Development",
             href: "#",
-            description: "Tailored automation solutions for growing companies.",
+            description: "Custom AI-powered SaaS solutions for startups and growing businesses.",
           },
           {
-            title: "Phone AI Agents Training",
+            title: "SaaS Business Strategy",
             href: "#",
-            description: "Scalable AI automation for large organizations.",
+            description: "Complete SaaS business development from concept to launch.",
           },
           {
-            title: "White Labeled Platform",
+            title: "AI Integration Services",
             href: "#",
-            description: "API access and integration tools for developers.",
+            description: "Seamless AI integration into your existing SaaS platform.",
           },
          
         ],
@@ -59,23 +59,23 @@ export const siteConfig = {
       yearlyPrice: "$0",
       features: [
         {
-          title: "Comprehensive Business Analysis",
-          text: "We analyze your current processes to identify key automation opportunities with highest ROI potential.",
+          title: "SaaS Business Analysis",
+          text: "We analyze your SaaS concept to identify key AI integration opportunities and market positioning for maximum success potential.",
         },
         {
-          title: "Custom ROI Projection",
-          text: "Receive a detailed cost-benefit analysis and projected ROI timeline for your AI voice agents.",
+          title: "Custom SaaS Development Roadmap",
+          text: "Receive a detailed development plan and launch timeline for your AI-powered SaaS platform.",
         },
         {
-          title: "Technical Implementation Roadmap",
-          text: "Get a clear implementation plan with timeline, resource requirements, and integration specifications.",
+          title: "Technical Implementation",
+          text: "We deliver a quality product you can test with a live url to release new iterations weekly with your feedback.",
         },
         {
-          title: "AI Voice Agent Demo",
-          text: "Experience a live demonstration of an AI voice agent customized for your specific industry needs.",
+          title: "Launch & Growth",
+          text: "We launch your SaaS and provide ongoing support to ensure it scales and achieves your goals.",
         },
       ],
-      description: "No cost, no obligation ROI assessment",
+      description: "No cost, no obligation SaaS strategy assessment",
       buttonText: "Book Your Discovery Call",
       isPopular: true,
     },
@@ -136,26 +136,26 @@ export const siteConfig = {
   faqs: [
   
     {
-      question: "How do your AI voice agents integrate with our existing systems?",
+      question: "How do you help build AI SaaS businesses from scratch?",
       answer: (
         <span>
-          Our AI voice agents seamlessly integrate with your existing phone systems, CRM platforms, scheduling tools, and other business software. We handle all technical aspects of integration, requiring minimal IT resources from your team. This ensures a smooth transition with no disruption to your current operations.
+          We provide end-to-end AI SaaS development services, from concept validation to market launch. Our team handles technical architecture, AI integration, user interface design, and growth optimization, requiring minimal technical expertise from your startup team.
         </span>
       ),
     },
     {
-      question: "What types of businesses benefit most from your AI voice agents?",
+      question: "What types of startups benefit most from AI SaaS development?",
       answer: (
         <span>
-          Our solution delivers exceptional results for businesses with high call volumes, recurring appointment scheduling, lead qualification needs, or customer support requirements. This includes industries like real estate, healthcare, financial services, SaaS, and professional services. If your business relies on phone communication for sales or operations, our AI voice agents can drive significant improvements.
+          Our AI SaaS development services deliver exceptional results for startups in B2B and B2C software, data analytics, customer service, and automation platforms. If your startup aims to build a business that can scale rapidly with AI-powered features, our development approach can accelerate your time-to-market and competitive advantage.
         </span>
       ),
     },
     {
-      question: "How do you ensure voice quality and natural conversation flow?",
+      question: "How do you ensure SaaS platform performance and scalability?",
       answer: (
         <span>
-          Our AI voice agents use state-of-the-art natural language processing and voice synthesis technology that&apos;s virtually indistinguishable from human conversation. We customize each agent with your specific brand voice, terminology, and conversation flows. Regular optimization ensures the system continuously improves based on real conversation data.
+          Our AI SaaS platforms use state-of-the-art technology that delivers exceptional performance and user experience at scale. We design each platform with scalable architecture, intelligent AI features, and optimized user interfaces. Regular monitoring and optimization ensure the platform continuously improves based on user data and growth metrics.
         </span>
       ),
     },
@@ -163,7 +163,7 @@ export const siteConfig = {
       question: "What kind of support do you provide after implementation?",
       answer: (
         <span>
-          We provide comprehensive post-implementation support including 24/7 monitoring, regular performance reporting, ongoing optimization, and dedicated account management. Our team continuously analyzes conversation data to identify opportunities for improvement, ensuring your AI voice agents deliver maximum ROI month after month.
+          We provide comprehensive post-launch support, treating our customers as true partners in success. This includes 24/7 platform monitoring, regular performance reporting, growth optimization, and dedicated account management. Our team continuously analyzes  metrics to identify opportunities for feature enhancement and market expansion, working closely with you to ensure your AI SaaS delivers maximum growth potential and achieves your business goals.
         </span>
       ),
     },

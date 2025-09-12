@@ -18,7 +18,7 @@ export default function PricingSection() {
   const { isDesktop } = useWindowSize();
 
   return (
-    <Section title="Pricing" subtitle="Solutions Tailored to Your Business Goals">
+    <Section title="Pricing" subtitle="Solutions Tailored to Your SaaS Launch Goals">
       <div className="">
         {siteConfig.pricingMain.map((plan, index) => (
           <motion.div

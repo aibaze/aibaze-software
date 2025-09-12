@@ -9,14 +9,14 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    title: "Social Media AI Agents",
+    title: "AI SaaS Platform Development",
     description:
-      "AI-Driven content creation/Repurposing, Autommatc DM Reply to have your brand active 24/7/365 without manual effort.",
+      "Complete AI-powered SaaS platforms with intelligent features, automated workflows, and scalable architecture designed for rapid growth and market success.",
     className: "hover:bg-red-500/10 transition-all duration-500 ease-out",
     content: (
       <>
         <Safari
-          src={`/dashboard.png`}
+          src={`/service.png`}
           url="https://aibaze.com"
           className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
         />
@@ -24,23 +24,23 @@ const features = [
     ),
   },
   {
-    title: "Customer support automation",
+    title: "SaaS Business Strategy & Launch",
     description:
-      "Chatbots, Call Center Voice bots, and many for to automate and your customer support and increase customer satisfaction with Human-Like bots with instant reply time.",
+      "End-to-end SaaS business development from concept validation to market launch, including AI integration, user onboarding, and growth optimization.",
     className:
       "order-3 xl:order-none hover:bg-blue-500/10 transition-all duration-500 ease-out",
     content: (
       <Safari
-        src={`/dashboard.png`}
+        src={`/profile-header.png`}
         url="https://aibaze.com"
         className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
       />
     ),
   },
   {
-    title: "Operations Automation",
+    title: "AI-Powered SaaS Features",
     description:
-      "Scale your business Automating operations: HR Procesess, Lead generation and qualification and Service delivery.",
+      "Intelligent SaaS features that differentiate your product: AI automation, predictive analytics, smart recommendations, and automated user experiences.",
     className:
       "md:row-span-2 hover:bg-orange-500/10 transition-all duration-500 ease-out",
     content: (
@@ -56,7 +56,7 @@ const features = [
           width={800}
         />
         <Safari
-          src={`/dashboard.png`}
+          src={`/profile.png`}
           url="https://aibaze.com"
           className="-mb-48 ml-12 mt-16 h-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-x-[-10px] transition-all duration-300"
         />
@@ -66,14 +66,14 @@ const features = [
   {
     title: "Custom AI for your business.",
     description:
-      "AgentiCaller analyzes your business and design AI Agents to match your unique processes to save time and money while improving results.",
+      "Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.",
     className:
       "flex-row order-4 md:col-span-2 md:flex-row xl:order-none hover:bg-green-500/10 transition-all duration-500 ease-out",
     content: (
       <>
         <Ripple className="absolute -bottom-full" />
         <Safari
-          src={`/dashboard.png`}
+          src={`/ai-copilot.png`}
           url="https://aibaze.com"
           className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
         />
@@ -86,8 +86,8 @@ export default function Component() {
   return (
     <Section
       title="Solution"
-      subtitle="Personalized AI agents designed to fit your business."
-      description="Aibaze boosts your efficiency with AI. Book your free consultation for a tailored strategy."
+      subtitle="We Transform Your Vision Into Powerful AI Products"
+      description="Launch your MVP in weeks, not months, with our proven development process."
       className="bg-neutral-100 dark:bg-neutral-900"
     >
       <div className="mx-auto mt-16 grid max-w-sm grid-cols-1 gap-6 text-gray-500 md:max-w-3xl md:grid-cols-2 xl:grid-rows-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3">

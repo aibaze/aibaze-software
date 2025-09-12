@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import Vapi from "@vapi-ai/web";
 import toast, { Toaster } from 'react-hot-toast';
 import mixpanel from "mixpanel-browser";
-import {agenticallerApi} from "@/api";
+import {aibazeApi} from "@/api";
 
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
 
@@ -75,7 +75,7 @@ export default function TherapyAgent() {
       const url = `/vapi/calls/${callId}`;
       console.log(url);
     
-      const callResponse = await agenticallerApi.get(url);
+      const callResponse = await aibazeApi.get(url);
       console.log(callResponse,"call response");
       
       // Extract and set the summary from the response

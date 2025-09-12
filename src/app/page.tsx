@@ -40,15 +40,15 @@ export default function Home() {
       {!isMobile ? (
         <Logos/>
       ):<div style={{marginBottom:"100px"}}></div>}
-      <AgentsExample/>
+      <Problem/>
+      <Solution/>
+
       <HowItWorks />
-      <Features />
-      {/* <Testimonials /> temporary comment */}
+      <OurProducts />
       <Pricing />
       <FAQ />
-      <VideoSection />
-      <OurProducts />
       <CTA />
+      <VideoSection />
       <Footer />
     </main>
   );

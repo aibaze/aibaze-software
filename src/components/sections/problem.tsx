@@ -5,21 +5,21 @@ import { Brain, Shield, Zap } from "lucide-react";
 
 const problems = [
   {
-    title: "Time Drain from Repetitive Tasks",
+    title: "Complex Technical Development",
     description:
-      "Companies relying on manual, repetitive processes fall behind those that automate and offer real-time client availability ",
+      "Building a successful AI SaaS requires deep technical expertise, market understanding, and rapid iteration capabilities that most startups lack.",
     icon: Brain,
   },
   {
-    title: "Inefficient and Error-Prone Processes",
+    title: "Slow Time-to-Market",
     description:
-      "Companies that automate their processes see an average profit increase of 30%—cutting costs, optimizing conversions, and unlocking scalable efficiency.",
+      "Startups that launch faster capture market share. Traditional development cycles take 6-12 months, while AI-powered SaaS can launch in 2-3 months with proper strategy.",
     icon: Zap,
   },
   {
-    title: "Limited Operating Hours",
+    title: "Unreliable Solutions",
     description:
-      "Manual operations lock you out of valuable opportunities beyond standard hours. With 24/7 AI agents, you unlock nonstop productivity—capturing every chance to adapt, scale, and thrive.",
+      "Most startups lack the technical expertise to build scalable AI SaaS platforms. Without proper architecture and AI integration, they struggle to compete and scale effectively.",
     icon: Shield,
   }
 ];
@@ -28,18 +28,17 @@ export default function Component() {
   return (
     <Section
       title="Problem"
-      subtitle="Stop Letting Manual Work Hold You Back"
+      subtitle="Stop Letting Technical Challenges Hold Your SaaS Back"
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
         {problems.map((problem, index) => (
           <BlurFade key={index} delay={0.2 + index * 0.2} inView>
             <Card className="bg-background border-none shadow-none">
-              <CardContent className="p-6 space-y-4">
+              <CardContent className="p-6 space-y-4 text-center flex flex-col items-center justify-center">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                   <problem.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold">{problem.title}</h3>
-                <p className="text-muted-foreground">{problem.description}</p>
               </CardContent>
             </Card>
           </BlurFade>

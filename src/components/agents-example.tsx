@@ -10,7 +10,7 @@ import Vapi from "@vapi-ai/web";
 import toast, { Toaster } from 'react-hot-toast';
 import mixpanel from "mixpanel-browser";
 import { EmailModal } from "@/components/email-modal";
-// Voice agent data with male and female options
+// AI application data with male and female options
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || "");
 
 const agentData = [
@@ -190,7 +190,7 @@ export default function AgentsExample() {
         <div className="text-center mb-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Revolutionize Your Sales Pipeline</h2>
           <p className="text-base text-gray-600 dark:text-gray-400 max-w-lg mx-auto">
-            Our AI voice agents book meetings and qualify leads 24/7.
+            Our AI SaaS platforms automate workflows and accelerate startup growth 24/7.
           </p>
         </div>
         
