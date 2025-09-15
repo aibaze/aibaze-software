@@ -11,9 +11,9 @@ const products = [
   {
     id: 1,
     image: "https://i.ibb.co/d4bbbKpr/Screenshot-2025-03-27-at-4-16-48-PM.png",
+    description: "A comprehensive solution to track and analyze how your AI voice agents performs. Set up your own AI voice agents to qualify leads, book appointments, and more.",
     alt: "White label dashboard platform",
     title: "AI Voice Agents Admin Dashboard",
-    description: "A comprehensive solution to track and analyze how your AI voice agents performs. Set up your own AI voice agents to qualify leads, book appointments, and more.",
     titleSize: "text-xl"
   },
   {
