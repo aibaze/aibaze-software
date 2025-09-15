@@ -145,7 +145,7 @@ export default function Features({
     }, collapseDelay);
 
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, [currentIndex, collapseDelay, data.length]);
 
   useEffect(() => {
     const handleAutoScroll = () => {
@@ -157,7 +157,7 @@ export default function Features({
     const autoScrollTimer = setInterval(handleAutoScroll, collapseDelay);
 
     return () => clearInterval(autoScrollTimer);
-  }, [currentIndex]);
+  }, [currentIndex, collapseDelay, data.length, scrollToIndex]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -175,7 +175,7 @@ export default function Features({
       carousel.addEventListener("scroll", handleScroll);
       return () => carousel.removeEventListener("scroll", handleScroll);
     }
-  }, []);
+  }, [data.length]);
 
   return (
     <section ref={ref} id="features">

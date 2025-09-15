@@ -131,7 +131,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                 </svg>
               </div>
               <div className="text-center space-y-2">
-                <p className="text-white text-lg font-medium">We've received your message</p>
+                <p className="text-white text-lg font-medium">We&apos;ve received your message</p>
                 <p className="text-white/70 text-sm">
                   Our team will review your project details and get back to you within 24 hours.
                 </p>
@@ -152,7 +152,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
             <DialogHeader>
               <DialogTitle className="text-white">Get in Touch</DialogTitle>
               <DialogDescription className="text-white/80">
-                Tell us about your project and we'll get back to you as soon as possible.
+                Tell us about your project and we&apos;ll get back to you as soon as possible.
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">

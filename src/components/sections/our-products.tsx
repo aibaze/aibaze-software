@@ -3,6 +3,7 @@
 import Section from "@/components/section";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/config";
 
@@ -69,10 +70,12 @@ const OurProducts = () => {
         {products.map((product) => (
           <div key={product.id} className="w-full max-w-sm overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl hover:shadow-2xl hover:scale-105 hover:bg-white/20 hover:border-white/40 transition-all duration-300 ease-in-out p-4 group cursor-pointer">
             <div className="relative w-full h-64 mb-4 overflow-hidden rounded-lg">
-              <img
+              <Image
                 src={product.image}
                 alt={product.alt}
-                className="object-cover w-full h-full rounded-lg group-hover:scale-110 transition-transform duration-300 ease-in-out"
+                fill
+                className="object-cover rounded-lg group-hover:scale-110 transition-transform duration-300 ease-in-out"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-white bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-lg"></div>
             </div>
