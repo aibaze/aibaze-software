@@ -57,11 +57,11 @@ export const TestimonialCard = ({
     <div className="select-none text-sm font-normal text-neutral-700 dark:text-neutral-400">
       {description}
       <div className="flex flex-row py-1">
-        <Star className="size-4 text-yellow-500 fill-yellow-500" />
-        <Star className="size-4 text-yellow-500 fill-yellow-500" />
-        <Star className="size-4 text-yellow-500 fill-yellow-500" />
-        <Star className="size-4 text-yellow-500 fill-yellow-500" />
-        <Star className="size-4 text-yellow-500 fill-yellow-500" />
+        <Star className="size-4 text-gray-500 fill-gray-500" />
+        <Star className="size-4 text-gray-500 fill-gray-500" />
+        <Star className="size-4 text-gray-500 fill-gray-500" />
+        <Star className="size-4 text-gray-500 fill-gray-500" />
+        <Star className="size-4 text-gray-500 fill-gray-500" />
       </div>
     </div>
 

@@ -1,84 +1,34 @@
 "use client";
 
-import FlickeringGrid from "@/components/magicui/flickering-grid";
-import Ripple from "@/components/magicui/ripple";
-import Safari from "@/components/safari";
 import Section from "@/components/section";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const features = [
   {
     title: "AI SaaS Platform Development",
     description:
       "Complete AI-powered SaaS platforms with intelligent features, automated workflows, and scalable architecture designed for rapid growth and market success.",
-    className: "hover:bg-red-500/10 transition-all duration-500 ease-out",
-    content: (
-      <>
-        <Safari
-          src={`/service.png`}
-          url="https://aibaze.com"
-          className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
-        />
-      </>
-    ),
+    image: "/service.png",
   },
   {
     title: "SaaS Business Strategy & Launch",
     description:
       "End-to-end SaaS business development from concept validation to market launch, including AI integration, user onboarding, and growth optimization.",
-    className:
-      "order-3 xl:order-none hover:bg-blue-500/10 transition-all duration-500 ease-out",
-    content: (
-      <Safari
-        src={`/profile-header.png`}
-        url="https://aibaze.com"
-        className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
-      />
-    ),
+    image: "/profile-header.png",
   },
   {
     title: "AI-Powered SaaS Features",
     description:
       "Intelligent SaaS features that differentiate your product: AI automation, predictive analytics, smart recommendations, and automated user experiences.",
-    className:
-      "md:row-span-2 hover:bg-orange-500/10 transition-all duration-500 ease-out",
-    content: (
-      <>
-        <FlickeringGrid
-          className="z-0 absolute inset-0 [mask:radial-gradient(circle_at_center,#fff_400px,transparent_0)]"
-          squareSize={4}
-          gridGap={6}
-          color="#000"
-          maxOpacity={0.1}
-          flickerChance={0.1}
-          height={800}
-          width={800}
-        />
-        <Safari
-          src={`/profile.png`}
-          url="https://aibaze.com"
-          className="-mb-48 ml-12 mt-16 h-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-x-[-10px] transition-all duration-300"
-        />
-      </>
-    ),
+    image: "/profile.png",
   },
   {
-    title: "Custom AI for your business.",
+    title: "Custom AI for your business",
     description:
       "Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.",
-    className:
-      "flex-row order-4 md:col-span-2 md:flex-row xl:order-none hover:bg-green-500/10 transition-all duration-500 ease-out",
-    content: (
-      <>
-        <Ripple className="absolute -bottom-full" />
-        <Safari
-          src={`/ai-copilot.png`}
-          url="https://aibaze.com"
-          className="-mb-32 mt-4 max-h-64 w-full px-4 select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] group-hover:translate-y-[-10px] transition-all duration-300"
-        />
-      </>
-    ),
+    image: "/ai-copilot.png",
   },
 ];
 
@@ -86,18 +36,15 @@ export default function Component() {
   return (
     <Section
       title="Solution"
-      subtitle="We Transform Your Vision Into Powerful AI Products"
+      subtitle="Transform Your Vision Into Powerful AI Products"
       description="Launch your MVP in weeks, not months, with our proven development process."
-      className="bg-neutral-100 dark:bg-neutral-900"
+      className="bg-neutral-100 text-black"
     >
-      <div className="mx-auto mt-16 grid max-w-sm grid-cols-1 gap-6 text-gray-500 md:max-w-3xl md:grid-cols-2 xl:grid-rows-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3">
-        {features.reverse().map((feature, index) => (
+      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+        {features.map((feature, index) => (
           <motion.div
             key={index}
-            className={cn(
-              "group relative items-start overflow-hidden bg-neutral-50 dark:bg-neutral-800 p-6 rounded-2xl",
-              feature.className
-            )}
+            className="group relative overflow-hidden bg-white dark:bg-neutral-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
@@ -109,14 +56,22 @@ export default function Component() {
             }}
             viewport={{ once: true }}
           >
-            <div>
-              <h3 className="font-semibold mb-2 text-primary">
+            <div className="mb-6">
+              <h3 className="font-semibold mb-3 text-xl text-primary">
                 {feature.title}
               </h3>
-              <p className="text-foreground">{feature.description}</p>
+              <p className="text-foreground leading-relaxed">{feature.description}</p>
             </div>
-            {feature.content}
-            <div className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-neutral-50 dark:from-neutral-900 pointer-events-none"></div>
+            
+            <div className="relative w-full h-64 rounded-lg overflow-hidden">
+              <Image
+                src={feature.image}
+                alt={feature.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
           </motion.div>
         ))}
       </div>

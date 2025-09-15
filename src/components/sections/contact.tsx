@@ -72,7 +72,7 @@ export default function Contact({ showForm = false }: { showForm?: boolean }) {
           <div className="max-w-3xl mx-auto text-center ">
             <h1 className="h1 mb-4">Contact Us</h1>
             <h1 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-400">
-              Schedule a <a target="_blank" href={siteConfig.ctaLink} className="text-blue-500 hover:text-blue-700">call</a> or fill out the form below
+              Schedule a <a target="_blank" href={siteConfig.ctaLink} className="text-gray-500 hover:text-gray-700">call</a> or fill out the form below
             </h1>
           </div>
 
@@ -81,7 +81,7 @@ export default function Contact({ showForm = false }: { showForm?: boolean }) {
             <div className="mt-12 max-w-2xl mx-auto">
               {/* Simple Submission Status Message */}
               {submitStatus !== 'idle' && (
-                 <p className={`mb-4 text-sm ${submitStatus === 'error' ? 'text-red-500' : 'text-green-500'}`}>
+                 <p className={`mb-4 text-sm ${submitStatus === 'error' ? 'text-gray-500' : 'text-gray-700'}`}>
                    {submitMessage}
                  </p>
               )}

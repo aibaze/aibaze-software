@@ -26,16 +26,16 @@ function HeroPill() {
   return (
     <motion.a
       href="/contact"
-      className="flex w-auto items-center space-x-2 rounded-full bg-primary/20 px-2 py-1 pt-0 ring-1 ring-accent whitespace-pre"
+      className="flex w-auto items-center space-x-2 rounded-full bg-primary/20 px-2 py-1 pt-1 ring-1 ring-accent whitespace-pre"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
       <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center font-medium text-primary sm:text-sm">
-        🔥 Limited:
+        🔥 Limited Time Offer:
       </div>
       <p className="font-medium text-primary text-sm">
-        Book a Free Strategy Session
+      Book a strategy session for 25% OFF
       </p>
       <svg
         width="12"

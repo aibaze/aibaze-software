@@ -4,13 +4,14 @@ import Drawer from "@/components/drawer";
 import { Icons } from "@/components/icons";
 import Menu from "@/components/menu";
 import { buttonVariants } from "@/components/ui/button";
+import { ContactModal } from "@/components/contact-modal";
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Header() {
   const [addBorder, setAddBorder] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,9 +51,8 @@ export default function Header() {
               <Menu />
             </nav>
             <div className="gap-2 flex">
-             
-              <Link
-                href={siteConfig.ctaLink}
+              <button
+                onClick={() => setIsContactModalOpen(true)}
                 className={cn(
                   buttonVariants({ variant: "default" }),
                   "w-full sm:w-auto text-background flex gap-2"
@@ -61,7 +61,7 @@ export default function Header() {
                 <strong>
                   Book Your Discovery Call
                 </strong>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -74,6 +74,10 @@ export default function Header() {
           "absolute w-full bottom-0 transition-opacity duration-300 ease-in-out",
           addBorder ? "opacity-100" : "opacity-0"
         )}
+      />
+      <ContactModal 
+        open={isContactModalOpen} 
+        onOpenChange={setIsContactModalOpen} 
       />
     </header>
   );
