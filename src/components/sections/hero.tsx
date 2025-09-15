@@ -35,7 +35,7 @@ function HeroPill() {
         🔥 Limited Time Offer:
       </div>
       <p className="font-medium text-primary text-sm">
-      Book a strategy session for 25% OFF
+      Book a strategy session for 50% OFF
       </p>
       <svg
         width="12"
