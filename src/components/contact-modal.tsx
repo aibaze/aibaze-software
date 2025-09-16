@@ -271,8 +271,8 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                     Transform Your Business with AI
                   </h2>
                   <p className="text-lg leading-relaxed text-white/80">
-                    We'll assess your case and contact you within 1 business
-                    day.
+                    We&apos;ll assess your case and contact you within 1
+                    business day.
                   </p>
                 </div>
                 <h3 className="text-lg font-semibold text-white">
