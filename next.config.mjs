@@ -17,9 +17,6 @@ const nextConfig = {
     unoptimized: false,
     dangerouslyAllowSVG: true,
   },
-  experimental: {
-    optimizeCss: true,
-  },
 };
 
 export default nextConfig;
