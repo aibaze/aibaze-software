@@ -204,7 +204,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="border border-white/20 bg-white/5 shadow-2xl backdrop-blur-2xl sm:max-w-[1200px]">
+      <DialogContent className="max-h-[90vh] overflow-y-auto border border-white/20 bg-white/5 shadow-2xl backdrop-blur-2xl sm:max-w-[1200px]">
         {isSubmitted ? (
           // Success Message
           <>
@@ -275,6 +275,9 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                     day.
                   </p>
                 </div>
+                <h3 className="text-lg font-semibold text-white">
+                  What you are getting:
+                </h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500/20">
@@ -295,6 +298,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                         />
                       </svg>
                     </div>
+
                     <span className="text-white/90">
                       Strategic consultation & project assessment
                     </span>

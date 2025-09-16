@@ -1,41 +1,29 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-import { Icons } from "@/components/icons";
-import HeroVideoDialog from "@/components/magicui/hero-video";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { Icons } from '@/components/icons';
+import HeroVideoDialog from '@/components/magicui/hero-video';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const ease = [0.16, 1, 0.3, 1];
-import mixpanel from "mixpanel-browser";
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from '@/lib/config';
 
 // Near entry of your product, init Mixpanel
-
-if (typeof window !== "undefined") {
-  mixpanel.init(siteConfig.keys.mixpanel, {
-    debug: false,
-    track_pageview: true,
-    persistence: "localStorage",
-  });
-}
 
 function HeroPill() {
   return (
     <motion.a
       href="/contact"
-      className="flex w-auto items-center space-x-2 rounded-full bg-primary/20 px-2 py-1 pt-1 ring-1 ring-accent whitespace-pre"
+      className="flex w-auto items-center space-x-2 whitespace-pre rounded-full bg-primary/20 px-2 py-1 pt-1 ring-1 ring-accent"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <div className="w-fit rounded-full bg-accent px-2 py-0.5 text-center font-medium text-primary sm:text-sm">
-        🔥 Limited Time Offer:
-      </div>
-      <p className="font-medium text-primary text-sm">
-      Book a strategy session for 50% OFF
+      <p className="text-sm font-medium text-primary">
+        Book a strategy session
       </p>
       <svg
         width="12"
@@ -59,19 +47,19 @@ function HeroTitles() {
     <div className="flex w-full max-w-2xl flex-col space-y-4 overflow-hidden pt-8">
       <motion.h1
         className="text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl md:text-6xl"
-        initial={{ filter: "blur(10px)", opacity: 0, y: 50 }}
-        animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+        initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
+        animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
         transition={{
           duration: 1,
           ease,
           staggerChildren: 0.2,
         }}
       >
-        {["Your Tech Partner for", "AI-Powered", "Solutions"].map(
+        {['Your Tech Partner for', 'AI-Powered', 'Solutions'].map(
           (text, index) => (
             <motion.span
               key={index}
-              className={`inline-block px-1 md:px-2 text-balance font-semibold ${index === 1 ? "text-primary" : ""}`}
+              className={`inline-block text-balance px-1 font-semibold md:px-2 ${index === 1 ? 'text-primary' : ''}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -86,7 +74,7 @@ function HeroTitles() {
         )}
       </motion.h1>
       <motion.p
-        className="mx-auto max-w-xl text-center text-lg leading-7 text-muted-foreground sm:text-xl sm:leading-9 text-balance"
+        className="mx-auto max-w-xl text-balance text-center text-lg leading-7 text-muted-foreground sm:text-xl sm:leading-9"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -95,7 +83,8 @@ function HeroTitles() {
           ease,
         }}
       >
-     We help businesses build, launch, and grow next-gen AI software businesses.
+        We help businesses build, launch, and grow next-gen AI software
+        businesses.
       </motion.p>
     </div>
   );
@@ -113,17 +102,15 @@ export function HeroCTA({ hideText = false }) {
         <Link
           href={siteConfig.ctaLink}
           className={cn(
-            buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto text-black flex text-bold text-black "
+            buttonVariants({ variant: 'default' }),
+            'text-bold flex w-full text-black sm:w-auto'
           )}
           style={{
-            boxShadow: "0 0 80px 10px hsl(154, 89%, 74%)",
-            fontWeight: "bold",
+            boxShadow: '0 0 80px 10px hsl(154, 89%, 74%)',
+            fontWeight: 'bold',
           }}
         >
-            <strong>
-                  Book Your Discovery Call
-                </strong>
+          <strong>Book Your Discovery Call</strong>
         </Link>
       </motion.div>
       {!hideText && (
@@ -153,7 +140,7 @@ function HeroImage() {
         videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
         thumbnailSrc="/dashboard.png"
         thumbnailAlt="Hero Video"
-        className="border rounded-lg shadow-lg max-w-screen-md mt-16"
+        className="mt-16 max-w-screen-md rounded-lg border shadow-lg"
       />
     </motion.div>
   );
@@ -187,14 +174,14 @@ export default function Hero() {
           <source src="/hero-vid.mov" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        
+
         {/* Content */}
-        <div className="relative z-10 flex w-full flex-col items-center justify-start px-4  sm:px-6 sm:pt-8 md:pt-16 ">
+        <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 sm:px-6 sm:pt-8 md:pt-16">
           <HeroPill />
           <HeroTitles />
           <HeroCTA hideText={true} />
-        
-           <HeroImage /> 
+
+          <HeroImage />
         </div>
       </div>
     </section>
