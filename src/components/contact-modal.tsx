@@ -32,6 +32,8 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     name: '',
     email: '',
     reason: '',
+    company: '',
+    whereDidYouHearFromUs: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,6 +44,8 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
       name: '',
       email: '',
       reason: '',
+      company: '',
+      whereDidYouHearFromUs: '',
     };
 
     if (!formData.name.trim()) {
@@ -58,9 +62,19 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
 
     if (!formData.reason.trim()) {
       newErrors.reason = 'Please tell us about your project';
-    } else if (formData.reason.trim().length < 10) {
+    } else if (formData.reason.trim().length < 50) {
       newErrors.reason =
-        'Please provide more details about your project (at least 10 characters)';
+        'Please provide more details about your project (at least 50 characters)';
+    }
+
+    if (!formData.company.trim()) {
+      newErrors.company = 'Company information is required';
+    } else if (formData.company.trim().length < 2) {
+      newErrors.company = 'Please provide valid company information';
+    }
+
+    if (!formData.whereDidYouHearFromUs.trim()) {
+      newErrors.whereDidYouHearFromUs = 'Please select how you heard about us';
     }
 
     setErrors(newErrors);
@@ -143,7 +157,13 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
       whereDidYouHearFromUs: '',
       internalCompany: 'aibaze',
     });
-    setErrors({ name: '', email: '', reason: '' });
+    setErrors({
+      name: '',
+      email: '',
+      reason: '',
+      company: '',
+      whereDidYouHearFromUs: '',
+    });
     setIsSubmitted(false);
     setIsLoading(false);
     setSubmitError('');
@@ -312,20 +332,28 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
 
               <div className="space-y-2">
                 <Label htmlFor="company" className="text-white">
-                  Company & Professional Information
+                  Company & Professional Information *
                 </Label>
                 <Input
                   id="company"
                   placeholder="Company LinkedIn profile or website"
                   value={formData.company}
                   onChange={e => handleInputChange('company', e.target.value)}
-                  className="border-white/20 bg-white/10 text-white placeholder:text-white/60 focus:border-white/40"
+                  required
+                  className={`border-white/20 bg-white/10 text-white transition-all duration-200 placeholder:text-white/60 focus:border-white/40 ${
+                    errors.company
+                      ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                      : 'hover:border-white/30'
+                  }`}
                 />
+                {errors.company && (
+                  <p className="mt-1 text-sm text-red-400">{errors.company}</p>
+                )}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="whereDidYouHearFromUs" className="text-white">
-                  Where did you hear from us?
+                  Where did you hear from us? *
                 </Label>
                 <select
                   id="whereDidYouHearFromUs"
@@ -333,7 +361,12 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                   onChange={e =>
                     handleInputChange('whereDidYouHearFromUs', e.target.value)
                   }
-                  className="flex w-full rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 hover:border-white/30 focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/40 disabled:cursor-not-allowed disabled:opacity-50"
+                  required
+                  className={`flex w-full rounded-md border bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                    errors.whereDidYouHearFromUs
+                      ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                      : 'border-white/20 hover:border-white/30 focus:border-white/40 focus:ring-white/40'
+                  }`}
                 >
                   <option value="" className="bg-gray-800 text-white">
                     Select an option
@@ -354,6 +387,11 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                     Other
                   </option>
                 </select>
+                {errors.whereDidYouHearFromUs && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {errors.whereDidYouHearFromUs}
+                  </p>
+                )}
               </div>
 
               <DialogFooter>

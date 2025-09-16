@@ -15,40 +15,40 @@ const images = [
 ];
 const features = [
   {
-    title: 'AI SaaS Platform Development',
+    title: 'AI-Powered Real Estate Intelligence',
     description:
-      'Complete AI-powered SaaS platforms with intelligent features, automated workflows, and scalable architecture designed for rapid growth and market success.',
+      'Transform property management with AI-driven market analysis, automated property valuations, intelligent lead scoring, and predictive analytics for real estate professionals.',
     image: images[0],
   },
   {
-    title: 'SaaS Business Strategy & Launch',
+    title: 'AI Marketing & Lead Generation Engine',
     description:
-      'End-to-end SaaS business development from concept validation to market launch, including AI integration, user onboarding, and growth optimization.',
+      'Revolutionize customer acquisition with AI-powered marketing automation, intelligent lead scoring, personalized campaigns, and predictive analytics that maximize ROI.',
     image: images[4],
   },
   {
-    title: 'AI-Powered SaaS Features',
+    title: 'AI HR & Talent Management Suite',
     description:
-      'Intelligent SaaS features that differentiate your product: AI automation, predictive analytics, smart recommendations, and automated user experiences.',
+      'Streamline recruitment and workforce management with AI-driven candidate screening, automated onboarding, performance analytics, and intelligent talent matching.',
     image: images[1],
   },
   {
-    title: 'Custom AI for your business',
+    title: 'AI Restaurant Operations Platform',
     description:
-      'Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.',
-    image: images[3],
+      'Optimize restaurant operations with AI-powered inventory management, demand forecasting, dynamic pricing, customer analytics, and automated order optimization.',
+    image: images[5],
   },
   {
-    title: 'Custom AI for your business',
+    title: 'AI Healthcare Management System',
     description:
-      'Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.',
+      'Enhance patient care with AI-driven diagnostic assistance, automated scheduling, predictive health analytics, and intelligent workflow optimization for healthcare providers.',
     image: images[2],
   },
   {
-    title: 'Custom AI for your business',
+    title: 'Custom AI Software Development',
     description:
-      'Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.',
-    image: images[5],
+      'Build your unique AI-powered solution from concept to deployment. We create tailored software that transforms your business processes with cutting-edge artificial intelligence.',
+    image: images[3],
   },
 ];
 

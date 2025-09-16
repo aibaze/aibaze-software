@@ -1,24 +1,27 @@
-"use client";
+'use client';
 
-import Section from "@/components/section";
-import { buttonVariants } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { siteConfig } from "@/lib/config";
-import useWindowSize from "@/lib/hooks/use-window-size";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { Check } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import Section from '@/components/section';
+import { buttonVariants } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import { siteConfig } from '@/lib/config';
+import useWindowSize from '@/lib/hooks/use-window-size';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
 
 export default function PricingSection() {
   const [isMonthly] = useState(true);
   const { isDesktop } = useWindowSize();
 
   return (
-    <Section title="Pricing" subtitle="Solutions Tailored to Your SaaS Launch Goals">
+    <Section
+      title="Pricing"
+      subtitle="Solutions Tailored to Your SaaS Launch Goals"
+    >
       <div className="">
         {siteConfig.pricingMain.map((plan, index) => (
           <motion.div
@@ -28,26 +31,28 @@ export default function PricingSection() {
             viewport={{ once: true }}
             transition={{
               duration: 1.6,
-              type: "spring",
+              type: 'spring',
               stiffness: 100,
               damping: 30,
               delay: 0.4,
               opacity: { duration: 0.5 },
             }}
             className={cn(
-              `rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
-              plan.isPopular ? "border-primary border-[2px]" : "border-border",
+              `hover:shadow-3xl relative rounded-2xl border-[1px] bg-white/10 p-6 text-center shadow-2xl backdrop-blur-xl transition-all duration-300 ease-out hover:scale-105 hover:border-white/40 hover:bg-white/20 lg:flex lg:flex-col lg:justify-center`,
+              plan.isPopular
+                ? 'border-[2px] border-white/30 hover:border-white/50'
+                : 'border-white/20',
               index === 0 || index === siteConfig.pricing.length - 1
-                ? "z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]"
-                : "z-10",
-              index === 0 && "origin-right",
-              index === siteConfig.pricing.length - 1 && "origin-left"
+                ? '-translate-z-[50px] rotate-y-[10deg] z-0 translate-x-0 translate-y-0 transform'
+                : 'z-10',
+              index === 0 && 'origin-right',
+              index === siteConfig.pricing.length - 1 && 'origin-left'
             )}
           >
             {plan.isPopular && (
-              <div className="absolute top-0 right-0 bg-primary py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
+              <div className="absolute right-0 top-0 flex items-center rounded-bl-xl rounded-tr-xl bg-primary px-2 py-0.5">
                 <FaStar className="text-black" />
-                <span className="text-black ml-1 font-sans font-semibold">
+                <span className="ml-1 font-sans font-semibold text-black">
                   ROI Focused
                 </span>
               </div>
@@ -60,7 +65,7 @@ export default function PricingSection() {
                 <span className="text-5xl font-bold tracking-tight text-foreground">
                   {isMonthly ? plan.price : plan.yearlyPrice}
                 </span>
-                {plan.period !== "Next 3 months" && (
+                {plan.period !== 'Next 3 months' && (
                   <span className="text-sm font-semibold leading-6 tracking-wide text-muted-foreground">
                     / {plan.period}
                   </span>
@@ -71,9 +76,9 @@ export default function PricingSection() {
                 Typical ROI: 30-90 days
               </p>
 
-              <ul className="mt-5 gap-2 flex flex-col">
+              <ul className="mt-5 flex flex-col gap-2">
                 {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center ">
+                  <li key={idx} className="flex items-center">
                     <Check className="mr-2 h-4 w-4 text-primary" />
                     <div className="flex flex-col text-left">
                       <span>{feature.title}</span>
@@ -83,19 +88,19 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <hr className="w-full my-4" />
+              <hr className="my-4 w-full" />
 
               <Link
                 href={siteConfig.ctaLink}
                 className={cn(
                   buttonVariants({
-                    variant: "outline",
+                    variant: 'outline',
                   }),
-                  "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
-                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-1 hover:bg-primary hover:text-black",
+                  'group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter',
+                  'transform-gpu ring-offset-current transition-all duration-300 ease-out hover:bg-primary hover:text-black hover:ring-2 hover:ring-primary hover:ring-offset-1',
                   plan.isPopular
-                    ? "bg-primary text-black"
-                    : "bg-white text-black"
+                    ? 'bg-primary text-black'
+                    : 'bg-white text-black'
                 )}
               >
                 {plan.buttonText}
