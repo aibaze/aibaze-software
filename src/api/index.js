@@ -1,12 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 const aibazeApi = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_API_URL || 'https://api.aibaze.com'}/api/v1`,
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL || 'https://api.aibaze.com'}/api/v1/aibaze`,
 });
 
 const api = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_API_URL || 'https://api.aibaze.com'}/api`,
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL || 'https://api.aibaze.com'}/api`,
 });
 
-
-export  {aibazeApi,api};
+export { aibazeApi, api };

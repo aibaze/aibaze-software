@@ -23,17 +23,25 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
     reason: '',
     whereDidYouHearFromUs: '',
+    phone: '',
+    website: '',
+    whatYouWillUseAiFor: '',
+    businessName: '',
+    requestedService: '',
+    targetDate: '',
+    phoneOptIn: false,
     internalCompany: 'aibaze',
   });
   const [errors, setErrors] = useState({
     name: '',
     email: '',
     reason: '',
-    company: '',
     whereDidYouHearFromUs: '',
+    whatYouWillUseAiFor: '',
+    businessName: '',
+    targetDate: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,8 +52,10 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
       name: '',
       email: '',
       reason: '',
-      company: '',
       whereDidYouHearFromUs: '',
+      whatYouWillUseAiFor: '',
+      businessName: '',
+      targetDate: '',
     };
 
     if (!formData.name.trim()) {
@@ -67,14 +77,22 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
         'Please provide more details about your project (at least 50 characters)';
     }
 
-    if (!formData.company.trim()) {
-      newErrors.company = 'Company information is required';
-    } else if (formData.company.trim().length < 2) {
-      newErrors.company = 'Please provide valid company information';
-    }
-
     if (!formData.whereDidYouHearFromUs.trim()) {
       newErrors.whereDidYouHearFromUs = 'Please select how you heard about us';
+    }
+
+    if (!formData.whatYouWillUseAiFor.trim()) {
+      newErrors.whatYouWillUseAiFor = 'Please select what you will use AI for';
+    }
+
+    if (!formData.businessName.trim()) {
+      newErrors.businessName = 'Business name is required';
+    } else if (formData.businessName.trim().length < 2) {
+      newErrors.businessName = 'Please provide a valid business name';
+    }
+
+    if (!formData.targetDate.trim()) {
+      newErrors.targetDate = 'Target date is required';
     }
 
     setErrors(newErrors);
@@ -93,7 +111,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
 
     try {
       const response = await api.post(
-        '/users/feedback',
+        '/contact-us',
         {
           ...formData,
           description: formData.reason,
@@ -136,7 +154,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field as keyof typeof errors]) {
@@ -152,17 +170,25 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     setFormData({
       name: '',
       email: '',
-      company: '',
       reason: '',
       whereDidYouHearFromUs: '',
+      phone: '',
+      website: '',
+      whatYouWillUseAiFor: '',
+      businessName: '',
+      requestedService: '',
+      targetDate: '',
+      phoneOptIn: false,
       internalCompany: 'aibaze',
     });
     setErrors({
       name: '',
       email: '',
       reason: '',
-      company: '',
       whereDidYouHearFromUs: '',
+      whatYouWillUseAiFor: '',
+      businessName: '',
+      targetDate: '',
     });
     setIsSubmitted(false);
     setIsLoading(false);
@@ -178,7 +204,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="border border-white/20 bg-white/10 shadow-2xl backdrop-blur-xl sm:max-w-[425px]">
+      <DialogContent className="border border-white/20 bg-white/10 shadow-2xl backdrop-blur-xl sm:max-w-[800px]">
         {isSubmitted ? (
           // Success Message
           <>
@@ -265,132 +291,303 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                   </div>
                 </div>
               )}
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-white">
-                  Name *
-                </Label>
-                <Input
-                  id="name"
-                  placeholder="Your full name"
-                  value={formData.name}
-                  onChange={e => handleInputChange('name', e.target.value)}
-                  required
-                  className={`border-white/20 bg-white/10 text-white transition-all duration-200 placeholder:text-white/60 focus:border-white/40 ${
-                    errors.name
-                      ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
-                      : 'hover:border-white/30'
-                  }`}
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-400">{errors.name}</p>
-                )}
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                {/* Left Column */}
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-white">
+                      Name *
+                    </Label>
+                    <Input
+                      id="name"
+                      placeholder="Your full name"
+                      value={formData.name}
+                      onChange={e => handleInputChange('name', e.target.value)}
+                      className={`border-white/20 bg-white/10 text-white transition-all duration-200 placeholder:text-white/60 focus:border-white/40 ${
+                        errors.name
+                          ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                          : 'hover:border-white/30'
+                      }`}
+                    />
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-white">
+                      Email Address *
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your.email@company.com"
+                      value={formData.email}
+                      onChange={e => handleInputChange('email', e.target.value)}
+                      className={`border-white/20 bg-white/10 text-white transition-all duration-200 placeholder:text-white/60 focus:border-white/40 ${
+                        errors.email
+                          ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                          : 'hover:border-white/30'
+                      }`}
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {errors.email}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="businessName" className="text-white">
+                      Business Name *
+                    </Label>
+                    <Input
+                      id="businessName"
+                      placeholder="Your business name"
+                      value={formData.businessName}
+                      onChange={e =>
+                        handleInputChange('businessName', e.target.value)
+                      }
+                      className={`border-white/20 bg-white/10 text-white transition-all duration-200 placeholder:text-white/60 focus:border-white/40 ${
+                        errors.businessName
+                          ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                          : 'hover:border-white/30'
+                      }`}
+                    />
+                    {errors.businessName && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {errors.businessName}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="whatYouWillUseAiFor" className="text-white">
+                      What will you use AI for? *
+                    </Label>
+                    <select
+                      id="whatYouWillUseAiFor"
+                      value={formData.whatYouWillUseAiFor}
+                      onChange={e =>
+                        handleInputChange('whatYouWillUseAiFor', e.target.value)
+                      }
+                      className={`flex w-full rounded-md border bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                        errors.whatYouWillUseAiFor
+                          ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                          : 'border-white/20 hover:border-white/30 focus:border-white/40 focus:ring-white/40'
+                      }`}
+                    >
+                      <option value="" className="bg-gray-800 text-white">
+                        Select an option
+                      </option>
+                      <option
+                        value="appointment-setting"
+                        className="bg-gray-800 text-white"
+                      >
+                        Appointment Setting
+                      </option>
+                      <option
+                        value="lead-acquisition-qualification"
+                        className="bg-gray-800 text-white"
+                      >
+                        Lead Acquisition/Qualification
+                      </option>
+                      <option
+                        value="voice-ai-calls"
+                        className="bg-gray-800 text-white"
+                      >
+                        Voice AI Calls
+                      </option>
+                      <option
+                        value="custom-saas-use-case"
+                        className="bg-gray-800 text-white"
+                      >
+                        Custom SaaS Use Case
+                      </option>
+                      <option value="other" className="bg-gray-800 text-white">
+                        Other
+                      </option>
+                    </select>
+                    {errors.whatYouWillUseAiFor && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {errors.whatYouWillUseAiFor}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="phone" className="text-white">
+                      Phone Number
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="+1 (555) 123-4567"
+                      value={formData.phone}
+                      onChange={e => handleInputChange('phone', e.target.value)}
+                      className="border-white/20 bg-white/10 text-white placeholder:text-white/60 hover:border-white/30 focus:border-white/40"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="website" className="text-white">
+                      Website
+                    </Label>
+                    <Input
+                      id="website"
+                      type="url"
+                      placeholder="https://yourcompany.com"
+                      value={formData.website}
+                      onChange={e =>
+                        handleInputChange('website', e.target.value)
+                      }
+                      className="border-white/20 bg-white/10 text-white placeholder:text-white/60 hover:border-white/30 focus:border-white/40"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="whereDidYouHearFromUs"
+                      className="text-white"
+                    >
+                      Where did you hear from us? *
+                    </Label>
+                    <select
+                      id="whereDidYouHearFromUs"
+                      value={formData.whereDidYouHearFromUs}
+                      onChange={e =>
+                        handleInputChange(
+                          'whereDidYouHearFromUs',
+                          e.target.value
+                        )
+                      }
+                      className={`flex w-full rounded-md border bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                        errors.whereDidYouHearFromUs
+                          ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                          : 'border-white/20 hover:border-white/30 focus:border-white/40 focus:ring-white/40'
+                      }`}
+                    >
+                      <option value="" className="bg-gray-800 text-white">
+                        Select an option
+                      </option>
+                      <option
+                        value="instagram"
+                        className="bg-gray-800 text-white"
+                      >
+                        Instagram
+                      </option>
+                      <option value="x" className="bg-gray-800 text-white">
+                        X (Twitter)
+                      </option>
+                      <option
+                        value="referral"
+                        className="bg-gray-800 text-white"
+                      >
+                        Referral
+                      </option>
+                      <option
+                        value="youtube"
+                        className="bg-gray-800 text-white"
+                      >
+                        YouTube
+                      </option>
+                      <option value="other" className="bg-gray-800 text-white">
+                        Other
+                      </option>
+                    </select>
+                    {errors.whereDidYouHearFromUs && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {errors.whereDidYouHearFromUs}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="targetDate" className="text-white">
+                      Target Date *
+                    </Label>
+                    <Input
+                      id="targetDate"
+                      type="date"
+                      value={formData.targetDate}
+                      onChange={e =>
+                        handleInputChange('targetDate', e.target.value)
+                      }
+                      className={`border-white/20 bg-white/10 text-white transition-all duration-200 focus:border-white/40 ${
+                        errors.targetDate
+                          ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
+                          : 'hover:border-white/30'
+                      }`}
+                    />
+                    {errors.targetDate && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {errors.targetDate}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        id="phoneOptIn"
+                        type="checkbox"
+                        checked={formData.phoneOptIn}
+                        onChange={e =>
+                          handleInputChange('phoneOptIn', e.target.checked)
+                        }
+                        className="h-4 w-4 rounded border-white/20 bg-white/10 text-white focus:ring-white/40 focus:ring-offset-0"
+                      />
+                      <Label htmlFor="phoneOptIn" className="text-white">
+                        I consent to being contacted by phone
+                      </Label>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-white">
-                  Email Address *
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="your.email@company.com"
-                  value={formData.email}
-                  onChange={e => handleInputChange('email', e.target.value)}
-                  required
-                  className={`border-white/20 bg-white/10 text-white transition-all duration-200 placeholder:text-white/60 focus:border-white/40 ${
-                    errors.email
-                      ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
-                      : 'hover:border-white/30'
-                  }`}
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-400">{errors.email}</p>
-                )}
-              </div>
+              {/* Full-width fields */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="reason" className="text-white">
+                    Why are you reaching out? *
+                  </Label>
+                  <textarea
+                    id="reason"
+                    placeholder="Please specify in detail your project, goals, timeline, and any specific requirements you have..."
+                    value={formData.reason}
+                    onChange={e => handleInputChange('reason', e.target.value)}
+                    rows={4}
+                    className={`flex w-full resize-none rounded-md border bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 placeholder:text-white/60 focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                      errors.reason
+                        ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400/20'
+                        : 'border-white/20 hover:border-white/30 focus-visible:border-white/40 focus-visible:ring-white/40'
+                    }`}
+                  />
+                  {errors.reason && (
+                    <p className="mt-1 text-sm text-red-400">{errors.reason}</p>
+                  )}
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="reason" className="text-white">
-                  Why are you reaching out? *
-                </Label>
-                <textarea
-                  id="reason"
-                  placeholder="Please specify in detail your project, goals, timeline, and any specific requirements you have..."
-                  value={formData.reason}
-                  onChange={e => handleInputChange('reason', e.target.value)}
-                  required
-                  rows={4}
-                  className={`flex w-full resize-none rounded-md border bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 placeholder:text-white/60 focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 ${
-                    errors.reason
-                      ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400/20'
-                      : 'border-white/20 hover:border-white/30 focus-visible:border-white/40 focus-visible:ring-white/40'
-                  }`}
-                />
-                {errors.reason && (
-                  <p className="mt-1 text-sm text-red-400">{errors.reason}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="company" className="text-white">
-                  Company & Professional Information *
-                </Label>
-                <Input
-                  id="company"
-                  placeholder="Company LinkedIn profile or website"
-                  value={formData.company}
-                  onChange={e => handleInputChange('company', e.target.value)}
-                  required
-                  className={`border-white/20 bg-white/10 text-white transition-all duration-200 placeholder:text-white/60 focus:border-white/40 ${
-                    errors.company
-                      ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
-                      : 'hover:border-white/30'
-                  }`}
-                />
-                {errors.company && (
-                  <p className="mt-1 text-sm text-red-400">{errors.company}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="whereDidYouHearFromUs" className="text-white">
-                  Where did you hear from us? *
-                </Label>
-                <select
-                  id="whereDidYouHearFromUs"
-                  value={formData.whereDidYouHearFromUs}
-                  onChange={e =>
-                    handleInputChange('whereDidYouHearFromUs', e.target.value)
-                  }
-                  required
-                  className={`flex w-full rounded-md border bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 ${
-                    errors.whereDidYouHearFromUs
-                      ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
-                      : 'border-white/20 hover:border-white/30 focus:border-white/40 focus:ring-white/40'
-                  }`}
-                >
-                  <option value="" className="bg-gray-800 text-white">
-                    Select an option
-                  </option>
-                  <option value="instagram" className="bg-gray-800 text-white">
-                    Instagram
-                  </option>
-                  <option value="x" className="bg-gray-800 text-white">
-                    X (Twitter)
-                  </option>
-                  <option value="referral" className="bg-gray-800 text-white">
-                    Referral
-                  </option>
-                  <option value="youtube" className="bg-gray-800 text-white">
-                    YouTube
-                  </option>
-                  <option value="other" className="bg-gray-800 text-white">
-                    Other
-                  </option>
-                </select>
-                {errors.whereDidYouHearFromUs && (
-                  <p className="mt-1 text-sm text-red-400">
-                    {errors.whereDidYouHearFromUs}
-                  </p>
+                {formData.whatYouWillUseAiFor === 'other' && (
+                  <div className="space-y-2">
+                    <Label htmlFor="requestedService" className="text-white">
+                      Please specify your use case
+                    </Label>
+                    <textarea
+                      id="requestedService"
+                      placeholder="Please describe your specific AI use case..."
+                      value={formData.requestedService}
+                      onChange={e =>
+                        handleInputChange('requestedService', e.target.value)
+                      }
+                      rows={3}
+                      className="flex w-full resize-none rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm text-white transition-all duration-200 placeholder:text-white/60 hover:border-white/30 focus-visible:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
+                  </div>
                 )}
               </div>
 
