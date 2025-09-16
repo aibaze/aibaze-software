@@ -27,6 +27,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     company: "",
     reason: "",
     whereDidYouHearFromUs: "",
+    internalCompany: "aibaze"
   });
   const [errors, setErrors] = useState({
     name: "",

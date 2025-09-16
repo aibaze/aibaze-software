@@ -1,34 +1,54 @@
-"use client";
+'use client';
 
-import Section from "@/components/section";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import Section from '@/components/section';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
+const images = [
+  'https://i.ibb.co/gb7wYc7j/Realestate.webp',
+  'https://i.ibb.co/DfH668V9/hr.webp',
+  'https://i.ibb.co/YBsBvBCP/FIN.webp',
+  'https://i.ibb.co/Q7jFw25n/soft.webp',
+  'https://i.ibb.co/fL44NpP/mkt.webp',
+  'https://i.ibb.co/fVV3RL0Y/food.webp',
+];
 const features = [
   {
-    title: "AI SaaS Platform Development",
+    title: 'AI SaaS Platform Development',
     description:
-      "Complete AI-powered SaaS platforms with intelligent features, automated workflows, and scalable architecture designed for rapid growth and market success.",
-    image: "/service.png",
+      'Complete AI-powered SaaS platforms with intelligent features, automated workflows, and scalable architecture designed for rapid growth and market success.',
+    image: images[0],
   },
   {
-    title: "SaaS Business Strategy & Launch",
+    title: 'SaaS Business Strategy & Launch',
     description:
-      "End-to-end SaaS business development from concept validation to market launch, including AI integration, user onboarding, and growth optimization.",
-    image: "/profile-header.png",
+      'End-to-end SaaS business development from concept validation to market launch, including AI integration, user onboarding, and growth optimization.',
+    image: images[4],
   },
   {
-    title: "AI-Powered SaaS Features",
+    title: 'AI-Powered SaaS Features',
     description:
-      "Intelligent SaaS features that differentiate your product: AI automation, predictive analytics, smart recommendations, and automated user experiences.",
-    image: "/profile.png",
+      'Intelligent SaaS features that differentiate your product: AI automation, predictive analytics, smart recommendations, and automated user experiences.',
+    image: images[1],
   },
   {
-    title: "Custom AI for your business",
+    title: 'Custom AI for your business',
     description:
-      "Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.",
-    image: "/ai-copilot.png",
+      'Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.',
+    image: images[3],
+  },
+  {
+    title: 'Custom AI for your business',
+    description:
+      'Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.',
+    image: images[2],
+  },
+  {
+    title: 'Custom AI for your business',
+    description:
+      'Aibaze builds your next AI SaaS business from concept to launch. We empower startups to succeed faster with custom AI-powered software solutions.',
+    image: images[5],
   },
 ];
 
@@ -40,16 +60,16 @@ export default function Component() {
       description="Launch your MVP in weeks, not months, with our proven development process."
       className="bg-neutral-100 text-black"
     >
-      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="group relative overflow-hidden bg-white dark:bg-neutral-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-neutral-800"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.5,
-              type: "spring",
+              type: 'spring',
               stiffness: 100,
               damping: 30,
               delay: index * 0.1,
@@ -57,18 +77,20 @@ export default function Component() {
             viewport={{ once: true }}
           >
             <div className="mb-6">
-              <h3 className="font-semibold mb-3 text-xl text-primary">
+              <h3 className="mb-3 text-xl font-semibold text-primary">
                 {feature.title}
               </h3>
-              <p className="text-foreground leading-relaxed">{feature.description}</p>
+              <p className="leading-relaxed text-foreground">
+                {feature.description}
+              </p>
             </div>
-            
-            <div className="relative w-full h-64 rounded-lg overflow-hidden">
+
+            <div className="relative h-64 w-full overflow-hidden rounded-lg">
               <Image
                 src={feature.image}
                 alt={feature.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>

@@ -1,37 +1,39 @@
 import Features from "@/components/features-horizontal";
 import Section from "@/components/section";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { BarChart3, Brain, FileText, LineChart } from "lucide-react";
 
 const data = [
   {
     id: 1,
     title: "Mike",
-    subtitle: "AI SaaS Platform",
-    content: "Complete AI-powered SaaS platform with intelligent user management, automated workflows, and scalable architecture. Reduces development time by 70% while improving user engagement by 40%.",
+    subtitle: "Customer Support Expert",
+    content: "Handles customer inquiries 24/7, resolving 80% of support tickets automatically.",
     image: "https://i.ibb.co/MDD6jnJk/Mike.png",
     icon: <BarChart3 className="h-6 w-6 text-primary" />,
   },
   {
     id: 2,
     title: "Bella",
-    subtitle: "SaaS Growth Engine",
-    content: "AI-powered growth automation that converts trials to paid users with 40% higher success rate than traditional methods. Eliminates manual onboarding and reduces churn by 35% through intelligent user journeys.",
+    subtitle: "Appointment Setter",
+    content: "Converts inquiries into booked appointments with 40% higher success rate.",
     image: "https://i.ibb.co/Zzd27CsG/Bella.png",
     icon: <Brain className="h-6 w-6 text-primary" />,
   },
   {
     id: 3,
     title: "Liam",
-    subtitle: "AI SaaS Analytics",
-    content: "Intelligent analytics platform that provides real-time insights into user behavior, product performance, and growth metrics. Generates 3x more actionable insights than traditional analytics at a fraction of the cost.",
+    subtitle: "Cold Outreach Agent",
+    content: "Conducts personalized outreach at scale, generating 3x more qualified leads.",
     image: "https://i.ibb.co/wHxW0NV/Liam.png",
     icon: <LineChart className="h-6 w-6 text-primary" />,
   },
   {
     id: 4,
     title: "Jessie",
-    subtitle: "SaaS Business Intelligence",
-    content: "AI-powered business intelligence that analyzes SaaS metrics, user patterns, and market trends in real-time. Increases conversion rates by up to 50% while reducing decision-making time by an average of 30%.",
+    subtitle: "Lead Qualification Agent",
+    content: "Qualifies leads in real-time, ensuring your sales team only speaks with ready-to-buy prospects.",
     image: "https://i.ibb.co/RTRqsMnt/Jessie.png",
     icon: <FileText className="h-6 w-6 text-primary" />,
   },
@@ -39,8 +41,22 @@ const data = [
 
 export default function Component() {
   return (
-    <Section title="Your AI Voice Team" subtitle="Purpose-Built AI Agents for Every Business Need">
+    <Section subtitle="CHECK OUT AGENTICALLER" title="Purpose-Built AI Agents for Every Business Need">
       <Features collapseDelay={10000} linePosition="bottom" data={data} />
+      
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={() => window.open('https://agenticaller.com', '_blank')}
+          className={cn(
+            buttonVariants({ variant: "default" }),
+            "w-full sm:w-auto text-background flex gap-2"
+          )}
+        >
+          <strong>
+            Try Agenticaller Now
+          </strong>
+        </button>
+      </div>
     </Section>
   );
 }

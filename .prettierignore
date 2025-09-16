@@ -1,0 +1,23 @@
+# Prettier ignore file
+# Ignore generated files
+.next/
+node_modules/
+dist/
+build/
+coverage/
+
+# Ignore package files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Ignore config files that shouldn't be formatted
+.env*
+*.log
+
+# Ignore generated types
+next-env.d.ts
+
+# Ignore public assets
+public/
+src/assets/

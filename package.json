@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "deploy-prod": "pnpm install && git add . && git commit -am'automatic-deploy-commit' && git push origin main",
     "deploy-staging": "pnpm install && git add . && git commit -am'automatic-deploy-commit' && git push origin staging"
   },
@@ -25,7 +27,7 @@
     "embla-carousel-react": "^8.1.7",
     "framer-motion": "^11.3.21",
     "lucide-react": "^0.417.0",
-    "mixpanel-browser": "^2.59.0",
+    "mixpanel-browser": "^2.70.0",
     "next": "14.2.7",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
@@ -49,9 +51,12 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "14.2.7",
     "postcss": "^8",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
