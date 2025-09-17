@@ -32,18 +32,7 @@ const features = [
       'Streamline recruitment and workforce management with AI-driven candidate screening, automated onboarding, performance analytics, and intelligent talent matching.',
     image: images[1],
   },
-  {
-    title: 'AI Restaurant Operations Platform',
-    description:
-      'Optimize restaurant operations with AI-powered inventory management, demand forecasting, dynamic pricing, customer analytics, and automated order optimization.',
-    image: images[5],
-  },
-  {
-    title: 'AI Healthcare Management System',
-    description:
-      'Enhance patient care with AI-driven diagnostic assistance, automated scheduling, predictive health analytics, and intelligent workflow optimization for healthcare providers.',
-    image: images[2],
-  },
+
   {
     title: 'Custom AI Software Development',
     description:
@@ -60,7 +49,7 @@ export default function Component() {
       description="Launch your MVP in weeks, not months, with our proven development process."
       className="bg-neutral-100 text-black"
     >
-      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
         {features.map((feature, index) => (
           <motion.div
             key={index}

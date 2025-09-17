@@ -31,7 +31,7 @@ export const siteConfig = {
     linkedin: 'https://www.linkedin.com/company/aibaze-agency',
   },
   header: [
-    { trigger: 'Contact', href: '/contact' },
+    { trigger: 'Contact', href: '' },
     {
       trigger: 'Solutions',
       content: {

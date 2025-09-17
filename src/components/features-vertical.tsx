@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import * as Accordion from "@radix-ui/react-accordion";
-import { motion, useInView } from "framer-motion";
+import * as Accordion from '@radix-ui/react-accordion';
+import { motion, useInView } from 'framer-motion';
 import React, {
   forwardRef,
   ReactNode,
   useEffect,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 type AccordionItemProps = {
   children: React.ReactNode;
@@ -21,7 +21,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <Accordion.Item
       className={cn(
-        "mt-px overflow-hidden focus-within:relative focus-within:z-10",
+        'mt-px overflow-hidden focus-within:relative focus-within:z-10',
         className
       )}
       {...props}
@@ -31,7 +31,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
     </Accordion.Item>
   )
 );
-AccordionItem.displayName = "AccordionItem";
+AccordionItem.displayName = 'AccordionItem';
 
 type AccordionTriggerProps = {
   children: React.ReactNode;
@@ -43,7 +43,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
     <Accordion.Header className="flex">
       <Accordion.Trigger
         className={cn(
-          "group flex flex-1 cursor-pointer items-center justify-between px-5 text-[15px] leading-none outline-none",
+          'group flex flex-1 cursor-pointer items-center justify-between px-5 text-[15px] leading-none outline-none',
           className
         )}
         {...props}
@@ -54,7 +54,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
     </Accordion.Header>
   )
 );
-AccordionTrigger.displayName = "AccordionTrigger";
+AccordionTrigger.displayName = 'AccordionTrigger';
 type AccordionContentProps = {
   children: ReactNode;
   className?: string;
@@ -64,7 +64,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <Accordion.Content
       className={cn(
-        "overflow-hidden text-[15px] font-medium data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down",
+        'data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down overflow-hidden text-[15px] font-medium',
         className
       )}
       {...props}
@@ -74,7 +74,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
     </Accordion.Content>
   )
 );
-AccordionContent.displayName = "AccordionContent";
+AccordionContent.displayName = 'AccordionContent';
 
 export type FeaturesDataProps = {
   id: number;
@@ -88,14 +88,14 @@ export type FeaturesDataProps = {
 export type FeaturesProps = {
   collapseDelay?: number;
   ltr?: boolean;
-  linePosition?: "left" | "right" | "top" | "bottom";
+  linePosition?: 'left' | 'right' | 'top' | 'bottom';
   data: FeaturesDataProps[];
 };
 
 export default function Features({
   collapseDelay = 5000,
   ltr = false,
-  linePosition = "left",
+  linePosition = 'left',
   data = [],
 }: FeaturesProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
@@ -120,7 +120,7 @@ export default function Features({
 
   const scrollToIndex = (index: number) => {
     if (carouselRef.current) {
-      const card = carouselRef.current.querySelectorAll(".card")[index];
+      const card = carouselRef.current.querySelectorAll('.card')[index];
       if (card) {
         const cardRect = card.getBoundingClientRect();
         const carouselRect = carouselRef.current.getBoundingClientRect();
@@ -131,7 +131,7 @@ export default function Features({
 
         carouselRef.current.scrollTo({
           left: carouselRef.current.scrollLeft + offset,
-          behavior: "smooth",
+          behavior: 'smooth',
         });
       }
     }
@@ -139,7 +139,7 @@ export default function Features({
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
+      setCurrentIndex(prevIndex =>
         prevIndex !== undefined ? (prevIndex + 1) % data.length : 0
       );
     }, collapseDelay);
@@ -164,7 +164,7 @@ export default function Features({
     if (carousel) {
       const handleScroll = () => {
         const scrollLeft = carousel.scrollLeft;
-        const cardWidth = carousel.querySelector(".card")?.clientWidth || 0;
+        const cardWidth = carousel.querySelector('.card')?.clientWidth || 0;
         const newIndex = Math.min(
           Math.floor(scrollLeft / cardWidth),
           data.length - 1
@@ -172,19 +172,19 @@ export default function Features({
         setCurrentIndex(newIndex);
       };
 
-      carousel.addEventListener("scroll", handleScroll);
-      return () => carousel.removeEventListener("scroll", handleScroll);
+      carousel.addEventListener('scroll', handleScroll);
+      return () => carousel.removeEventListener('scroll', handleScroll);
     }
   }, [data.length]);
 
   return (
     <section ref={ref} id="features">
       <div className="container">
-        <div className="max-w-6xl mx-auto">
-          <div className="mx-auto my-12 h-full grid lg:grid-cols-2 gap-10 items-center">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto my-8 grid h-full items-center gap-6 lg:my-12 lg:grid-cols-2 lg:gap-10">
             <div
-              className={` hidden lg:flex order-1 lg:order-[0] ${
-                ltr ? "lg:order-2 lg:justify-end" : "justify-start"
+              className={`order-1 hidden lg:order-[0] lg:flex ${
+                ltr ? 'lg:order-2 lg:justify-end' : 'justify-start'
               }`}
             >
               <Accordion.Root
@@ -192,8 +192,8 @@ export default function Features({
                 type="single"
                 defaultValue={`item-${currentIndex}`}
                 value={`item-${currentIndex}`}
-                onValueChange={(value) =>
-                  setCurrentIndex(Number(value.split("-")[1]))
+                onValueChange={value =>
+                  setCurrentIndex(Number(value.split('-')[1]))
                 }
               >
                 {data.map((item, index) => (
@@ -202,61 +202,61 @@ export default function Features({
                     className="relative mb-8 last:mb-0"
                     value={`item-${index}`}
                   >
-                    {linePosition === "left" || linePosition === "right" ? (
+                    {linePosition === 'left' || linePosition === 'right' ? (
                       <div
                         className={`absolute bottom-0 top-0 h-full w-0.5 overflow-hidden rounded-lg bg-neutral-300/50 dark:bg-neutral-300/30 ${
-                          linePosition === "right"
-                            ? "left-auto right-0"
-                            : "left-0 right-auto"
+                          linePosition === 'right'
+                            ? 'left-auto right-0'
+                            : 'left-0 right-auto'
                         }`}
                       >
                         <div
                           className={`absolute left-0 top-0 w-full ${
-                            currentIndex === index ? "h-full" : "h-0"
+                            currentIndex === index ? 'h-full' : 'h-0'
                           } origin-top bg-primary transition-all ease-linear dark:bg-white`}
                           style={{
                             transitionDuration:
                               currentIndex === index
                                 ? `${collapseDelay}ms`
-                                : "0s",
+                                : '0s',
                           }}
                         ></div>
                       </div>
                     ) : null}
 
-                    {linePosition === "top" || linePosition === "bottom" ? (
+                    {linePosition === 'top' || linePosition === 'bottom' ? (
                       <div
-                        className={`absolute left-0 right-0 w-full h-0.5 overflow-hidden rounded-lg bg-neutral-300/50 dark:bg-neutral-300/30 ${
-                          linePosition === "bottom" ? "bottom-0" : "top-0"
+                        className={`absolute left-0 right-0 h-0.5 w-full overflow-hidden rounded-lg bg-neutral-300/50 dark:bg-neutral-300/30 ${
+                          linePosition === 'bottom' ? 'bottom-0' : 'top-0'
                         }`}
                       >
                         <div
                           className={`absolute left-0 ${
-                            linePosition === "bottom" ? "bottom-0" : "top-0"
+                            linePosition === 'bottom' ? 'bottom-0' : 'top-0'
                           } h-full ${
-                            currentIndex === index ? "w-full" : "w-0"
+                            currentIndex === index ? 'w-full' : 'w-0'
                           } origin-left bg-primary transition-all ease-linear dark:bg-white`}
                           style={{
                             transitionDuration:
                               currentIndex === index
                                 ? `${collapseDelay}ms`
-                                : "0s",
+                                : '0s',
                           }}
                         ></div>
                       </div>
                     ) : null}
 
-                    <div className="flex items-center relative">
-                      <div className="item-box w-12 h-12 bg-primary/10 rounded-full sm:mx-6 mx-2 shrink-0 flex items-center justify-center">
+                    <div className="relative flex items-start">
+                      <div className="item-box mx-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 sm:mx-4 lg:mx-6 lg:h-12 lg:w-12">
                         {item.icon}
                       </div>
 
-                      <div>
-                        <AccordionTrigger className="text-xl font-bold pl-0">
+                      <div className="flex-1">
+                        <AccordionTrigger className="pl-0 text-left text-lg font-bold lg:text-xl">
                           {item.title}
                         </AccordionTrigger>
 
-                        <AccordionTrigger className="justify-start text-left leading-4 text-[16px] pl-0">
+                        <AccordionTrigger className="mt-2 justify-start pl-0 text-left text-sm leading-relaxed lg:text-[16px]">
                           {item.content}
                         </AccordionTrigger>
                       </div>
@@ -266,8 +266,8 @@ export default function Features({
               </Accordion.Root>
             </div>
             <div
-              className={`h-[350px] min-h-[200px] w-auto  ${
-                ltr && "lg:order-1"
+              className={`h-[250px] min-h-[200px] w-auto sm:h-[300px] lg:h-[350px] ${
+                ltr && 'lg:order-1'
               }`}
             >
               {data[currentIndex]?.image ? (
@@ -279,7 +279,7 @@ export default function Features({
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                 />
               ) : data[currentIndex]?.video ? (
                 <video
@@ -297,33 +297,37 @@ export default function Features({
 
             <ul
               ref={carouselRef}
-              className=" flex h-full snap-x flex-nowrap overflow-x-auto py-10 [-ms-overflow-style:none] [-webkit-mask-image:linear-gradient(90deg,transparent,black_20%,white_80%,transparent)] [mask-image:linear-gradient(90deg,transparent,black_20%,white_80%,transparent)] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden snap-mandatory"
-              style={{
-                padding: "50px calc(50%)",
-              }}
+              className="flex h-full snap-x snap-mandatory flex-nowrap overflow-x-auto px-4 py-6 [-ms-overflow-style:none] [-webkit-mask-image:linear-gradient(90deg,transparent,black_10%,white_90%,transparent)] [mask-image:linear-gradient(90deg,transparent,black_10%,white_90%,transparent)] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden"
             >
               {data.map((item, index) => (
                 <div
                   key={item.id}
-                  className="card relative mr-8 grid h-full max-w-60 shrink-0 items-start justify-center py-4 last:mr-0"
+                  className="card relative mr-6 grid h-full w-72 shrink-0 items-start justify-center rounded-lg border border-gray-200/50 bg-white/50 px-4 py-6 last:mr-0 dark:border-gray-700/50 dark:bg-gray-800/50"
                   onClick={() => setCurrentIndex(index)}
                   style={{
-                    scrollSnapAlign: "center",
+                    scrollSnapAlign: 'center',
                   }}
                 >
                   <div className="absolute bottom-0 left-0 right-auto top-0 h-0.5 w-full overflow-hidden rounded-lg bg-neutral-300/50 dark:bg-neutral-300/30">
                     <div
                       className={`absolute left-0 top-0 h-full ${
-                        currentIndex === index ? "w-full" : "w-0"
+                        currentIndex === index ? 'w-full' : 'w-0'
                       } origin-top bg-primary transition-all ease-linear`}
                       style={{
                         transitionDuration:
-                          currentIndex === index ? `${collapseDelay}ms` : "0s",
+                          currentIndex === index ? `${collapseDelay}ms` : '0s',
                       }}
                     ></div>
                   </div>
-                  <h2 className="text-xl font-bold">{item.title}</h2>
-                  <p className="mx-0 max-w-sm text-balance text-sm">
+                  <div className="mb-3 flex items-center">
+                    <div className="mr-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      {item.icon}
+                    </div>
+                    <h2 className="text-lg font-bold leading-tight">
+                      {item.title}
+                    </h2>
+                  </div>
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                     {item.content}
                   </p>
                 </div>

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import Drawer from "@/components/drawer";
-import { Icons } from "@/components/icons";
-import Menu from "@/components/menu";
-import { buttonVariants } from "@/components/ui/button";
-import { ContactModal } from "@/components/contact-modal";
-import { siteConfig } from "@/lib/config";
-import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import Drawer from '@/components/drawer';
+import { Icons } from '@/components/icons';
+import Menu from '@/components/menu';
+import { buttonVariants } from '@/components/ui/button';
+import { ContactModal } from '@/components/contact-modal';
+import { siteConfig } from '@/lib/config';
+import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
   const [addBorder, setAddBorder] = useState(false);
@@ -22,62 +22,60 @@ export default function Header() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <header
       className={
-        "relative sticky top-0 z-50 py-2 bg-background/60 backdrop-blur"
+        'relative sticky top-0 z-50 bg-background/60 py-2 backdrop-blur'
       }
     >
-      <div className="flex justify-between items-center container">
+      <div className="container flex items-center justify-between">
         <a
           href="/"
           title="brand-logo"
           className="relative mr-6 flex items-center space-x-2"
         >
-          <Icons.logo className="w-[30px] h-[30px]" />
-          <span className="font-bold text-xl">{siteConfig.name}</span> 
+          <Icons.logo className="h-[30px] w-[30px]" />
+          <span className="text-xl font-bold">{siteConfig.name}</span>
         </a>
 
         <div className="hidden lg:block">
-          <div className="flex items-center ">
+          <div className="flex items-center">
             <nav className="mr-5">
-              <Menu />
+              <Menu onContactClick={() => setIsContactModalOpen(true)} />
             </nav>
-            <div className="gap-2 flex">
+            <div className="flex gap-2">
               <button
                 onClick={() => setIsContactModalOpen(true)}
                 className={cn(
-                  buttonVariants({ variant: "default" }),
-                  "w-full sm:w-auto text-background flex gap-2"
+                  buttonVariants({ variant: 'default' }),
+                  'flex w-full gap-2 text-background sm:w-auto'
                 )}
               >
-                <strong>
-                  Book Your Discovery Call
-                </strong>
+                <strong>Book Your Discovery Call</strong>
               </button>
             </div>
           </div>
         </div>
-        <div className="mt-2 cursor-pointer block lg:hidden">
-          <Drawer />
+        <div className="mt-2 block cursor-pointer lg:hidden">
+          <Drawer onContactClick={() => setIsContactModalOpen(true)} />
         </div>
       </div>
       <hr
         className={cn(
-          "absolute w-full bottom-0 transition-opacity duration-300 ease-in-out",
-          addBorder ? "opacity-100" : "opacity-0"
+          'absolute bottom-0 w-full transition-opacity duration-300 ease-in-out',
+          addBorder ? 'opacity-100' : 'opacity-0'
         )}
       />
-      <ContactModal 
-        open={isContactModalOpen} 
-        onOpenChange={setIsContactModalOpen} 
+      <ContactModal
+        open={isContactModalOpen}
+        onOpenChange={setIsContactModalOpen}
       />
     </header>
   );

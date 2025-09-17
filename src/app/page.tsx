@@ -21,6 +21,7 @@ import VapiScript from '@/components/VapiScript';
 import OurProducts from '@/components/sections/our-products';
 import AgentsExample from '@/components/agents-example';
 import VideoSection from '@/components/sections/video-section';
+import TrustedBy from '@/components/sections/trusted-by';
 
 import { Socials } from '@/components/socials';
 import { initMixpanel } from '@/lib/mixpanel';
@@ -47,14 +48,16 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      {!isMobile ? <Logos /> : <div style={{ marginBottom: '100px' }}></div>}
+      <TrustedBy />
       <Problem />
       <Solution />
       <HowItWorks />
       <OurProducts />
       <Pricing />
+      {!isMobile ? <Logos /> : <div style={{ marginBottom: '100px' }}></div>}
       <FAQ />
       <CTA />
+
       <Features />
       <Socials />
       <Footer />

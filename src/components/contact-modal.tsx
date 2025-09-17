@@ -267,13 +267,13 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
               {/* Left Column - Copy */}
               <div className="flex flex-col justify-center space-y-6 lg:col-span-1">
                 <div className="space-y-4">
-                  <h2 className="text-3xl font-bold leading-tight text-white">
-                    Transform Your Business with AI
-                  </h2>
-                  <p className="text-lg leading-relaxed text-white/80">
-                    We&apos;ll assess your case and contact you within 1
-                    business day.
-                  </p>
+                  <DialogTitle className="text-2xl font-bold text-white">
+                    Get in Touch
+                  </DialogTitle>
+                  <DialogDescription className="font-semibold text-white/80">
+                    Tell us about your project and we&apos;ll assess your case
+                    and get back to you within 1 business day.
+                  </DialogDescription>
                 </div>
                 <h3 className="text-lg font-semibold text-white">
                   What you are getting:
@@ -348,15 +348,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
 
               {/* Right Columns - Form */}
               <div className="lg:col-span-2">
-                <DialogHeader className="mb-6">
-                  <DialogTitle className="text-xl font-bold text-white">
-                    Get in Touch
-                  </DialogTitle>
-                  <DialogDescription className="font-semibold text-white/80">
-                    Tell us about your project and we&apos;ll get back to you as
-                    soon as possible.
-                  </DialogDescription>
-                </DialogHeader>
+                <DialogHeader className="mb-2"></DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {submitError && (
                     <div className="rounded-lg border border-red-400/20 bg-red-500/10 p-3">
