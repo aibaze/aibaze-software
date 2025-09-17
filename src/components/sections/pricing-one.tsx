@@ -9,11 +9,14 @@ import useWindowSize from '@/lib/hooks/use-window-size';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
-import Link from 'next/link';
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-export default function PricingSection() {
+export default function PricingSection({
+  onContactClick,
+}: {
+  onContactClick?: () => void;
+}) {
   const [isMonthly] = useState(true);
   const { isDesktop } = useWindowSize();
 
@@ -90,8 +93,8 @@ export default function PricingSection() {
 
               <hr className="my-4 w-full" />
 
-              <Link
-                href={siteConfig.ctaLink}
+              <button
+                onClick={onContactClick}
                 className={cn(
                   buttonVariants({
                     variant: 'outline',
@@ -104,7 +107,7 @@ export default function PricingSection() {
                 )}
               >
                 {plan.buttonText}
-              </Link>
+              </button>
               <p className="mt-6 text-xs leading-5 text-muted-foreground">
                 {plan.description}
               </p>

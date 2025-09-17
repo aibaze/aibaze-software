@@ -22,10 +22,11 @@ import OurProducts from '@/components/sections/our-products';
 import AgentsExample from '@/components/agents-example';
 import VideoSection from '@/components/sections/video-section';
 import TrustedBy from '@/components/sections/trusted-by';
+import { ContactModal } from '@/components/contact-modal';
 
 import { Socials } from '@/components/socials';
 import { initMixpanel } from '@/lib/mixpanel';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const getIsMobile = () => {
   if (typeof window !== 'undefined') {
@@ -39,6 +40,7 @@ const getIsMobile = () => {
 
 export default function Home() {
   const isMobile = getIsMobile();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     initMixpanel();
@@ -46,21 +48,25 @@ export default function Home() {
 
   return (
     <main>
-      <Header />
-      <Hero />
+      <Header onContactClick={() => setIsContactModalOpen(true)} />
+      <Hero onContactClick={() => setIsContactModalOpen(true)} />
       <TrustedBy />
       <Problem />
       <Solution />
-      <HowItWorks />
+      <HowItWorks onContactClick={() => setIsContactModalOpen(true)} />
       <OurProducts />
-      <Pricing />
+      <Pricing onContactClick={() => setIsContactModalOpen(true)} />
       {!isMobile ? <Logos /> : <div style={{ marginBottom: '100px' }}></div>}
       <FAQ />
-      <CTA />
+      <CTA onContactClick={() => setIsContactModalOpen(true)} />
 
       <Features />
       <Socials />
       <Footer />
+      <ContactModal
+        open={isContactModalOpen}
+        onOpenChange={setIsContactModalOpen}
+      />
     </main>
   );
 }

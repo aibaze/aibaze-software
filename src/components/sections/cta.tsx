@@ -1,30 +1,30 @@
-import { Icons } from "@/components/icons";
-import Section from "@/components/section";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { siteConfig } from "@/lib/config";
+import { Icons } from '@/components/icons';
+import Section from '@/components/section';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-export default function CtaSection() {
+export default function CtaSection({
+  onContactClick,
+}: {
+  onContactClick?: () => void;
+}) {
   return (
     <Section
       id="cta"
       title="Ready to Build Your Next AI SaaS Business?"
       subtitle="Take the first step toward launching your AI-powered SaaS startup."
-      className="bg-primary/10 rounded-xl py-16"
+      className="rounded-xl bg-primary/10 py-16"
     >
-      <div className="flex flex-col w-full sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
-        <Link
-          href={siteConfig.ctaLink}
+      <div className="flex w-full flex-col items-center justify-center space-y-4 pt-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+        <button
+          onClick={onContactClick}
           className={cn(
-            buttonVariants({ variant: "default" }),
-            "w-full sm:w-auto text-background flex gap-2"
+            buttonVariants({ variant: 'default' }),
+            'flex w-full gap-2 text-background sm:w-auto'
           )}
         >
-           <strong>
-                  Book Your Discovery Call
-                </strong>
-        </Link>
+          <strong>Book Your Discovery Call</strong>
+        </button>
       </div>
     </Section>
   );

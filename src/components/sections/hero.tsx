@@ -6,12 +6,8 @@ import { Icons } from '@/components/icons';
 import HeroVideoDialog from '@/components/magicui/hero-video';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 
 const ease = [0.16, 1, 0.3, 1];
-import { siteConfig } from '@/lib/config';
-
-// Near entry of your product, init Mixpanel
 
 function HeroPill() {
   return (
@@ -90,7 +86,13 @@ function HeroTitles() {
   );
 }
 
-export function HeroCTA({ hideText = false }) {
+export function HeroCTA({
+  hideText = false,
+  onContactClick,
+}: {
+  hideText?: boolean;
+  onContactClick?: () => void;
+}) {
   return (
     <>
       <motion.div
@@ -99,8 +101,8 @@ export function HeroCTA({ hideText = false }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, ease }}
       >
-        <Link
-          href={siteConfig.ctaLink}
+        <button
+          onClick={onContactClick}
           className={cn(
             buttonVariants({ variant: 'default' }),
             'text-bold flex w-full text-black sm:w-auto'
@@ -111,7 +113,7 @@ export function HeroCTA({ hideText = false }) {
           }}
         >
           <strong>Book Your Discovery Call</strong>
-        </Link>
+        </button>
       </motion.div>
       {!hideText && (
         <motion.p
@@ -146,7 +148,11 @@ function HeroImage() {
   );
 }
 
-export default function Hero() {
+export default function Hero({
+  onContactClick,
+}: {
+  onContactClick?: () => void;
+}) {
   return (
     <section id="hero" className="relative">
       <div
@@ -179,7 +185,7 @@ export default function Hero() {
         <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 sm:px-6 sm:pt-8 md:pt-16">
           <HeroPill />
           <HeroTitles />
-          <HeroCTA hideText={true} />
+          <HeroCTA hideText={true} onContactClick={onContactClick} />
 
           <HeroImage />
         </div>
