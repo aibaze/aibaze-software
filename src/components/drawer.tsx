@@ -18,7 +18,7 @@ interface DrawerDemoProps {
   onContactClick?: () => void;
 }
 
-export default function drawerDemo({ onContactClick }: DrawerDemoProps) {
+export default function DrawerDemo({ onContactClick }: DrawerDemoProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const handleContactClick = () => {

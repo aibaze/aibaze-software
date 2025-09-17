@@ -190,8 +190,8 @@ export default function VideoLandingPage() {
             Transform Your Business with AI
           </h1>
           <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-600 dark:text-gray-300">
-            Watch how we've helped businesses automate processes, reduce costs,
-            and scale efficiently with custom AI solutions.
+            Watch how we&apos;ve helped businesses automate processes, reduce
+            costs, and scale efficiently with custom AI solutions.
           </p>
 
           {/* Video Section */}
@@ -237,15 +237,15 @@ export default function VideoLandingPage() {
                   Thank You!
                 </h2>
                 <p className="mb-6 text-gray-600 dark:text-gray-300">
-                  Your message has been sent successfully. We'll review your
-                  project details and get back to you within 24 hours.
+                  Your message has been sent successfully. We&apos;ll review
+                  your project details and get back to you within 24 hours.
                 </p>
                 <div className="mb-6 rounded-lg border border-blue-400/20 bg-blue-500/10 p-4">
                   <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
                     📧 Check your email
                   </p>
                   <p className="mt-1 text-xs text-blue-500 dark:text-blue-300">
-                    We've sent you a confirmation email with next steps.
+                    We&apos;ve sent you a confirmation email with next steps.
                   </p>
                 </div>
                 <Button
@@ -262,7 +262,7 @@ export default function VideoLandingPage() {
                     Ready to Get Started?
                   </h2>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Tell us about your project and we'll create a custom AI
+                    Tell us about your project and we&apos;ll create a custom AI
                     solution for your business.
                   </p>
                 </div>
@@ -626,7 +626,7 @@ export default function VideoLandingPage() {
                 </form>
 
                 <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                  We'll respond within 24 hours with a custom proposal
+                  We&apos;ll respond within 24 hours with a custom proposal
                 </p>
               </>
             )}
