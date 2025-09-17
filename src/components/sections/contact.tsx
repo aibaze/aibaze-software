@@ -407,7 +407,7 @@ export default function VideoLandingPage() {
                           </option>
                           <option value="voice-ai-calls">Voice AI Calls</option>
                           <option value="custom-saas-use-case">
-                            Custom SaaS Use Case
+                            Custom AI Use Case
                           </option>
                           <option value="other">Other</option>
                         </select>

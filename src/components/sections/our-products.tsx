@@ -12,18 +12,18 @@ const caseStudies = [
     id: 1,
     image: 'https://i.ibb.co/d4bbbKpr/Screenshot-2025-03-27-at-4-16-48-PM.png',
     description:
-      'A SaaS company struggling with manual lead qualification saw 300% increase in qualified leads after implementing our AI voice agent dashboard. The platform now handles 2,000+ calls daily with 95% accuracy in lead scoring.',
+      'A tech company struggling with manual lead qualification saw 300% increase in qualified leads after implementing our AI voice agent dashboard. The platform now handles 2,000+ calls daily with 95% accuracy in lead scoring.',
     alt: 'AI Voice Agents Admin Dashboard showing analytics',
     title: 'AI Voice Agents Dashboard',
     titleSize: 'text-xl',
     result: '300% increase in qualified leads',
-    industry: 'SaaS Lead Generation',
+    industry: 'AI Lead Generation',
   },
   {
     id: 2,
     image: '/profile-header.png',
-    alt: 'AI SaaS platform dashboard for entrepreneurs',
-    title: 'All-in-One AI SaaS Platform',
+    alt: 'AI business platform dashboard for entrepreneurs',
+    title: 'All-in-One AI Business Platform',
     description:
       'An online entrepreneur reduced operational overhead by 60% using our comprehensive platform. Automated booking requests, service management, and analytics helped them scale from $10K to $100K monthly revenue in 6 months.',
     titleSize: 'text-xl',

@@ -23,7 +23,7 @@ export default function PricingSection({
   return (
     <Section
       title="Pricing"
-      subtitle="Solutions Tailored to Your SaaS Launch Goals"
+      subtitle="Solutions Tailored to Your AI Launch Goals"
     >
       <div className="">
         {siteConfig.pricingMain.map((plan, index) => (

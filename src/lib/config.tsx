@@ -7,17 +7,17 @@ export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
   name: 'Aibaze',
-  description: 'AI SaaS Development Agency - Build Your Next AI SaaS Business',
+  description: 'AI Development Agency - Build Your Next AI Business',
   url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
   keywords: [
-    'AI SaaS Development',
-    'SaaS Business',
+    'AI Development',
+    'AI Business',
     'Startup Development',
     'AI Software',
-    'SaaS Agency',
+    'AI Agency',
   ],
   ctaLink: 'https://calendar.app.google/SdCB8dsnamqTVUbCA',
-  saasLink: 'https://site.aibaze.com?from=agency-website',
+  aiLink: 'https://site.aibaze.com?from=agency-website',
   keys: {
     mixpanel: process.env.NEXT_PUBLIC_MIXPALNEL_TOKEN || '',
   },
@@ -37,22 +37,22 @@ export const siteConfig = {
       content: {
         items: [
           {
-            title: 'AI SaaS Development',
+            title: 'AI Development',
             href: '#',
             description:
-              'Custom AI-powered SaaS solutions for startups and growing businesses.',
+              'Custom AI-powered solutions for startups and growing businesses.',
           },
           {
-            title: 'SaaS Business Strategy',
+            title: 'AI Business Strategy',
             href: '#',
             description:
-              'Complete SaaS business development from concept to launch.',
+              'Complete AI business development from concept to launch.',
           },
           {
             title: 'AI Integration Services',
             href: '#',
             description:
-              'Seamless AI integration into your existing SaaS platform.',
+              'Seamless AI integration into your existing business platform.',
           },
         ],
       },
@@ -67,12 +67,12 @@ export const siteConfig = {
       yearlyPrice: '$0',
       features: [
         {
-          title: 'SaaS Business Analysis',
-          text: 'We analyze your SaaS concept to identify key AI integration opportunities and market positioning for maximum success potential.',
+          title: 'AI Business Analysis',
+          text: 'We analyze your AI concept to identify key integration opportunities and market positioning for maximum success potential.',
         },
         {
-          title: 'Custom SaaS Development Roadmap',
-          text: 'Receive a detailed development plan and launch timeline for your AI-powered SaaS platform.',
+          title: 'Custom AI Development Roadmap',
+          text: 'Receive a detailed development plan and launch timeline for your AI-powered business solution.',
         },
         {
           title: 'Technical Implementation',
@@ -80,10 +80,10 @@ export const siteConfig = {
         },
         {
           title: 'Launch & Growth',
-          text: 'We launch your SaaS and provide ongoing support to ensure it scales and achieves your goals.',
+          text: 'We launch your AI solution and provide ongoing support to ensure it scales and achieves your goals.',
         },
       ],
-      description: 'No cost, no obligation SaaS strategy assessment',
+      description: 'No cost, no obligation AI strategy assessment',
       buttonText: 'Book Your Discovery Call',
       isPopular: true,
     },
@@ -143,33 +143,33 @@ export const siteConfig = {
   ],
   faqs: [
     {
-      question: 'How do you help build AI SaaS businesses from scratch?',
+      question: 'How do you help build AI businesses from scratch?',
       answer: (
         <span>
-          We provide end-to-end AI SaaS development services, from concept
-          validation to market launch. Our team handles technical architecture,
-          AI integration, user interface design, and growth optimization,
-          requiring minimal technical expertise from your startup team.
+          We provide end-to-end AI development services, from concept validation
+          to market launch. Our team handles technical architecture, AI
+          integration, user interface design, and growth optimization, requiring
+          minimal technical expertise from your startup team.
         </span>
       ),
     },
     {
-      question: 'What types of startups benefit most from AI SaaS development?',
+      question: 'What types of startups benefit most from AI development?',
       answer: (
         <span>
-          Our AI SaaS development services deliver exceptional results for
-          startups in B2B and B2C software, data analytics, customer service,
-          and automation platforms. If your startup aims to build a business
-          that can scale rapidly with AI-powered features, our development
-          approach can accelerate your time-to-market and competitive advantage.
+          Our AI development services deliver exceptional results for startups
+          in B2B and B2C software, data analytics, customer service, and
+          automation platforms. If your startup aims to build a business that
+          can scale rapidly with AI-powered features, our development approach
+          can accelerate your time-to-market and competitive advantage.
         </span>
       ),
     },
     {
-      question: 'How do you ensure SaaS platform performance and scalability?',
+      question: 'How do you ensure AI platform performance and scalability?',
       answer: (
         <span>
-          Our AI SaaS platforms use state-of-the-art technology that delivers
+          Our AI platforms use state-of-the-art technology that delivers
           exceptional performance and user experience at scale. We design each
           platform with scalable architecture, intelligent AI features, and
           optimized user interfaces. Regular monitoring and optimization ensure
@@ -187,7 +187,7 @@ export const siteConfig = {
           regular performance reporting, growth optimization, and dedicated
           account management. Our team continuously analyzes metrics to identify
           opportunities for feature enhancement and market expansion, working
-          closely with you to ensure your AI SaaS delivers maximum growth
+          closely with you to ensure your AI solution delivers maximum growth
           potential and achieves your business goals.
         </span>
       ),

@@ -122,7 +122,7 @@ export function HeroCTA({
           animate={{ opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
         >
-          Includes strategy session & custom SaaS demo
+          Includes strategy session & custom AI solution demo
         </motion.p>
       )}
     </>

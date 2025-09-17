@@ -503,7 +503,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                             value="custom-saas-use-case"
                             className="bg-gray-800 text-white"
                           >
-                            Custom SaaS Use Case
+                            Custom AI Use Case
                           </option>
                           <option
                             value="other"
