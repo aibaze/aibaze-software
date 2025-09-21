@@ -81,8 +81,8 @@ const OurProducts = () => {
     <Section
       id="our-products"
       title="Success Stories"
-      subtitle="Real Results from Real Clients"
-      description="Discover how our AI solutions have transformed businesses across different industries with measurable outcomes."
+      subtitle="Products that shape industries and spark solutions"
+      description="By harnessing advanced technologies, we create products that solve real challenges and drive industries forward."
     >
       <div className="mt-10 flex flex-wrap justify-start gap-8 px-4">
         {caseStudies.map(caseStudy => (

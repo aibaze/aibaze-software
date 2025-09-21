@@ -52,6 +52,7 @@ export default function Home() {
       <Hero onContactClick={() => setIsContactModalOpen(true)} />
       <TrustedBy />
       <Problem />
+
       <Solution />
       <HowItWorks onContactClick={() => setIsContactModalOpen(true)} />
       <OurProducts />
@@ -59,8 +60,7 @@ export default function Home() {
       {!isMobile ? <Logos /> : <div style={{ marginBottom: '100px' }}></div>}
       <FAQ />
       <CTA onContactClick={() => setIsContactModalOpen(true)} />
-
-      <Features />
+      <AgentsExample />
       <Socials />
       <Footer />
       <ContactModal

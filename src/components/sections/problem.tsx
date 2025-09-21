@@ -5,19 +5,19 @@ import { Brain, Shield, Zap } from 'lucide-react';
 
 const problems = [
   {
-    title: 'Complex Technical Development',
+    title: 'Top %1 Software Talent',
     description:
       'Building a successful AI business requires deep technical expertise, market understanding, and rapid iteration capabilities that most startups lack.',
     icon: Brain,
   },
   {
-    title: 'Slow Time-to-Market',
+    title: 'Guaranteed in-time delivery',
     description:
       'Startups that launch faster capture market share. Traditional development cycles take 6-12 months, while AI-powered solutions can launch in 2-3 months with proper strategy.',
     icon: Zap,
   },
   {
-    title: 'Unreliable Solutions',
+    title: 'Robust Security Standards',
     description:
       'Most startups lack the technical expertise to build scalable AI platforms. Without proper architecture and AI integration, they struggle to compete and scale effectively.',
     icon: Shield,
@@ -27,7 +27,7 @@ const problems = [
 export default function Component() {
   return (
     <Section
-      title="Problem"
+      title=""
       subtitle="Stop Letting Technical Challenges Hold Your AI Business Back"
     >
       <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">

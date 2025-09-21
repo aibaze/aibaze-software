@@ -6,11 +6,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const images = [
-  'https://i.ibb.co/gb7wYc7j/Realestate.webp',
-  'https://i.ibb.co/DfH668V9/hr.webp',
+  'https://i.ibb.co/7x2g1QjZ/1957.jpg', // app mobile startup
+  'https://i.ibb.co/gFtS81NG/e-commerce.png', //e-commerce
   'https://i.ibb.co/YBsBvBCP/FIN.webp',
-  'https://i.ibb.co/Q7jFw25n/soft.webp',
-  'https://i.ibb.co/fL44NpP/mkt.webp',
+  'https://i.ibb.co/d4z78FfM/43.jpg', //software custom
+  'https://i.ibb.co/4ZBpYTFh/72250354-9690814.jpg', // website industrial
   'https://i.ibb.co/fVV3RL0Y/food.webp',
 ];
 const features = [
@@ -44,11 +44,22 @@ const features = [
 export default function Component() {
   return (
     <Section
-      title="Solution"
-      subtitle="Transform Your Vision Into Powerful AI Products"
-      description="Launch your MVP in weeks, not months, with our proven development process."
-      className="bg-neutral-100 text-black"
+      blackTitle={false}
+      title="Leading solutions 2025"
+      subtitle="Transform Your Vision Into leading products"
+      description="Software product development services for leading companies worldwide."
+      className="relative"
     >
+      <img
+        src="/3D-obj1.png"
+        width={250}
+        className="absolute left-0 top-[90px] z-10 rotate-[170deg] transform"
+      />
+      <img
+        src="/3D-obj1.png"
+        width={250}
+        className="absolute left-[78%] top-[-100px] z-10 rotate-[280deg] transform"
+      />
       <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
         {features.map((feature, index) => (
           <motion.div
