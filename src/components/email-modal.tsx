@@ -66,8 +66,8 @@ export function EmailModal({
               id="name"
               type="text"
               value={name}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              onChange={e => setName(e.target.value)}
+              placeholder="Enter your name"
               required
             />
           </div>
