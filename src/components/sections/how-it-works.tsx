@@ -36,14 +36,6 @@ const data = [
     image: 'https://i.ibb.co/Kc2kJhxB/110211.jpg',
     icon: <Shield className="h-6 w-6 text-primary" />,
   },
-  {
-    id: 5,
-    title: 'Support and Maintenance (Optional)',
-    content:
-      'Launch your app to app stores and the web. Most clients retain us as long-term development partners for ongoing support and continuous improvements.',
-    image: 'https://i.ibb.co/cS8yhQ8d/2149416723.jpg',
-    icon: <Rocket className="h-6 w-6 text-primary" />,
-  },
 ];
 
 export default function Component({

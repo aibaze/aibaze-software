@@ -70,7 +70,7 @@ export default function Component() {
         width={250}
         className="absolute left-[78%] top-[-100px] z-10 rotate-[280deg] transform"
       />
-      <div className="mx-auto mt-16 max-w-7xl">
+      <div className="mx-auto mt-16">
         {/* Top Row - 2 sections */}
         <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
           {features.slice(0, 2).map((feature, index) => (

@@ -18,27 +18,30 @@ type AccordionItemProps = {
   className?: string;
 } & Accordion.AccordionItemProps;
 
-const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+const AccordionItem = forwardRef<
+  HTMLDivElement,
+  AccordionItemProps & { isActive?: boolean }
+>(({ children, className, isActive = false, ...props }, forwardedRef) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: 'easeOut' }}
+  >
+    <Accordion.Item
+      className={cn(
+        'group relative transition-all duration-300 focus-within:relative focus-within:z-10',
+        isActive
+          ? 'overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/80 to-white/40 shadow-lg backdrop-blur-sm dark:border-gray-700/20 dark:from-gray-800/80 dark:to-gray-900/40'
+          : 'border-none bg-transparent shadow-none',
+        className
+      )}
+      {...props}
+      ref={forwardedRef}
     >
-      <Accordion.Item
-        className={cn(
-          'group relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/80 to-white/40 shadow-lg backdrop-blur-sm transition-all duration-300 focus-within:relative focus-within:z-10',
-          'dark:border-gray-700/20 dark:from-gray-800/80 dark:to-gray-900/40',
-          className
-        )}
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </Accordion.Item>
-    </motion.div>
-  )
-);
+      {children}
+    </Accordion.Item>
+  </motion.div>
+));
 AccordionItem.displayName = 'AccordionItem';
 
 type AccordionTriggerProps = {
@@ -46,50 +49,54 @@ type AccordionTriggerProps = {
   className?: string;
 };
 
-const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <Accordion.Header className="flex">
-      <Accordion.Trigger
-        className={cn(
-          'group/trigger flex flex-1 cursor-pointer items-center justify-between rounded-xl px-6 py-4 text-[15px] leading-none outline-none transition-all duration-200',
-          'focus:bg-white/5 focus:ring-2 focus:ring-primary/20',
-          className
-        )}
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </Accordion.Trigger>
-    </Accordion.Header>
-  )
-);
+const AccordionTrigger = forwardRef<
+  HTMLButtonElement,
+  AccordionTriggerProps & { isActive?: boolean }
+>(({ children, className, isActive = false, ...props }, forwardedRef) => (
+  <Accordion.Header className="flex">
+    <Accordion.Trigger
+      className={cn(
+        'group/trigger flex flex-1 cursor-pointer items-center justify-between text-[15px] leading-none outline-none transition-all duration-200',
+        isActive
+          ? 'rounded-xl px-6 py-4 focus:bg-white/5 focus:ring-2 focus:ring-primary/20'
+          : 'px-4 py-3 focus:bg-transparent focus:ring-0',
+        className
+      )}
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+    </Accordion.Trigger>
+  </Accordion.Header>
+));
 AccordionTrigger.displayName = 'AccordionTrigger';
 type AccordionContentProps = {
   children: ReactNode;
   className?: string;
 } & Accordion.AccordionContentProps;
 
-const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <Accordion.Content
-      className={cn(
-        'data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down overflow-hidden text-[15px] font-medium',
-        className
-      )}
-      {...props}
-      ref={forwardedRef}
+const AccordionContent = forwardRef<
+  HTMLDivElement,
+  AccordionContentProps & { isActive?: boolean }
+>(({ children, className, isActive = false, ...props }, forwardedRef) => (
+  <Accordion.Content
+    className={cn(
+      'data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down overflow-hidden text-[15px] font-medium',
+      className
+    )}
+    {...props}
+    ref={forwardedRef}
+  >
+    <motion.div
+      className={cn(isActive ? 'px-6 py-4' : 'px-4 py-3')}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, delay: 0.1 }}
     >
-      <motion.div
-        className="px-6 py-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
-      >
-        {children}
-      </motion.div>
-    </Accordion.Content>
-  )
-);
+      {children}
+    </motion.div>
+  </Accordion.Content>
+));
 AccordionContent.displayName = 'AccordionContent';
 
 export type FeaturesDataProps = {
@@ -220,11 +227,12 @@ export default function Features({
                 {data.map((item, index) => (
                   <AccordionItem
                     key={item.id}
+                    isActive={currentIndex === index}
                     className={cn(
                       'relative mb-4 transition-all duration-300 last:mb-0',
                       currentIndex === index
                         ? 'scale-[1.02] border-primary/30 bg-primary/10 shadow-lg shadow-primary/10'
-                        : 'border-white/20'
+                        : ''
                     )}
                     value={`item-${index}`}
                   >
@@ -288,11 +296,14 @@ export default function Features({
                       </div>
                     ) : null}
 
-                    <AccordionTrigger className="relative flex w-full items-start p-2">
+                    <AccordionTrigger
+                      isActive={currentIndex === index}
+                      className="relative flex w-full items-start"
+                    >
                       {/* Enhanced Icon Container */}
                       <motion.div
                         className={cn(
-                          'item-box mx-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border shadow-lg transition-all duration-300 sm:mx-3 lg:mx-4 lg:h-12 lg:w-12',
+                          'item-box mx-3 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border shadow-lg transition-all duration-300 sm:mx-4 lg:mx-5 lg:h-16 lg:w-16',
                           currentIndex === index
                             ? 'border-primary/40 bg-gradient-to-br from-primary/30 to-primary/20 shadow-primary/20'
                             : 'border-primary/20 bg-gradient-to-br from-primary/20 to-primary/10'
@@ -310,7 +321,7 @@ export default function Features({
                       </motion.div>
 
                       <div className="flex-1">
-                        <div className="pl-0 text-left text-base font-bold transition-colors duration-300 lg:text-lg">
+                        <div className="pl-0 text-left text-lg font-bold transition-colors duration-300 lg:text-xl">
                           <motion.span
                             animate={{
                               color:
@@ -324,7 +335,7 @@ export default function Features({
                           </motion.span>
                         </div>
 
-                        <div className="mt-1 justify-start pl-0 text-left text-xs leading-relaxed text-muted-foreground transition-colors duration-300 lg:text-sm">
+                        <div className="mt-2 justify-start pl-0 text-left text-sm leading-relaxed text-muted-foreground transition-colors duration-300 lg:text-base">
                           <motion.span
                             animate={{
                               opacity: currentIndex === index ? 1 : 0.6,
@@ -437,10 +448,10 @@ export default function Features({
                 <motion.div
                   key={item.id}
                   className={cn(
-                    'card relative mr-4 grid h-full w-72 shrink-0 items-start justify-center rounded-xl border px-5 py-6 shadow-lg backdrop-blur-sm transition-all duration-300 last:mr-0',
+                    'card relative mr-4 grid h-full w-80 shrink-0 items-start justify-center transition-all duration-300 last:mr-0',
                     currentIndex === index
-                      ? 'to-primary/8 scale-[1.02] border-primary/40 bg-gradient-to-br from-primary/15 shadow-xl shadow-primary/20'
-                      : 'border-white/20 bg-gradient-to-br from-white/80 to-white/40'
+                      ? 'to-primary/8 scale-[1.02] rounded-xl border border-primary/40 bg-gradient-to-br from-primary/15 px-6 py-8 shadow-xl shadow-primary/20 backdrop-blur-sm'
+                      : 'border-none bg-transparent px-4 py-4 shadow-none'
                   )}
                   onClick={() => setCurrentIndex(index)}
                   style={{
@@ -473,7 +484,7 @@ export default function Features({
                   {/* Enhanced Icon */}
                   <motion.div
                     className={cn(
-                      'mb-4 flex h-14 w-14 items-center justify-center rounded-xl border shadow-lg transition-all duration-300',
+                      'mb-6 flex h-16 w-16 items-center justify-center rounded-xl border shadow-lg transition-all duration-300',
                       currentIndex === index
                         ? 'border-primary/40 bg-gradient-to-br from-primary/30 to-primary/20 shadow-primary/20'
                         : 'border-primary/20 bg-gradient-to-br from-primary/20 to-primary/10'
@@ -496,7 +507,7 @@ export default function Features({
 
                   {/* Enhanced Content */}
                   <motion.h2
-                    className="mb-2 text-center text-lg font-bold"
+                    className="mb-3 text-center text-xl font-bold"
                     animate={{
                       color:
                         currentIndex === index
@@ -509,7 +520,7 @@ export default function Features({
                   </motion.h2>
 
                   <motion.p
-                    className="max-w-sm text-center text-sm leading-relaxed text-muted-foreground"
+                    className="max-w-sm text-center text-base leading-relaxed text-muted-foreground"
                     animate={{
                       opacity: currentIndex === index ? 1 : 0.6,
                     }}
