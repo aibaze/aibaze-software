@@ -110,7 +110,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     setSubmitError('');
 
     try {
-      const response = await api.post(
+      await api.post(
         '/contact-us',
         {
           ...formData,

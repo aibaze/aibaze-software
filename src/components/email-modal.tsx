@@ -1,23 +1,33 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
 
 interface EmailModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onEmailSubmit: (email: string) => void;
+  onEmailSubmit: (email: string, name: string) => void;
 }
 
-export function EmailModal({ isOpen, onClose, onEmailSubmit }: EmailModalProps) {
-  const [email, setEmail] = useState("");
+export function EmailModal({
+  isOpen,
+  onClose,
+  onEmailSubmit,
+}: EmailModalProps) {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
 
   useEffect(() => {
     // Load email from localStorage when component mounts
-    const savedEmail = localStorage.getItem("userEmail");
+    const savedEmail = localStorage.getItem('userEmail');
     if (savedEmail) {
       setEmail(savedEmail);
     }
@@ -26,8 +36,8 @@ export function EmailModal({ isOpen, onClose, onEmailSubmit }: EmailModalProps) 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      localStorage.setItem("userEmail", email);
-      onEmailSubmit(email);
+      localStorage.setItem('userEmail', email);
+      onEmailSubmit(email, name);
       onClose();
     }
   };
@@ -45,7 +55,18 @@ export function EmailModal({ isOpen, onClose, onEmailSubmit }: EmailModalProps) 
               id="email"
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              type="text"
+              value={name}
+              onChange={e => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
             />
@@ -57,4 +78,4 @@ export function EmailModal({ isOpen, onClose, onEmailSubmit }: EmailModalProps) 
       </DialogContent>
     </Dialog>
   );
-} 
+}

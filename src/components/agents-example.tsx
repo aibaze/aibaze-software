@@ -10,6 +10,7 @@ import Vapi from '@vapi-ai/web';
 import toast, { Toaster } from 'react-hot-toast';
 import mixpanel from 'mixpanel-browser';
 import { EmailModal } from '@/components/email-modal';
+import { api } from '@/api';
 // AI application data with male and female options
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || '');
 
@@ -18,7 +19,7 @@ const agentData = [
     id: 1,
     name: 'Liam - Cold Outreach Expert',
     image: 'https://i.ibb.co/ynTxSR8m/Liam.png',
-    assistantId: '75d8b5db-7fbf-4cb7-beb1-42a7fa4ad9ec',
+    assistantId: '1b2bdc8c-5e54-4453-9d42-06b90b1297e0',
   },
 ];
 
@@ -80,21 +81,33 @@ export default function AgentsExample() {
     return handleError(e.message);
   });
 
-  const handleEmailSubmit = async (email: string) => {
+  const handleEmailSubmit = async (email: string, name: string) => {
     if (pendingAgentId && pendingAssistantId) {
       try {
         // Send feedback data
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/feedback`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            title: 'web-call',
-            description: pendingAssistantId,
+
+        await api.post(
+          '/contact-us',
+          {
+            name: name,
             email: email,
-          }),
-        });
+            reason: 'web-call',
+            whereDidYouHearFromUs: 'web-call',
+            phone: 'web-call',
+            website: 'web-call',
+            whatYouWillUseAiFor: 'web-call',
+            businessName: 'web-call',
+            requestedService: 'web-call',
+            targetDate: 'web-call',
+            phoneOptIn: false,
+            internalCompany: 'aibaze',
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
 
         // Start the call
         setSelectedAgent(pendingAgentId);
@@ -122,7 +135,11 @@ export default function AgentsExample() {
           if (!hasCallCredits) {
             return handleError('You have no call credits left.');
           }
-          const call = await vapi.start(pendingAssistantId);
+          const call = await vapi.start(pendingAssistantId, {
+            variableValues: {
+              user_name: name,
+            },
+          });
           console.log(call);
         } catch (error: any) {
           return handleError(error?.message || 'An error occurred.');
