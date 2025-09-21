@@ -22,6 +22,7 @@ import OurProducts from '@/components/sections/our-products';
 import AgentsExample from '@/components/agents-example';
 import VideoSection from '@/components/sections/video-section';
 import TrustedBy from '@/components/sections/trusted-by';
+import AboutUs from '@/components/sections/about-us';
 import { ContactModal } from '@/components/contact-modal';
 
 import { Socials } from '@/components/socials';
@@ -62,6 +63,8 @@ export default function Home() {
       <FAQ />
       <CTA onContactClick={() => setIsContactModalOpen(true)} />
       <Socials />
+      <AboutUs />
+
       <Footer />
       <ContactModal
         open={isContactModalOpen}
