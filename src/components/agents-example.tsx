@@ -20,12 +20,6 @@ const agentData = [
     image: 'https://i.ibb.co/ynTxSR8m/Liam.png',
     assistantId: '75d8b5db-7fbf-4cb7-beb1-42a7fa4ad9ec',
   },
-  {
-    id: 2,
-    name: 'Jessie - Lead Qualification Specialist',
-    image: 'https://i.ibb.co/DDwkgL0q/Jessie.png',
-    assistantId: '07f1d354-902f-4c73-a57b-77b15f04a0dd',
-  },
 ];
 
 const callStatuses = {
@@ -190,20 +184,20 @@ export default function AgentsExample() {
         onEmailSubmit={handleEmailSubmit}
       />
 
-      <div className="container mx-auto px-2">
-        <div className="mb-4 text-center">
+      <div className="container mx-auto max-w-7xl px-4">
+        <div className="mb-8 text-center">
           <h2 className="mb-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
-            Revolutionize Your Sales Pipeline
+            Talk to our AI Agents
           </h2>
           <p className="mx-auto max-w-lg text-base text-gray-600 dark:text-gray-400">
-            Our AI platforms automate workflows and accelerate startup growth
-            24/7.
+            Our AI agents can provide guidance and provide rough estimates for
+            your project 24/7.
           </p>
         </div>
 
-        <div className="mx-auto flex flex-col md:flex-row">
-          {/* Left-aligned stacked agents display (full width on mobile, 50% on desktop) */}
-          <div className="mt-10 flex w-full flex-col items-center gap-16 md:w-1/2 md:flex-row md:gap-10">
+        <div className="mx-auto flex flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
+          {/* Centered agents display */}
+          <div className="flex w-full flex-col items-center gap-16 md:w-1/3 md:gap-10">
             {agentData.map(agent => (
               <div
                 key={agent.id}
@@ -213,10 +207,42 @@ export default function AgentsExample() {
                   <motion.img
                     src={agent.image}
                     alt={agent.name}
-                    className="relative w-full rounded-lg border object-contain shadow-lg"
+                    className="relative h-[400px] w-full rounded-lg border object-contain shadow-lg"
                     initial={{ opacity: 0.9 }}
                     whileHover={{ opacity: 1 }}
                   />
+
+                  {/* Live Vibing Button */}
+                  <motion.div
+                    className="absolute right-4 top-4 flex items-center gap-2 rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white shadow-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      boxShadow: [
+                        '0 0 0px 0px rgba(34, 197, 94, 0.4)',
+                        '0 0 20px 5px rgba(34, 197, 94, 0.6)',
+                        '0 0 0px 0px rgba(34, 197, 94, 0.4)',
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  >
+                    <motion.div
+                      className="h-2 w-2 rounded-full bg-white"
+                      animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.7, 1, 0.7],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                    />
+                    LIVE
+                  </motion.div>
                   {selectedAgent === agent.id && (
                     <BorderBeam
                       size={450}
@@ -338,8 +364,33 @@ export default function AgentsExample() {
             ))}
           </div>
 
+          {/* Contact Copy Section */}
+          <div className="flex w-full flex-col items-center justify-center gap-6 px-4 py-8 md:w-1/3">
+            <div className="text-center">
+              <h3 className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                How we can help you? - call
+              </h3>
+              <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+                Let's talk about your project.
+              </h2>
+              <p className="mb-6 text-base text-gray-300 dark:text-gray-300">
+                Tell us about your challenges. We'll listen closely, dive deeper
+                with the right questions, and deliver tailored solutions you can
+                act on.
+              </p>
+              <button
+                onClick={() =>
+                  handleAgentClick(agentData[0].id, agentData[0].assistantId)
+                }
+                className="rounded-lg border border-white bg-black px-6 py-3 text-white transition-all duration-300 hover:bg-white hover:text-black"
+              >
+                Talk with jessie now &gt;
+              </button>
+            </div>
+          </div>
+
           {/* Right side with spinning image - hidden on mobile */}
-          <div className="hidden w-full flex-col items-center justify-center gap-10 md:flex md:w-1/2">
+          <div className="hidden w-full flex-col items-center justify-center gap-10 md:flex md:w-1/3">
             <motion.div
               className="w-100 h-100 relative"
               animate={
