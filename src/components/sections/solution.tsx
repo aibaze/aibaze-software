@@ -99,8 +99,8 @@ export default function Component() {
                 />
 
                 {/* Title Overlay */}
-                <div className="absolute left-0 right-0 top-0 p-0">
-                  <div className="rounded-t-2xl border-b border-white/20 bg-black/40 backdrop-blur-md">
+                <div className="absolute bottom-0 left-0 right-0 p-0">
+                  <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
                     <div className="flex items-center justify-between p-4">
                       <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                         {feature.title}
@@ -121,8 +121,8 @@ export default function Component() {
 
                 {/* Glassmorphic Overlay */}
                 <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute left-0 right-0 top-0 p-6">
                     <p className="text-sm leading-relaxed text-white">
                       {feature.description}
                     </p>
@@ -161,8 +161,8 @@ export default function Component() {
                 />
 
                 {/* Title Overlay */}
-                <div className="absolute left-0 right-0 top-0">
-                  <div className="rounded-t-2xl border-b border-white/20 bg-black/40 backdrop-blur-md">
+                <div className="absolute bottom-0 left-0 right-0">
+                  <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
                     <div className="flex items-center justify-between p-3">
                       <h3 className="text-lg font-semibold text-white drop-shadow-lg">
                         {feature.title}
@@ -183,8 +183,8 @@ export default function Component() {
 
                 {/* Glassmorphic Overlay */}
                 <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute left-0 right-0 top-0 p-4">
                     <p className="text-xs leading-relaxed text-white">
                       {feature.description}
                     </p>

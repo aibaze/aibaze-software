@@ -55,12 +55,12 @@ export default function Home() {
 
       <Solution />
       <HowItWorks onContactClick={() => setIsContactModalOpen(true)} />
+      <AgentsExample />
       <OurProducts />
       <Pricing onContactClick={() => setIsContactModalOpen(true)} />
       {!isMobile ? <Logos /> : <div style={{ marginBottom: '100px' }}></div>}
       <FAQ />
       <CTA onContactClick={() => setIsContactModalOpen(true)} />
-      <AgentsExample />
       <Socials />
       <Footer />
       <ContactModal
