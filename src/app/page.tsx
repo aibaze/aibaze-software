@@ -22,6 +22,7 @@ import OurProducts from '@/components/sections/our-products';
 import AgentsExample from '@/components/agents-example';
 import VideoSection from '@/components/sections/video-section';
 import TrustedBy from '@/components/sections/trusted-by';
+import AboutUs from '@/components/sections/about-us';
 import { ContactModal } from '@/components/contact-modal';
 
 import { Socials } from '@/components/socials';
@@ -52,16 +53,18 @@ export default function Home() {
       <Hero onContactClick={() => setIsContactModalOpen(true)} />
       <TrustedBy />
       <Problem />
+
       <Solution />
       <HowItWorks onContactClick={() => setIsContactModalOpen(true)} />
+      <AgentsExample />
       <OurProducts />
       <Pricing onContactClick={() => setIsContactModalOpen(true)} />
       {!isMobile ? <Logos /> : <div style={{ marginBottom: '100px' }}></div>}
       <FAQ />
       <CTA onContactClick={() => setIsContactModalOpen(true)} />
-
-      <Features />
       <Socials />
+      <AboutUs />
+
       <Footer />
       <ContactModal
         open={isContactModalOpen}

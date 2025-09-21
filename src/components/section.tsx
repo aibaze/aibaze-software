@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 interface SectionProps {
   id?: string;
   title?: string;
@@ -5,6 +6,7 @@ interface SectionProps {
   description?: string;
   children?: React.ReactNode;
   className?: string;
+  blackTitle?: boolean;
 }
 
 export default function Section({
@@ -14,15 +16,21 @@ export default function Section({
   description,
   children,
   className,
+  blackTitle,
 }: SectionProps) {
-  const sectionId = title ? title.toLowerCase().replace(/\s+/g, "-") : id;
+  const sectionId = title ? title.toLowerCase().replace(/\s+/g, '-') : id;
   return (
     <section id={id || sectionId}>
       <div className={className}>
-        <div className="relative container mx-auto px-4 py-16 max-w-7xl">
-          <div className="text-center space-y-4 pb-6 mx-auto">
+        <div className="container relative mx-auto max-w-7xl px-4 py-16">
+          <div className="mx-auto space-y-4 pb-6 text-center">
             {title && (
-              <h2 className="text-sm text-primary font-mono font-medium tracking-wider uppercase">
+              <h2
+                className={cn(
+                  'font-mono text-sm font-medium uppercase tracking-wider text-primary',
+                  blackTitle && 'text-black'
+                )}
+              >
                 {title}
               </h2>
             )}
@@ -32,7 +40,7 @@ export default function Section({
               </h3>
             )}
             {description && (
-              <p className="mt-6 text-lg leading-8 text-slate-600 max-w-2xl mx-auto">
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
                 {description}
               </p>
             )}

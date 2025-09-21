@@ -11,8 +11,8 @@ export default function CtaSection({
   return (
     <Section
       id="cta"
-      title="Ready to Build Your Next AI Business?"
-      subtitle="Take the first step toward launching your AI-powered business."
+      title="Turning ideas into leading products"
+      subtitle="Let's bring your idea to life "
       className="rounded-xl bg-primary/10 py-16"
     >
       <div className="flex w-full flex-col items-center justify-center space-y-4 pt-4 sm:flex-row sm:space-x-4 sm:space-y-0">

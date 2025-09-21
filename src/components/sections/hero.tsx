@@ -13,14 +13,11 @@ function HeroPill() {
   return (
     <motion.a
       href="/contact"
-      className="flex w-auto items-center space-x-2 whitespace-pre rounded-full bg-primary/20 px-2 py-1 pt-1 ring-1 ring-accent"
+      className="flex w-auto items-center space-x-2 whitespace-pre rounded-full bg-primary/20 px-2 py-2 pt-2 ring-1 ring-accent"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease }}
     >
-      <p className="text-sm font-medium text-primary">
-        Book a strategy session
-      </p>
       <svg
         width="12"
         height="12"
@@ -51,23 +48,25 @@ function HeroTitles() {
           staggerChildren: 0.2,
         }}
       >
-        {['Your Tech Partner for', 'AI-Powered', 'Solutions'].map(
-          (text, index) => (
-            <motion.span
-              key={index}
-              className={`inline-block text-balance px-1 font-semibold md:px-2 ${index === 1 ? 'text-primary' : ''}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.2,
-                ease,
-              }}
-            >
-              {text}
-            </motion.span>
-          )
-        )}
+        {[
+          'Your tech partner',
+          'building software & AI',
+          'for industry leaders',
+        ].map((text, index) => (
+          <motion.span
+            key={index}
+            className={`inline-block text-balance px-1 font-semibold md:px-2 ${index === 1 ? 'text-primary' : ''}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: index * 0.2,
+              ease,
+            }}
+          >
+            {text}
+          </motion.span>
+        ))}
       </motion.h1>
       <motion.p
         className="mx-auto max-w-xl text-balance text-center text-lg leading-7 text-muted-foreground sm:text-xl sm:leading-9"
@@ -79,8 +78,8 @@ function HeroTitles() {
           ease,
         }}
       >
-        We help businesses build, launch, and grow next-gen AI software
-        businesses.
+        From vision to execution, we design and deliver world-class products,
+        trusted by global brands.
       </motion.p>
     </div>
   );
@@ -108,7 +107,6 @@ export function HeroCTA({
             'text-bold flex w-full text-black sm:w-auto'
           )}
           style={{
-            boxShadow: '0 0 80px 10px hsl(154, 89%, 74%)',
             fontWeight: 'bold',
           }}
         >
@@ -153,6 +151,8 @@ export default function Hero({
 }: {
   onContactClick?: () => void;
 }) {
+  const backgroundVideo =
+    'https://videocdn.cdnpk.net/videos/b03f97fd-66f9-56a5-9817-9207c70cc733/horizontal/previews/watermarked/large.mp4';
   return (
     <section id="hero" className="relative">
       <div
@@ -173,11 +173,10 @@ export default function Hero({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            opacity: 0.3,
             zIndex: -1,
           }}
         >
-          <source src="/hero-vid.mov" type="video/mp4" />
+          <source src={backgroundVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -187,7 +186,7 @@ export default function Hero({
           <HeroTitles />
           <HeroCTA hideText={true} onContactClick={onContactClick} />
 
-          <HeroImage />
+          {/*   <HeroImage /> */}
         </div>
       </div>
     </section>
