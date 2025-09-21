@@ -1,32 +1,48 @@
 import Features from '@/components/features-vertical';
 import Section from '@/components/section';
-import { Sparkles, Upload, Zap } from 'lucide-react';
+import { Search, Zap, Code, Shield, Rocket } from 'lucide-react';
 import { HeroCTA } from './hero';
 
 const data = [
   {
     id: 1,
-    title: 'Discovery & Strategy Session',
+    title: 'First Contact and Product Discovery',
     content:
-      'Identify your AI opportunity, target market, and integration potential within a 30-minute consultation. Our experts map your business model and create a custom development roadmap with launch timeline.',
+      'Your idea meets technical reality. We collaborate to formulate product requirements, envision user journeys, and define the optimal tech stack to maximize efficiency and minimize costs.',
     image: 'https://i.ibb.co/Kc2kJhxB/110211.jpg',
-    icon: <Upload className="h-6 w-6 text-primary" />,
+    icon: <Search className="h-6 w-6 text-primary" />,
   },
   {
     id: 2,
-    title: 'Design, Development & Launch',
+    title: 'Rapid UI Prototyping to define the product',
     content:
-      'We build your complete AI-powered business solution with innovative features, scalable architecture, and user-friendly interface. Your solution is designed for rapid growth with automated onboarding and AI-driven user experiences.',
+      'Validate assumptions with real users through low-fidelity wireframes, high-fidelity designs, and interactive prototypes. Test cheaply and quickly before costly development begins.',
     image: 'https://i.ibb.co/cS8yhQ8d/2149416723.jpg',
     icon: <Zap className="h-6 w-6 text-primary" />,
   },
   {
     id: 3,
-    title: 'Mantainance, Support & Scale',
+    title: 'Development & Project Management',
     content:
-      'We deploy your AI solution and provide ongoing support to ensure it scales and achieves your goals.',
+      'Code your Minimum Delightful Product using Agile principles in two-week sprints. Scalable code with compliance for HIPAA, PCI, and bank-level encryption.',
     image: 'https://i.ibb.co/zVR8tkLP/24170.jpg',
-    icon: <Sparkles className="h-6 w-6 text-primary" />,
+    icon: <Code className="h-6 w-6 text-primary" />,
+  },
+  {
+    id: 4,
+    title: 'Quality Assurance and Launch',
+    content:
+      'Comprehensive testing throughout development. We catch problems early with usability testing, cross-device testing, and regression testing to ensure flawless launch.',
+    image: 'https://i.ibb.co/Kc2kJhxB/110211.jpg',
+    icon: <Shield className="h-6 w-6 text-primary" />,
+  },
+  {
+    id: 5,
+    title: 'Support and Maintenance (Optional)',
+    content:
+      'Launch your app to app stores and the web. Most clients retain us as long-term development partners for ongoing support and continuous improvements.',
+    image: 'https://i.ibb.co/cS8yhQ8d/2149416723.jpg',
+    icon: <Rocket className="h-6 w-6 text-primary" />,
   },
 ];
 
@@ -37,8 +53,8 @@ export default function Component({
 }) {
   return (
     <Section
-      title="How it works"
-      subtitle="Bring ideas to life & Launch your MVP on time"
+      title="Our Proven 5-Step Development Process"
+      subtitle="HOW WE BUILD YOUR SUCCESS"
     >
       <Features data={data} />
       <HeroCTA hideText={true} onContactClick={onContactClick} />
