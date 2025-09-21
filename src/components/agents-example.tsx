@@ -388,12 +388,12 @@ export default function AgentsExample() {
                 How we can help you? - call
               </h3>
               <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-                Let's talk about your project.
+                Let&apos;s talk about your project.
               </h2>
               <p className="mb-6 text-base text-gray-300 dark:text-gray-300">
-                Tell us about your challenges. We'll listen closely, dive deeper
-                with the right questions, and deliver tailored solutions you can
-                act on.
+                Tell us about your challenges. We&apos;ll listen closely, dive
+                deeper with the right questions, and deliver tailored solutions
+                you can act on.
               </p>
               <button
                 onClick={() =>
