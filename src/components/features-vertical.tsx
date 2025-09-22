@@ -31,7 +31,7 @@ const AccordionItem = forwardRef<
       className={cn(
         'group relative transition-all duration-300 focus-within:relative focus-within:z-10',
         isActive
-          ? 'overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/80 to-white/40 shadow-lg backdrop-blur-sm dark:border-gray-700/20 dark:from-gray-800/80 dark:to-gray-900/40'
+          ? 'overflow-hidden rounded-2xl border border-white/20 bg-white/5 shadow-2xl backdrop-blur-2xl dark:border-gray-700/20'
           : 'border-none bg-transparent shadow-none',
         className
       )}
@@ -231,7 +231,7 @@ export default function Features({
                     className={cn(
                       'relative mb-4 transition-all duration-300 last:mb-0',
                       currentIndex === index
-                        ? 'scale-[1.02] border-primary/30 bg-primary/10 shadow-lg shadow-primary/10'
+                        ? 'scale-[1.02] border-primary/30 bg-primary/10'
                         : ''
                     )}
                     value={`item-${index}`}
@@ -338,7 +338,11 @@ export default function Features({
                         <div className="mt-2 justify-start pl-0 text-left text-sm leading-relaxed text-muted-foreground transition-colors duration-300 lg:text-base">
                           <motion.span
                             animate={{
-                              opacity: currentIndex === index ? 1 : 0.6,
+                              opacity: currentIndex === index ? 1 : 0,
+                              height: currentIndex === index ? 'auto' : 0,
+                              overflow: 'hidden',
+                              display:
+                                currentIndex === index ? 'block' : 'none',
                             }}
                             transition={{ duration: 0.3 }}
                           >
@@ -450,7 +454,7 @@ export default function Features({
                   className={cn(
                     'card relative mr-4 grid h-full w-80 shrink-0 items-start justify-center transition-all duration-300 last:mr-0',
                     currentIndex === index
-                      ? 'to-primary/8 scale-[1.02] rounded-xl border border-primary/40 bg-gradient-to-br from-primary/15 px-6 py-8 shadow-xl shadow-primary/20 backdrop-blur-sm'
+                      ? 'scale-110 rounded-xl border border-white/20 bg-white/5 px-6 py-8 backdrop-blur-2xl'
                       : 'border-none bg-transparent px-4 py-4 shadow-none'
                   )}
                   onClick={() => setCurrentIndex(index)}
@@ -490,7 +494,7 @@ export default function Features({
                         : 'border-primary/20 bg-gradient-to-br from-primary/20 to-primary/10'
                     )}
                     animate={{
-                      scale: currentIndex === index ? 1.05 : 1,
+                      scale: currentIndex === index ? 1.5 : 0.5,
                       rotate: currentIndex === index ? 2 : 0,
                     }}
                     transition={{ duration: 0.3 }}
@@ -521,8 +525,11 @@ export default function Features({
 
                   <motion.p
                     className="max-w-sm text-center text-base leading-relaxed text-muted-foreground"
-                    animate={{
-                      opacity: currentIndex === index ? 1 : 0.6,
+                    style={{
+                      opacity: currentIndex === index ? 1 : 0,
+                      height: currentIndex === index ? 'auto' : 0,
+                      overflow: 'hidden',
+                      display: currentIndex === index ? 'block' : 'none',
                     }}
                     transition={{ duration: 0.3 }}
                   >
