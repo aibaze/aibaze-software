@@ -5,7 +5,7 @@ const companies = [
   { name: 'Revai', image: '/Revai.webp' },
   { name: 'Trudy', image: '/trudy.webp' },
   { name: 'Allheartz', image: '/allheartz.webp' },
-  { name: 'Topflight apps', image: '/allheartz.png' },
+  { name: 'Topflight apps', image: '/topflightapps.png' },
   { name: 'Riot Games', image: '/riot.webp' },
   { name: 'AVM', image: '/avmlogo.webp' },
   { name: 'AWS', image: '/aws.webp' },

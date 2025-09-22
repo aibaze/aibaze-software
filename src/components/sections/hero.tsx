@@ -157,6 +157,7 @@ export default function Hero({
     <section id="hero" className="relative">
       <div
         style={{
+          height: '70vh',
           position: 'relative',
           overflow: 'hidden',
         }}

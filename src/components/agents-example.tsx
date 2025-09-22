@@ -202,16 +202,6 @@ export default function AgentsExample() {
       />
 
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="mb-8 text-center">
-          <h2 className="mb-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
-            Talk to our AI Agents
-          </h2>
-          <p className="mx-auto max-w-lg text-base text-gray-600 dark:text-gray-400">
-            Our AI agents can provide guidance and provide rough estimates for
-            your project 24/7.
-          </p>
-        </div>
-
         <div className="mx-auto flex flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
           {/* Centered agents display */}
           <div className="flex w-full flex-col items-center gap-16 md:w-1/3 md:gap-10">
@@ -228,6 +218,16 @@ export default function AgentsExample() {
                     initial={{ opacity: 0.9 }}
                     whileHover={{ opacity: 1 }}
                   />
+
+                  {/* Glassmorphic overlay for selected card */}
+                  {selectedAgent === agent.id && (
+                    <motion.div
+                      className="absolute inset-0 rounded-lg border border-white/20 bg-white/5 shadow-2xl backdrop-blur-2xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
 
                   {/* Live Vibing Button */}
                   <motion.div
@@ -401,7 +401,7 @@ export default function AgentsExample() {
                 }
                 className="rounded-lg border border-white bg-black px-6 py-3 text-white transition-all duration-300 hover:bg-white hover:text-black"
               >
-                Talk with jessie now &gt;
+                Talk with Liam now &gt;
               </button>
             </div>
           </div>
