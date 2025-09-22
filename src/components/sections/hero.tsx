@@ -107,10 +107,10 @@ export function HeroCTA({
             'text-bold flex w-full text-black sm:w-auto'
           )}
           style={{
-            fontWeight: 'bold',
+            fontWeight: 'medium',
           }}
         >
-          <strong>Book Your Discovery Call</strong>
+          <strong>Book a Discovery Call</strong>
         </button>
       </motion.div>
       {!hideText && (
@@ -152,7 +152,7 @@ export default function Hero({
   onContactClick?: () => void;
 }) {
   const backgroundVideo =
-    'https://videocdn.cdnpk.net/videos/b03f97fd-66f9-56a5-9817-9207c70cc733/horizontal/previews/watermarked/large.mp4';
+    'https://videocdn.cdnpk.net/videos/858d6e77-08a4-5f4b-aa9a-0b22d86aeaf9/horizontal/previews/clear/large.mp4?token=exp=1758557844~hmac=cce7a2baddcb9b453bee962ac8c8e4925afeedfe554e14651dac93d2fd770549';
   return (
     <section id="hero" className="relative">
       <div

@@ -66,7 +66,7 @@ export default function Component() {
         className="absolute left-0 top-[90px] z-10 rotate-[170deg] transform"
       />
       <img
-        src="/3D-obj1.png"
+        src="/3D-obj2.png"
         width={250}
         className="absolute left-[78%] top-[-100px] z-10 rotate-[280deg] transform"
       />

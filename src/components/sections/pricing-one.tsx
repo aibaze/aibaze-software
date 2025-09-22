@@ -25,6 +25,11 @@ export default function PricingSection({
       title="Pricing"
       subtitle="Solutions Tailored to Your AI Launch Goals"
     >
+      <img
+        src="/3D-obj1.png"
+        width={250}
+        className="absolute left-[88%] top-[0px] z-10 rotate-[80deg] transform"
+      />
       <div className="">
         {siteConfig.pricingMain.map((plan, index) => (
           <motion.div

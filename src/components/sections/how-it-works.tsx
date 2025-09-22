@@ -48,8 +48,14 @@ export default function Component({
       title="Our Proven 5-Step Development Process"
       subtitle="HOW WE BUILD YOUR SUCCESS"
     >
+      <img
+        src="/3D-obj1.png"
+        width={250}
+        className="absolute left-0 top-[0px] z-10 rotate-[170deg] transform"
+      />
+
       <Features data={data} />
-      <HeroCTA hideText={true} onContactClick={onContactClick} />
+      {/*   <HeroCTA hideText={true} onContactClick={onContactClick} /> */}
     </Section>
   );
 }

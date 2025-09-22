@@ -229,7 +229,7 @@ export default function Features({
                     key={item.id}
                     isActive={currentIndex === index}
                     className={cn(
-                      'relative mb-4 transition-all duration-300 last:mb-0',
+                      'align-center relative mb-4 transition-all duration-300 last:mb-0',
                       currentIndex === index
                         ? 'scale-[1.02] border-primary/30 bg-primary/10'
                         : ''
@@ -298,7 +298,7 @@ export default function Features({
 
                     <AccordionTrigger
                       isActive={currentIndex === index}
-                      className="relative flex w-full items-start"
+                      className="align-center relative flex w-full items-center"
                     >
                       {/* Enhanced Icon Container */}
                       <motion.div
