@@ -60,16 +60,6 @@ export default function Component() {
       description="Software product development services for leading companies worldwide."
       className="relative"
     >
-      <img
-        src="/3D-obj1.png"
-        width={250}
-        className="absolute left-0 top-[90px] z-10 rotate-[170deg] transform"
-      />
-      <img
-        src="/3D-obj2.png"
-        width={250}
-        className="absolute left-[78%] top-[-100px] z-10 rotate-[280deg] transform"
-      />
       <div className="mx-auto mt-16">
         {/* Top Row - 2 sections */}
         <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">

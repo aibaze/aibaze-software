@@ -1,5 +1,6 @@
 import Marquee from '@/components/magicui/marquee';
 import Image from 'next/image';
+import LogosSvg from '/public/logos.svg';
 
 const companies = [
   { name: 'Revai', image: '/Revai.webp' },
@@ -13,7 +14,23 @@ const companies = [
   { name: 'Lil Horse', image: '/lilhorse.webp' },
 ];
 
-export default function TrustedBy() {
+export default function TrustedBy({
+  staticVersion = false,
+}: {
+  staticVersion?: boolean;
+}) {
+  if (staticVersion) {
+    return (
+      <div className="container mb-20 mt-20 flex items-center justify-center">
+        <Image
+          width={1200}
+          height={200}
+          src={`/logos.svg`}
+          alt={`Logos Logo`}
+        />
+      </div>
+    );
+  }
   return (
     <section id="logos">
       <div className="container mx-auto px-4 py-12 md:px-8">
