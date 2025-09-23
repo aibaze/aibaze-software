@@ -38,50 +38,72 @@ function HeroPill() {
 
 function HeroTitles() {
   return (
-    <div className="flex w-full max-w-2xl flex-col space-y-4 overflow-hidden pt-8">
-      <motion.h1
-        className="text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl md:text-6xl"
-        initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
-        animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+    <div className="flex w-full max-w-4xl flex-col items-center justify-center pt-8">
+      {/* Glassmorphic Container */}
+      <motion.div
+        className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-8 shadow-2xl backdrop-blur-2xl"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
           duration: 1,
           ease,
-          staggerChildren: 0.2,
         }}
       >
-        {[
-          'Your tech partner',
-          'building software & AI',
-          'for industry leaders',
-        ].map((text, index) => (
-          <motion.span
-            key={index}
-            className={`inline-block text-balance px-1 font-semibold md:px-2 ${index === 1 ? 'text-primary' : ''}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.2,
-              ease,
-            }}
-          >
-            {text}
-          </motion.span>
-        ))}
-      </motion.h1>
-      <motion.p
-        className="mx-auto max-w-xl text-balance text-center text-lg leading-7 text-muted-foreground sm:text-xl sm:leading-9"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.6,
-          duration: 0.8,
-          ease,
-        }}
-      >
-        From vision to execution, we design and deliver world-class products,
-        trusted by global brands.
-      </motion.p>
+        <motion.h1
+          className="text-center text-4xl font-medium leading-tight text-white sm:text-5xl md:text-6xl"
+          initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
+          animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+          transition={{
+            duration: 1,
+            ease,
+            staggerChildren: 0.2,
+          }}
+        >
+          {['Software & AI solutions for', ' Industry Leaders.'].map(
+            (text, index) => (
+              <motion.span
+                key={index}
+                className={`block text-balance font-semibold ${
+                  index === 1
+                    ? 'font-bold italic'
+                    : index === 0
+                      ? 'text-2xl font-bold italic sm:text-3xl md:text-4xl'
+                      : 'text-4xl sm:text-5xl md:text-6xl'
+                }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.2,
+                  ease,
+                }}
+              >
+                {text}
+              </motion.span>
+            )
+          )}
+        </motion.h1>
+
+        <motion.p
+          className="mx-auto mt-6 max-w-2xl text-center text-lg leading-7 text-white/90 sm:text-xl sm:leading-9"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            ease,
+          }}
+        >
+          From vision to execution, we design, build and deliver world-class
+          products, because of the trust of global brands.
+        </motion.p>
+        <HeroCTA
+          hideText={true}
+          onContactClick={() => {
+            alert('test');
+          }}
+        />
+      </motion.div>
     </div>
   );
 }
@@ -104,14 +126,26 @@ export function HeroCTA({
         <button
           onClick={onContactClick}
           className={cn(
-            buttonVariants({ variant: 'default' }),
-            'text-bold flex w-full text-black sm:w-auto'
+            buttonVariants({ variant: 'outline' }),
+            'flex w-full items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto'
           )}
           style={{
-            fontWeight: 'medium',
+            fontWeight: 'bold',
           }}
         >
-          <strong>Book a Discovery Call</strong>
+          <strong>See our portfolio</strong>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.78141 5.33312L5.20541 1.75712L6.14808 0.814453L11.3334 5.99979L6.14808 11.1851L5.20541 10.2425L8.78141 6.66645H0.666748V5.33312H8.78141Z"
+              fill="currentColor"
+            />
+          </svg>
         </button>
       </motion.div>
       {!hideText && (
@@ -202,7 +236,6 @@ export default function Hero({
         >
           <HeroPill />
           <HeroTitles />
-          <HeroCTA hideText={true} onContactClick={onContactClick} />
 
           {/*   <HeroImage /> */}
         </motion.div>
