@@ -21,7 +21,7 @@ export default function TrustedBy({
 }) {
   if (staticVersion) {
     return (
-      <div className="container mb-20 mt-20 flex items-center justify-center">
+      <div className="container mb-20 flex items-center justify-center">
         <Image
           width={1200}
           height={200}

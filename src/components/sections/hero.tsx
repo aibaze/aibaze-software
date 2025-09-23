@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 import { Icons } from '@/components/icons';
 import HeroVideoDialog from '@/components/magicui/hero-video';
@@ -153,16 +154,27 @@ export default function Hero({
 }) {
   const backgroundVideo =
     'https://videocdn.cdnpk.net/videos/bd0d1c7e-db2a-574b-af2c-6607d3dd8a37/horizontal/previews/watermarked/large.mp4';
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <section id="hero" className="relative">
-      <div
+      <motion.div
+        ref={containerRef}
         style={{
           height: '100vh',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        <video
+        <motion.video
           autoPlay
           muted
           loop
@@ -175,21 +187,26 @@ export default function Hero({
             height: '100%',
             objectFit: 'cover',
             zIndex: -1,
+            y,
+            opacity,
           }}
         >
           <source src={backgroundVideo} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </motion.video>
 
         {/* Content */}
-        <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 sm:px-6 sm:pt-8 md:pt-16">
+        <motion.div
+          className="relative z-10 flex w-full flex-col items-center justify-start px-4 sm:px-6 sm:pt-8 md:pt-16"
+          style={{ y, opacity }}
+        >
           <HeroPill />
           <HeroTitles />
           <HeroCTA hideText={true} onContactClick={onContactClick} />
 
           {/*   <HeroImage /> */}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
