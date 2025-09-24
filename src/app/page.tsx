@@ -54,8 +54,8 @@ export default function Home() {
       <TrustedBy staticVersion={true} />
 
       <Solution />
-      <AgentsExample />
       <HowItWorks onContactClick={() => setIsContactModalOpen(true)} />
+      <AgentsExample />
       {/*  <OurProducts /> */}
       <Pricing onContactClick={() => setIsContactModalOpen(true)} />
       {!isMobile ? <Logos /> : <div style={{ marginBottom: '100px' }}></div>}

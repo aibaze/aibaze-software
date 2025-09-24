@@ -53,138 +53,290 @@ const features = [
 
 export default function Component() {
   return (
-    <Section
-      blackTitle={false}
-      title="Leading solutions 2025"
-      subtitle="Transform Your Vision Into leading products"
-      description="Software product development services for leading companies worldwide."
-      className="relative"
-    >
-      <div className="mx-auto mt-16">
-        {/* Top Row - 2 sections */}
-        <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {features.slice(0, 2).map((feature, index) => (
-            <motion.div
-              key={index}
-              className="group relative overflow-hidden rounded-2xl transition-all duration-300"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                type: 'spring',
-                stiffness: 100,
-                damping: 30,
-                delay: index * 0.1,
-              }}
-              viewport={{ once: true }}
+    <div className="relative bg-black py-24">
+      {/* Header Section */}
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 flex items-start justify-between">
+          <div className="flex-1">
+            {/* Portfolio Label */}
+            <div className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-400">
+              PORTFOLIO
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="text-4xl font-bold leading-tight text-white lg:text-5xl">
+              Our clients vision.
+              <br />
+              Engineered. Elevated.
+            </h2>
+          </div>
+
+          {/* Arrow Graphic */}
+          <div className="ml-8">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-white"
             >
-              {/* Content */}
-              <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-
-                {/* Title Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-0">
-                  <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
-                    <div className="flex items-center justify-between p-4">
-                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">
-                        {feature.title}
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {feature.keywords.map((keyword, keyIndex) => (
-                          <span
-                            key={keyIndex}
-                            className="rounded-full bg-white/20 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
-                          >
-                            {keyword}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Glassmorphic Overlay */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute left-0 right-0 top-0 p-6">
-                    <p className="text-sm leading-relaxed text-white">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              <path
+                d="M7 17L17 7M17 7H7M17 7V17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
         </div>
 
-        {/* Bottom Row - 3 sections */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {features.slice(2, 5).map((feature, index) => (
-            <motion.div
-              key={index + 2}
-              className="group relative overflow-hidden rounded-2xl transition-all duration-300"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                type: 'spring',
-                stiffness: 100,
-                damping: 30,
-                delay: (index + 2) * 0.1,
-              }}
-              viewport={{ once: true }}
-            >
-              {/* Content */}
-              <div className="relative h-[350px] w-full overflow-hidden rounded-2xl">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+        {/* 2x2 Grid Container with Border */}
+        <div className="rounded-lg p-8">
+          <div className="space-y-8">
+            {/* First Row - 65% / 35% split */}
+            <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-[62.5%_35%]">
+              {/* First Card - 65% */}
+              <div>
+                <motion.div
+                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 30,
+                    delay: 0 * 0.1,
+                  }}
+                  viewport={{ once: true }}
+                >
+                  {/* Content */}
+                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={features[0].image}
+                      alt={features[0].title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
 
-                {/* Title Overlay */}
-                <div className="absolute bottom-0 left-0 right-0">
-                  <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
-                    <div className="flex items-center justify-between p-3">
-                      <h3 className="text-lg font-semibold text-white drop-shadow-lg">
-                        {feature.title}
-                      </h3>
-                      <div className="flex flex-wrap gap-1">
-                        {feature.keywords.map((keyword, keyIndex) => (
-                          <span
-                            key={keyIndex}
-                            className="rounded-full bg-white/20 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
-                          >
-                            {keyword}
-                          </span>
-                        ))}
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-0">
+                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                        <div className="flex items-center justify-between p-4">
+                          <h3 className="text-xl font-semibold text-white drop-shadow-lg">
+                            {features[0].title}
+                          </h3>
+                          <div className="flex flex-wrap gap-2">
+                            {features[0].keywords.map((keyword, keyIndex) => (
+                              <span
+                                key={keyIndex}
+                                className="rounded-full bg-white/20 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
+                              >
+                                {keyword}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Glassmorphic Overlay */}
+                    <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
+                      <div className="absolute left-0 right-0 top-0 p-6">
+                        <p className="text-sm leading-relaxed text-white">
+                          {features[0].description}
+                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Glassmorphic Overlay */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute left-0 right-0 top-0 p-4">
-                    <p className="text-xs leading-relaxed text-white">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
+                </motion.div>
               </div>
-            </motion.div>
-          ))}
+
+              {/* Second Card - 35% */}
+              <div>
+                <motion.div
+                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 30,
+                    delay: 1 * 0.1,
+                  }}
+                  viewport={{ once: true }}
+                >
+                  {/* Content */}
+                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={features[1].image}
+                      alt={features[1].title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-0">
+                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                        <div className="flex items-center justify-between p-4">
+                          <h3 className="text-xl font-semibold text-white drop-shadow-lg">
+                            {features[1].title}
+                          </h3>
+                          <div className="flex flex-wrap gap-2">
+                            {features[1].keywords.map((keyword, keyIndex) => (
+                              <span
+                                key={keyIndex}
+                                className="rounded-full bg-white/20 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
+                              >
+                                {keyword}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Glassmorphic Overlay */}
+                    <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
+                      <div className="absolute left-0 right-0 top-0 p-6">
+                        <p className="text-sm leading-relaxed text-white">
+                          {features[1].description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Second Row - Equal split */}
+            <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <motion.div
+                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 30,
+                    delay: 2 * 0.1,
+                  }}
+                  viewport={{ once: true }}
+                >
+                  {/* Content */}
+                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={features[2].image}
+                      alt={features[2].title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-0">
+                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                        <div className="flex items-center justify-between p-4">
+                          <h3 className="text-xl font-semibold text-white drop-shadow-lg">
+                            {features[2].title}
+                          </h3>
+                          <div className="flex flex-wrap gap-2">
+                            {features[2].keywords.map((keyword, keyIndex) => (
+                              <span
+                                key={keyIndex}
+                                className="rounded-full bg-white/20 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
+                              >
+                                {keyword}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Glassmorphic Overlay */}
+                    <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
+                      <div className="absolute left-0 right-0 top-0 p-6">
+                        <p className="text-sm leading-relaxed text-white">
+                          {features[2].description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              <div>
+                <motion.div
+                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 30,
+                    delay: 3 * 0.1,
+                  }}
+                  viewport={{ once: true }}
+                >
+                  {/* Content */}
+                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={features[3].image}
+                      alt={features[3].title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-0">
+                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                        <div className="flex items-center justify-between p-4">
+                          <h3 className="text-xl font-semibold text-white drop-shadow-lg">
+                            {features[3].title}
+                          </h3>
+                          <div className="flex flex-wrap gap-2">
+                            {features[3].keywords.map((keyword, keyIndex) => (
+                              <span
+                                key={keyIndex}
+                                className="rounded-full bg-white/20 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
+                              >
+                                {keyword}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Glassmorphic Overlay */}
+                    <div className="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
+                      <div className="absolute left-0 right-0 top-0 p-6">
+                        <p className="text-sm leading-relaxed text-white">
+                          {features[3].description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </Section>
+    </div>
   );
 }
