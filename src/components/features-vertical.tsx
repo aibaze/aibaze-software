@@ -113,12 +113,14 @@ export type FeaturesProps = {
   ltr?: boolean;
   linePosition?: 'left' | 'right' | 'top' | 'bottom';
   data: FeaturesDataProps[];
+  hideImage?: boolean;
 };
 
 export default function Features({
   collapseDelay = 5000,
   ltr = false,
   linePosition = 'left',
+  hideImage = false,
   data = [],
 }: FeaturesProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
@@ -209,14 +211,16 @@ export default function Features({
 
       <div className="container relative z-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mx-auto my-8 grid h-full items-center gap-8 lg:my-16 lg:grid-cols-2 lg:gap-16">
+          <div
+            className={`mx-auto my-8 grid h-full items-center gap-8 lg:my-16 ${hideImage ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} lg:gap-16`}
+          >
             <div
-              className={`order-1 hidden lg:order-[0] lg:flex ${
+              className={`order-1 ${hideImage ? 'lg:order-1 lg:flex lg:justify-center lg:px-8' : 'hidden lg:order-[0] lg:flex'} ${
                 ltr ? 'lg:order-2 lg:justify-end' : 'justify-start'
               }`}
             >
               <Accordion.Root
-                className="w-full space-y-3"
+                className={`space-y-3 ${hideImage ? 'w-full max-w-2xl' : 'w-full'}`}
                 type="single"
                 defaultValue={`item-${currentIndex}`}
                 value={`item-${currentIndex}`}
@@ -355,93 +359,95 @@ export default function Features({
                 ))}
               </Accordion.Root>
             </div>
-            <div
-              className={`relative h-[300px] min-h-[250px] w-auto sm:h-[400px] lg:h-[500px] ${
-                ltr && 'lg:order-1'
-              }`}
-            >
-              <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/5 shadow-2xl backdrop-blur-sm">
-                <AnimatePresence mode="wait">
-                  {data[currentIndex]?.image ? (
-                    <motion.img
-                      key={`image-${currentIndex}`}
-                      src={data[currentIndex].image}
-                      alt="feature"
-                      className="absolute inset-0 h-full w-full object-cover object-center"
-                      initial={{ opacity: 0, scale: 1.1, rotateY: 15 }}
-                      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                      exit={{ opacity: 0, scale: 0.9, rotateY: -15 }}
-                      transition={{
-                        duration: 0.6,
-                        ease: [0.4, 0, 0.2, 1],
-                        type: 'spring',
-                        stiffness: 100,
-                      }}
-                    />
-                  ) : data[currentIndex]?.video ? (
-                    <motion.video
-                      key={`video-${currentIndex}`}
-                      preload="auto"
-                      src={data[currentIndex].video}
-                      className="absolute inset-0 h-full w-full object-cover"
-                      autoPlay
-                      loop
-                      muted
-                      initial={{ opacity: 0, scale: 1.1 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.6, ease: 'easeOut' }}
-                    />
-                  ) : (
-                    <motion.div
-                      key={`placeholder-${currentIndex}`}
-                      className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/10"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="text-6xl text-primary/50">✨</div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+            {!hideImage && (
+              <div
+                className={`relative h-[300px] min-h-[250px] w-auto sm:h-[400px] lg:h-[500px] ${
+                  ltr && 'lg:order-1'
+                }`}
+              >
+                <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/5 shadow-2xl backdrop-blur-sm">
+                  <AnimatePresence mode="wait">
+                    {data[currentIndex]?.image ? (
+                      <motion.img
+                        key={`image-${currentIndex}`}
+                        src={data[currentIndex].image}
+                        alt="feature"
+                        className="absolute inset-0 h-full w-full object-cover object-center"
+                        initial={{ opacity: 0, scale: 1.1, rotateY: 15 }}
+                        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, rotateY: -15 }}
+                        transition={{
+                          duration: 0.6,
+                          ease: [0.4, 0, 0.2, 1],
+                          type: 'spring',
+                          stiffness: 100,
+                        }}
+                      />
+                    ) : data[currentIndex]?.video ? (
+                      <motion.video
+                        key={`video-${currentIndex}`}
+                        preload="auto"
+                        src={data[currentIndex].video}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                      />
+                    ) : (
+                      <motion.div
+                        key={`placeholder-${currentIndex}`}
+                        className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/10"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="text-6xl text-primary/50">✨</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                {/* Enhanced Border Beam Effect */}
-                <BorderBeam
-                  size={250}
-                  duration={8}
-                  delay={2}
-                  borderWidth={2}
-                  colorFrom="hsl(var(--primary))"
-                  colorTo="hsl(var(--primary)/0)"
-                />
+                  {/* Enhanced Border Beam Effect */}
+                  <BorderBeam
+                    size={250}
+                    duration={8}
+                    delay={2}
+                    borderWidth={2}
+                    colorFrom="hsl(var(--primary))"
+                    colorTo="hsl(var(--primary)/0)"
+                  />
 
-                {/* Floating Particles Effect */}
-                <div className="pointer-events-none absolute inset-0">
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute h-2 w-2 rounded-full bg-primary/30"
-                      style={{
-                        left: `${20 + i * 15}%`,
-                        top: `${30 + (i % 2) * 40}%`,
-                      }}
-                      animate={{
-                        y: [-10, 10, -10],
-                        opacity: [0.3, 0.8, 0.3],
-                        scale: [0.8, 1.2, 0.8],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.5,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                        delay: i * 0.3,
-                      }}
-                    />
-                  ))}
+                  {/* Floating Particles Effect */}
+                  <div className="pointer-events-none absolute inset-0">
+                    {[...Array(6)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute h-2 w-2 rounded-full bg-primary/30"
+                        style={{
+                          left: `${20 + i * 15}%`,
+                          top: `${30 + (i % 2) * 40}%`,
+                        }}
+                        animate={{
+                          y: [-10, 10, -10],
+                          opacity: [0.3, 0.8, 0.3],
+                          scale: [0.8, 1.2, 0.8],
+                        }}
+                        transition={{
+                          duration: 3 + i * 0.5,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                          delay: i * 0.3,
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Enhanced Mobile Carousel */}
             <ul

@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const images = [
-  'https://i.ibb.co/7x2g1QjZ/1957.jpg', // app mobile startup
-  'https://i.ibb.co/gFtS81NG/e-commerce.png', //e-commerce
-  'https://i.ibb.co/YBsBvBCP/FIN.webp',
-  'https://i.ibb.co/d4z78FfM/43.jpg', //software custom
+  '/solution1.svg ', // app mobile startup
+  '/solution2.svg', //e-commerce
+  '/solution3.svg',
+  '/solution4.svg', //software custom
   'https://i.ibb.co/4ZBpYTFh/72250354-9690814.jpg', // website industrial
   'https://i.ibb.co/fVV3RL0Y/food.webp',
 ];
@@ -74,12 +74,12 @@ export default function Component() {
           {/* Arrow Graphic */}
           <div className="ml-8">
             <svg
-              width="80"
-              height="80"
+              width="200"
+              height="200"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-white"
+              className="absolute right-[5%] top-[5%] text-white"
             >
               <path
                 d="M7 17L17 7M17 7H7M17 7V17"

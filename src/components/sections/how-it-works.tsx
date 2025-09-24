@@ -45,16 +45,10 @@ export default function Component({
 }) {
   return (
     <Section
-      title="Our Proven 5-Step Development Process"
-      subtitle="HOW WE BUILD YOUR SUCCESS"
+      title="WORKFLOW PROCESS "
+      subtitle="From vision to execution.Always on schedule."
     >
-      <img
-        src="/3D-obj1.png"
-        width={250}
-        className="absolute left-0 top-[0px] z-10 rotate-[170deg] transform"
-      />
-
-      <Features data={data} />
+      <Features data={data} hideImage={true} />
       {/*   <HeroCTA hideText={true} onContactClick={onContactClick} /> */}
     </Section>
   );
