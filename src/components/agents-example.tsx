@@ -11,6 +11,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import mixpanel from 'mixpanel-browser';
 import { EmailModal } from '@/components/email-modal';
 import { api } from '@/api';
+import SectionHeader from '@/components/sections/portfolio-header';
 // AI application data with male and female options
 const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY || '');
 
@@ -194,45 +195,11 @@ export default function AgentsExample() {
 
   return (
     <>
-      <div className="relative mx-auto mb-16 flex max-w-7xl items-start justify-between px-6 py-24 pb-0">
-        <div className="flex-1">
-          {/* Portfolio Label */}
-          <div className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-400">
-            CALL US NOW
-          </div>
-
-          {/* Main Heading */}
-          <h2
-            className="text-4xl leading-tight text-white lg:text-5xl"
-            style={{ fontFamily: 'proxima-nova, sans-serif' }}
-          >
-            Talk to Liam now.
-            <br />
-            let&apos;s work together.
-          </h2>
-        </div>
-
-        {/* Arrow Graphic */}
-        <div className="ml-8">
-          <svg
-            width="200"
-            height="200"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute right-[5%] text-white"
-            style={{ top: '20%' }}
-          >
-            <path
-              d="M7 17L17 7M17 7H7M17 7V17"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-      </div>
+      <SectionHeader
+        portfolioLabel="CALL US NOW"
+        clientsVision={['Talk to Liam now.', "let's work together."]}
+        className="mb-16 py-24 pb-0"
+      />
       <div className="relative flex min-h-screen items-center justify-center py-4">
         {/* Background Image */}
         <div className="absolute inset-0 flex items-center justify-center">

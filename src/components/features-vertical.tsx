@@ -215,7 +215,7 @@ export default function Features({
             className={`mx-auto my-8 grid h-full items-center gap-8 lg:my-16 ${hideImage ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} lg:gap-16`}
           >
             <div
-              className={`order-1 ${hideImage ? 'lg:order-1 lg:flex lg:justify-center lg:px-8' : 'hidden lg:order-[0] lg:flex'} ${
+              className={`order-1 flex ${hideImage ? 'lg:order-1 lg:justify-center lg:px-8' : 'lg:order-[0]'} ${
                 ltr ? 'lg:order-2 lg:justify-end' : 'justify-start'
               }`}
             >
@@ -449,10 +449,10 @@ export default function Features({
               </div>
             )}
 
-            {/* Enhanced Mobile Carousel */}
+            {/* Enhanced Mobile Carousel - Hidden */}
             <ul
               ref={carouselRef}
-              className="flex h-full snap-x snap-mandatory flex-nowrap overflow-x-auto px-4 py-6 [-ms-overflow-style:none] [-webkit-mask-image:linear-gradient(90deg,transparent,black_10%,white_90%,transparent)] [mask-image:linear-gradient(90deg,transparent,black_10%,white_90%,transparent)] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden"
+              className="hidden h-full snap-x snap-mandatory flex-nowrap overflow-x-auto px-4 py-6 [-ms-overflow-style:none] [-webkit-mask-image:linear-gradient(90deg,transparent,black_10%,white_90%,transparent)] [mask-image:linear-gradient(90deg,transparent,black_10%,white_90%,transparent)] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden"
             >
               {data.map((item, index) => (
                 <motion.div
