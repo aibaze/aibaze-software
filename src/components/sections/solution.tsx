@@ -4,6 +4,7 @@ import Section from '@/components/section';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import SectionHeader from '@/components/sections/portfolio-header';
 
 const images = [
   '/solution1.svg ', // app mobile startup
@@ -55,49 +56,13 @@ export default function Component() {
   return (
     <div className="relative bg-black py-24">
       {/* Header Section */}
+      <SectionHeader
+        portfolioLabel="PORTFOLIO"
+        clientsVision={['Our clients vision.', 'Engineered. Elevated.']}
+      />
+
+      {/* 2x2 Grid Container with Border */}
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 flex items-start justify-between">
-          <div className="flex-1 pl-[3%]">
-            {/* Portfolio Label */}
-            <div className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-400">
-              PORTFOLIO
-            </div>
-
-            {/* Main Heading */}
-            <h2
-              className="font-proxima-nova text-6xl leading-tight text-white lg:text-5xl"
-              style={{
-                fontFamily: 'proxima-nova, sans-serif',
-              }}
-            >
-              Our clients vision.
-              <br />
-              Engineered. Elevated.
-            </h2>
-          </div>
-
-          {/* Arrow Graphic */}
-          <div className="ml-8">
-            <svg
-              width="200"
-              height="200"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute right-[5%] top-[5%] text-white"
-            >
-              <path
-                d="M7 17L17 7M17 7H7M17 7V17"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* 2x2 Grid Container with Border */}
         <div className="rounded-lg p-8">
           <div className="space-y-8">
             {/* First Row - 65% / 35% split */}
