@@ -10,6 +10,17 @@ import { cn } from '@/lib/utils';
 
 const ease = [0.16, 1, 0.3, 1];
 
+const fonts = [
+  {
+    fontFamily: 'proxima-nova, sans-serif',
+    fontSize: '48px',
+  },
+  {
+    fontFamily: 'pacifico, cursive',
+    fontSize: '86px',
+  },
+];
+
 function HeroPill() {
   return (
     <motion.a
@@ -36,9 +47,9 @@ function HeroPill() {
   );
 }
 
-function HeroTitles() {
+function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
   return (
-    <div className="flex w-full max-w-4xl flex-col items-center justify-center pt-8">
+    <div className="gap-15 flex w-full max-w-4xl flex-col items-center justify-center pt-[10%]">
       {/* Glassmorphic Container */}
       <motion.div
         className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-8 shadow-2xl backdrop-blur-2xl"
@@ -63,13 +74,10 @@ function HeroTitles() {
             (text, index) => (
               <motion.span
                 key={index}
-                className={`block text-balance font-semibold ${
-                  index === 1
-                    ? 'font-bold italic'
-                    : index === 0
-                      ? 'text-2xl font-bold italic sm:text-3xl md:text-4xl'
-                      : 'text-4xl sm:text-5xl md:text-6xl'
-                }`}
+                className={`block text-balance font-semibold`}
+                style={{
+                  ...fonts[index],
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -85,7 +93,7 @@ function HeroTitles() {
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-6 max-w-2xl text-center text-lg leading-7 text-white/90 sm:text-xl sm:leading-9"
+          className="mx-auto mt-6 max-w-2xl text-center text-lg font-bold leading-7 text-white/90 sm:text-xl sm:leading-9"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -97,12 +105,7 @@ function HeroTitles() {
           From vision to execution, we design, build and deliver world-class
           products, because of the trust of global brands.
         </motion.p>
-        <HeroCTA
-          hideText={true}
-          onContactClick={() => {
-            alert('test');
-          }}
-        />
+        <HeroCTA hideText={true} onContactClick={onContactClick} />
       </motion.div>
     </div>
   );
@@ -127,13 +130,13 @@ export function HeroCTA({
           onClick={onContactClick}
           className={cn(
             buttonVariants({ variant: 'outline' }),
-            'flex w-full items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto'
+            'flex w-full min-w-48 items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto'
           )}
           style={{
             fontWeight: 'bold',
           }}
         >
-          <strong>See our portfolio</strong>
+          <strong>Let's talk</strong>
           <svg
             width="12"
             height="12"
@@ -186,8 +189,7 @@ export default function Hero({
 }: {
   onContactClick?: () => void;
 }) {
-  const backgroundVideo =
-    'https://videocdn.cdnpk.net/videos/bd0d1c7e-db2a-574b-af2c-6607d3dd8a37/horizontal/previews/watermarked/large.mp4';
+  const backgroundVideo = '/hero-video.mp4';
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -231,11 +233,10 @@ export default function Hero({
 
         {/* Content */}
         <motion.div
-          className="relative z-10 flex w-full flex-col items-center justify-start px-4 sm:px-6 sm:pt-8 md:pt-16"
+          className="relative z-10 flex w-full flex-col items-center justify-center px-4 sm:px-6 sm:pt-8 md:pt-16"
           style={{ y, opacity }}
         >
-          <HeroPill />
-          <HeroTitles />
+          <HeroTitles onContactClick={onContactClick} />
 
           {/*   <HeroImage /> */}
         </motion.div>

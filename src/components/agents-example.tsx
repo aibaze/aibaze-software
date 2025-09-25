@@ -202,7 +202,10 @@ export default function AgentsExample() {
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-4xl font-bold leading-tight text-white lg:text-5xl">
+          <h2
+            className="text-4xl leading-tight text-white lg:text-5xl"
+            style={{ fontFamily: 'proxima-nova, sans-serif' }}
+          >
             Talk to Liam now.
             <br />
             let&apos;s work together.
@@ -217,7 +220,8 @@ export default function AgentsExample() {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute right-[5%] top-[5%] text-white"
+            className="absolute right-[5%] text-white"
+            style={{ top: '20%' }}
           >
             <path
               d="M7 17L17 7M17 7H7M17 7V17"

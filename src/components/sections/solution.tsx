@@ -57,14 +57,19 @@ export default function Component() {
       {/* Header Section */}
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 flex items-start justify-between">
-          <div className="flex-1">
+          <div className="flex-1 pl-[3%]">
             {/* Portfolio Label */}
             <div className="mb-4 text-sm font-medium uppercase tracking-wider text-gray-400">
               PORTFOLIO
             </div>
 
             {/* Main Heading */}
-            <h2 className="text-4xl font-bold leading-tight text-white lg:text-5xl">
+            <h2
+              className="font-proxima-nova text-6xl leading-tight text-white lg:text-5xl"
+              style={{
+                fontFamily: 'proxima-nova, sans-serif',
+              }}
+            >
               Our clients vision.
               <br />
               Engineered. Elevated.
