@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 import { Icons } from '@/components/icons';
 import HeroVideoDialog from '@/components/magicui/hero-video';
@@ -8,6 +9,17 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const ease = [0.16, 1, 0.3, 1];
+
+const fonts = [
+  {
+    fontFamily: 'proxima-nova, sans-serif',
+    fontSize: 'clamp(2rem, 8vw, 4.5rem)', // Responsive: 32px to 72px
+  },
+  {
+    fontFamily: 'pacifico, cursive',
+    fontSize: 'clamp(3rem, 12vw, 7.5rem)', // Responsive: 48px to 120px
+  },
+];
 
 function HeroPill() {
   return (
@@ -35,52 +47,66 @@ function HeroPill() {
   );
 }
 
-function HeroTitles() {
+function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
   return (
-    <div className="flex w-full max-w-2xl flex-col space-y-4 overflow-hidden pt-8">
-      <motion.h1
-        className="text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl md:text-6xl"
-        initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
-        animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+    <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-8 pt-[5%] sm:gap-12 md:gap-20">
+      {/* Glassmorphic Container */}
+      <motion.div
+        className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-4 shadow-2xl backdrop-blur-2xl sm:p-8 md:p-12"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
           duration: 1,
           ease,
-          staggerChildren: 0.2,
         }}
       >
-        {[
-          'Your tech partner',
-          'building software & AI',
-          'for industry leaders',
-        ].map((text, index) => (
-          <motion.span
-            key={index}
-            className={`inline-block text-balance px-1 font-semibold md:px-2 ${index === 1 ? 'text-primary' : ''}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.2,
-              ease,
-            }}
-          >
-            {text}
-          </motion.span>
-        ))}
-      </motion.h1>
-      <motion.p
-        className="mx-auto max-w-xl text-balance text-center text-lg leading-7 text-muted-foreground sm:text-xl sm:leading-9"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.6,
-          duration: 0.8,
-          ease,
-        }}
-      >
-        From vision to execution, we design and deliver world-class products,
-        trusted by global brands.
-      </motion.p>
+        <motion.h1
+          className="text-center text-2xl font-medium leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+          initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
+          animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+          transition={{
+            duration: 1,
+            ease,
+            staggerChildren: 0.2,
+          }}
+        >
+          {['Software & AI solutions for', ' Industry Leaders.'].map(
+            (text, index) => (
+              <motion.span
+                key={index}
+                className={`block text-balance font-semibold`}
+                style={{
+                  ...fonts[index],
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.2,
+                  ease,
+                }}
+              >
+                {text}
+              </motion.span>
+            )
+          )}
+        </motion.h1>
+
+        <motion.p
+          className="mx-auto mt-6 max-w-3xl text-center text-base font-bold leading-6 text-white/90 sm:mt-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            ease,
+          }}
+        >
+          From vision to execution, we design, build and deliver world-class
+          products, because of the trust of global brands.
+        </motion.p>
+        <HeroCTA hideText={true} onContactClick={onContactClick} />
+      </motion.div>
     </div>
   );
 }
@@ -95,7 +121,7 @@ export function HeroCTA({
   return (
     <>
       <motion.div
-        className="mx-auto mt-6 flex w-full max-w-2xl flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+        className="mx-auto mt-6 flex w-full max-w-3xl flex-col items-center justify-center space-y-4 sm:mt-8 sm:flex-row sm:space-x-6 sm:space-y-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, ease }}
@@ -103,14 +129,26 @@ export function HeroCTA({
         <button
           onClick={onContactClick}
           className={cn(
-            buttonVariants({ variant: 'default' }),
-            'text-bold flex w-full text-black sm:w-auto'
+            buttonVariants({ variant: 'outline' }),
+            'flex w-full min-w-48 items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto sm:min-w-56'
           )}
           style={{
             fontWeight: 'bold',
           }}
         >
-          <strong>Book Your Discovery Call</strong>
+          <strong>Let's talk</strong>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.78141 5.33312L5.20541 1.75712L6.14808 0.814453L11.3334 5.99979L6.14808 11.1851L5.20541 10.2425L8.78141 6.66645H0.666748V5.33312H8.78141Z"
+              fill="currentColor"
+            />
+          </svg>
         </button>
       </motion.div>
       {!hideText && (
@@ -151,17 +189,28 @@ export default function Hero({
 }: {
   onContactClick?: () => void;
 }) {
-  const backgroundVideo =
-    'https://videocdn.cdnpk.net/videos/b03f97fd-66f9-56a5-9817-9207c70cc733/horizontal/previews/watermarked/large.mp4';
+  const backgroundVideo = '/hero-video.mp4';
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <section id="hero" className="relative">
-      <div
+      <motion.div
+        ref={containerRef}
         style={{
+          height: '100vh',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        <video
+        <motion.video
           autoPlay
           muted
           loop
@@ -174,21 +223,24 @@ export default function Hero({
             height: '100%',
             objectFit: 'cover',
             zIndex: -1,
+            y,
+            opacity,
           }}
         >
           <source src={backgroundVideo} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </motion.video>
 
         {/* Content */}
-        <div className="relative z-10 flex w-full flex-col items-center justify-start px-4 sm:px-6 sm:pt-8 md:pt-16">
-          <HeroPill />
-          <HeroTitles />
-          <HeroCTA hideText={true} onContactClick={onContactClick} />
+        <motion.div
+          className="relative z-10 flex w-full flex-col items-center justify-center px-4 sm:px-6 sm:pt-8 md:pt-16"
+          style={{ y, opacity }}
+        >
+          <HeroTitles onContactClick={onContactClick} />
 
           {/*   <HeroImage /> */}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

@@ -1,37 +1,35 @@
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { cn, constructMetadata } from "@/lib/utils";
-import type { Metadata, Viewport } from "next";
-import "./globals.css";
+import { TailwindIndicator } from '@/components/tailwind-indicator';
+import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { cn, constructMetadata } from '@/lib/utils';
+import type { Metadata, Viewport } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = constructMetadata({});
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
+  colorScheme: 'dark',
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
 };
-
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/rmp2oqt.css" />
       </head>
       <body
         className={cn(
-          "min-h-screen bg-background antialiased w-full mx-auto scroll-smooth"
+          'mx-auto min-h-screen w-full scroll-smooth bg-background antialiased'
         )}
       >
         <ThemeProvider

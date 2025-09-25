@@ -45,11 +45,11 @@ export default function Component({
 }) {
   return (
     <Section
-      title="Our Proven 5-Step Development Process"
-      subtitle="HOW WE BUILD YOUR SUCCESS"
+      title="WORKFLOW PROCESS "
+      subtitle="From vision to execution. Always on schedule."
     >
-      <Features data={data} />
-      <HeroCTA hideText={true} onContactClick={onContactClick} />
+      <Features data={data} hideImage={true} />
+      {/*   <HeroCTA hideText={true} onContactClick={onContactClick} /> */}
     </Section>
   );
 }

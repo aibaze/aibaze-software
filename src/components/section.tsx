@@ -35,7 +35,10 @@ export default function Section({
               </h2>
             )}
             {subtitle && (
-              <h3 className="mx-auto mt-4 max-w-xs text-3xl font-semibold sm:max-w-none sm:text-4xl md:text-5xl">
+              <h3
+                style={{ fontFamily: 'proxima-nova, sans-serif' }}
+                className="mx-auto mt-4 max-w-xs text-4xl sm:max-w-none sm:text-4xl md:text-5xl"
+              >
                 {subtitle}
               </h3>
             )}

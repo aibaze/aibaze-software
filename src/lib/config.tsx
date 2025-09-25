@@ -1,5 +1,4 @@
-import { Icons } from '@/components/icons';
-import { FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa6';
 import { RiInstagramFill } from 'react-icons/ri';
 
@@ -22,7 +21,7 @@ export const siteConfig = {
     mixpanel: process.env.NEXT_PUBLIC_MIXPALNEL_TOKEN || '',
   },
   links: {
-    email: 'info.aibaze@gmail.com',
+    email: 'tomas@aibaze.agency',
     twitter: 'https://x.com/aibaze_agency',
     discord: '#',
     github: '#',
@@ -195,50 +194,62 @@ export const siteConfig = {
   ],
   footer: [
     {
-      title: 'Product',
+      title: 'Company based',
       links: [
-        { href: '#', text: 'Features', icon: null },
-        { href: '#', text: 'Pricing', icon: null },
-        { href: '#', text: 'Documentation', icon: null },
-        { href: '#', text: 'API', icon: null },
+        { text: 'Wyoming, USA', icon: ' 🇺🇸 ' },
+        { text: 'Dubai, UAE', icon: ' 🇦🇪 ' },
       ],
     },
     {
-      title: 'Company',
+      title: 'Contact',
       links: [
-        { href: '#', text: 'About Us', icon: null },
-        { href: '#', text: 'Careers', icon: null },
-        { href: '#', text: 'Blog', icon: null },
-        { href: '#', text: 'Press', icon: null },
-        { href: '#', text: 'Partners', icon: null },
-      ],
-    },
-    {
-      title: 'Resources',
-      links: [
-        { href: '#', text: 'Community', icon: null },
-        { href: '#', text: 'Contact', icon: null },
-        { href: '#', text: 'Support', icon: null },
-        { href: '#', text: 'Status', icon: null },
-      ],
-    },
-    {
-      title: 'Social',
-      links: [
+        { text: 'aibaze.agency@gmail.com', icon: <FaEnvelope /> },
+        { text: 'tomas@aibaze.agency', icon: <FaEnvelope /> },
         {
-          href: '#',
-          text: 'Twitter',
-          icon: <FaTwitter />,
+          href: 'https://calendar.app.google/SdCB8dsnamqTVUbCA',
+          text: 'Book a meeting',
+          icon: <FaPhone />,
         },
+      ],
+    },
+    {
+      title: 'Socials',
+      links: [
         {
-          href: '#',
+          href: 'https://www.instagram.com/aibazeagency',
           text: 'Instagram',
           icon: <RiInstagramFill />,
         },
         {
-          href: '#',
-          text: 'Youtube',
+          href: 'https://www.youtube.com/@AibazeFoundations',
+          text: 'YouTube',
           icon: <FaYoutube />,
+        },
+        {
+          href: 'https://www.linkedin.com/in/aibaze-agency-1b5427359/',
+          text: 'LinkedIn',
+          icon: <FaLinkedin />,
+        },
+      ],
+    },
+    {
+      title: 'Services',
+      links: [
+        {
+          icon: null,
+          text: 'Web & Mobile Development',
+        },
+        {
+          icon: null,
+          text: 'AI Development & Integrations',
+        },
+        {
+          icon: null,
+          text: 'Automation & AI Integrations',
+        },
+        {
+          icon: null,
+          text: 'Branding & Marketing',
         },
       ],
     },
