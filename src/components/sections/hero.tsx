@@ -136,7 +136,7 @@ export function HeroCTA({
             fontWeight: 'bold',
           }}
         >
-          <strong>Let's talk</strong>
+          <strong>Let&apos;s talk</strong>
           <svg
             width="12"
             height="12"
