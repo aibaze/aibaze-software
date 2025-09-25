@@ -10,13 +10,7 @@ import { siteConfig } from '@/lib/config';
 export default function FAQ() {
   return (
     <Section title="FAQ" subtitle="Frequently asked questions">
-      <img
-        src="/3D-obj2.png"
-        width={250}
-        className="absolute left-0 top-[-100px] z-10 rotate-[170deg] transform"
-      />
-
-      <div className="mx-auto my-12">
+      <div className="mx-auto my-12 max-w-4xl">
         <Accordion
           type="single"
           collapsible

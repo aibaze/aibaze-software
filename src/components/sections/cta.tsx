@@ -9,23 +9,34 @@ export default function CtaSection({
   onContactClick?: () => void;
 }) {
   return (
-    <Section
-      id="cta"
-      title="Turning ideas into leading products"
-      subtitle="Let's bring your idea to life "
-      className="rounded-xl bg-primary/10 py-16"
+    <div
+      className="relative rounded-xl bg-cover bg-center bg-no-repeat py-16"
+      style={{
+        backgroundImage: 'url(/background-footer.svg)',
+      }}
     >
-      <div className="flex w-full flex-col items-center justify-center space-y-4 pt-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-        <button
-          onClick={onContactClick}
-          className={cn(
-            buttonVariants({ variant: 'default' }),
-            'flex w-full gap-2 text-background sm:w-auto'
-          )}
+      <div className="absolute inset-0 rounded-xl bg-black/80"></div>
+      <div className="relative z-10">
+        <Section
+          id="cta"
+          title="Ready? "
+          subtitle=" Let’s build 
+your project together. "
+          className="py-0"
         >
-          <strong>Book Your Discovery Call</strong>
-        </button>
+          <div className="flex w-full flex-col items-center justify-center space-y-4 pt-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+            <button
+              onClick={onContactClick}
+              className={cn(
+                buttonVariants({ variant: 'default' }),
+                'flex w-full gap-2 text-background sm:w-auto'
+              )}
+            >
+              <strong>Book a meeting</strong>
+            </button>
+          </div>
+        </Section>
       </div>
-    </Section>
+    </div>
   );
 }
