@@ -13,11 +13,11 @@ const ease = [0.16, 1, 0.3, 1];
 const fonts = [
   {
     fontFamily: 'proxima-nova, sans-serif',
-    fontSize: '48px',
+    fontSize: '72px',
   },
   {
     fontFamily: 'pacifico, cursive',
-    fontSize: '86px',
+    fontSize: '120px',
   },
 ];
 
@@ -49,10 +49,10 @@ function HeroPill() {
 
 function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
   return (
-    <div className="gap-15 flex w-full max-w-4xl flex-col items-center justify-center pt-[10%]">
+    <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-20 pt-[5%]">
       {/* Glassmorphic Container */}
       <motion.div
-        className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-8 shadow-2xl backdrop-blur-2xl"
+        className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-12 shadow-2xl backdrop-blur-2xl"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -93,7 +93,7 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-6 max-w-2xl text-center text-lg font-bold leading-7 text-white/90 sm:text-xl sm:leading-9"
+          className="mx-auto mt-8 max-w-3xl text-center text-xl font-bold leading-8 text-white/90 sm:text-2xl sm:leading-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -121,7 +121,7 @@ export function HeroCTA({
   return (
     <>
       <motion.div
-        className="mx-auto mt-6 flex w-full max-w-2xl flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+        className="mx-auto mt-8 flex w-full max-w-3xl flex-col items-center justify-center space-y-6 sm:flex-row sm:space-x-6 sm:space-y-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, ease }}
@@ -130,7 +130,7 @@ export function HeroCTA({
           onClick={onContactClick}
           className={cn(
             buttonVariants({ variant: 'outline' }),
-            'flex w-full min-w-48 items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto'
+            'flex w-full min-w-56 items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto'
           )}
           style={{
             fontWeight: 'bold',
