@@ -13,11 +13,11 @@ const ease = [0.16, 1, 0.3, 1];
 const fonts = [
   {
     fontFamily: 'proxima-nova, sans-serif',
-    fontSize: '72px',
+    fontSize: 'clamp(2rem, 8vw, 4.5rem)', // Responsive: 32px to 72px
   },
   {
     fontFamily: 'pacifico, cursive',
-    fontSize: '120px',
+    fontSize: 'clamp(3rem, 12vw, 7.5rem)', // Responsive: 48px to 120px
   },
 ];
 
@@ -49,10 +49,10 @@ function HeroPill() {
 
 function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
   return (
-    <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-20 pt-[5%]">
+    <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-8 pt-[5%] sm:gap-12 md:gap-20">
       {/* Glassmorphic Container */}
       <motion.div
-        className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-12 shadow-2xl backdrop-blur-2xl"
+        className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-4 shadow-2xl backdrop-blur-2xl sm:p-8 md:p-12"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -61,7 +61,7 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
         }}
       >
         <motion.h1
-          className="text-center text-4xl font-medium leading-tight text-white sm:text-5xl md:text-6xl"
+          className="text-center text-2xl font-medium leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
           initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
           animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
           transition={{
@@ -93,7 +93,7 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-8 max-w-3xl text-center text-xl font-bold leading-8 text-white/90 sm:text-2xl sm:leading-10"
+          className="mx-auto mt-6 max-w-3xl text-center text-base font-bold leading-6 text-white/90 sm:mt-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -121,7 +121,7 @@ export function HeroCTA({
   return (
     <>
       <motion.div
-        className="mx-auto mt-8 flex w-full max-w-3xl flex-col items-center justify-center space-y-6 sm:flex-row sm:space-x-6 sm:space-y-0"
+        className="mx-auto mt-6 flex w-full max-w-3xl flex-col items-center justify-center space-y-4 sm:mt-8 sm:flex-row sm:space-x-6 sm:space-y-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, ease }}
@@ -130,7 +130,7 @@ export function HeroCTA({
           onClick={onContactClick}
           className={cn(
             buttonVariants({ variant: 'outline' }),
-            'flex w-full min-w-56 items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto'
+            'flex w-full min-w-48 items-center justify-center gap-2 border-white bg-white text-black hover:bg-white/90 sm:w-auto sm:min-w-56'
           )}
           style={{
             fontWeight: 'bold',
