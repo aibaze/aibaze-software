@@ -327,7 +327,10 @@ export default function Features({
                           </motion.div>
                         </motion.div>
                       )}
-                      <div className="flex-1">
+                      <div
+                        className="flex-1"
+                        style={{ paddingLeft: !isMobile ? '0px' : '20px' }}
+                      >
                         <div className="pl-0 text-left text-lg font-bold transition-colors duration-300 lg:text-xl">
                           <motion.span
                             animate={{

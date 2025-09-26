@@ -46,7 +46,12 @@ export default function Component({
   return (
     <Section
       title="WORKFLOW PROCESS "
-      subtitle="From vision to execution. Always on schedule."
+      subtitle={[
+        <>
+          From vision to execution.
+          <br /> Always on schedule.
+        </>,
+      ]}
     >
       <Features data={data} hideImage={true} />
       {/*   <HeroCTA hideText={true} onContactClick={onContactClick} /> */}

@@ -3,13 +3,14 @@ import { useMediaQuery } from 'react-responsive';
 interface SectionProps {
   id?: string;
   title?: string;
-  subtitle?: string;
+  subtitle?: string | React.ReactNode[];
   description?: string;
   children?: React.ReactNode;
   className?: string;
   bigFont?: boolean;
   showAvailability?: boolean;
   blackTitle?: boolean;
+  centeredTitle?: boolean;
 }
 import { motion } from 'framer-motion';
 
@@ -21,6 +22,7 @@ export default function Section({
   showAvailability,
   subtitle,
   description,
+  centeredTitle,
   children,
   className,
   bigFont,
@@ -28,6 +30,7 @@ export default function Section({
 }: SectionProps) {
   const sectionId = title ? title.toLowerCase().replace(/\s+/g, '-') : id;
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const textAlign = centeredTitle ? 'center' : isMobile ? 'left' : 'center';
   return (
     <section
       id={id || sectionId}
@@ -73,9 +76,7 @@ export default function Section({
         <div
           className={`container relative mx-auto max-w-7xl px-4 ${isMobile ? 'py-16 pt-5' : 'py-16'}`}
         >
-          <div
-            className={`mx-auto space-y-4 pb-6 text-${isMobile ? 'left' : 'center'}`}
-          >
+          <div className={`mx-auto space-y-4 pb-6 text-${textAlign} `}>
             {title && (
               <h2
                 className={cn(
@@ -90,20 +91,23 @@ export default function Section({
             {subtitle && (
               <h3
                 style={
-                  bigFont && !isMobile
+                  !isMobile
                     ? {
                         fontFamily: 'proxima-nova, sans-serif',
-                        fontSize: 'clamp(6rem, 8vw, 4.5rem)',
+                        fontSize: '62px',
+                        fontWeight: '500',
                       }
                     : {
                         fontFamily: 'proxima-nova, sans-serif',
-                        fontSize: 'clamp(2rem, 8vw, 4.5rem)',
-                        fontWeight: 'bold',
                         textAlign: 'center',
+                        paddingLeft: '7%',
+                        fontSize: '28px',
+
+                        fontWeight: '600',
                       }
                 }
                 className={cn(
-                  'mx-auto mt-4 max-w-xs text-4xl sm:max-w-none sm:text-4xl md:text-5xl'
+                  'font-400 mx-auto mt-4 text-4xl sm:text-4xl md:text-5xl'
                 )}
               >
                 {subtitle}
