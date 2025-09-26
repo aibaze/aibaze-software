@@ -452,8 +452,8 @@ export default function AgentsExample() {
                   </motion.div>
                 </div>
               </div>
-              <p className="text-center text-sm text-white">
-                Agenticaller.com <br /> powered by Aibaze
+              <p className="mt-4 text-left text-sm text-white">
+                Agenticaller.com powered by Aibaze
               </p>
             </div>
           </div>

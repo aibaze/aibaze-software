@@ -18,10 +18,11 @@ export default function CtaSection({
       <div className="absolute inset-0 rounded-xl bg-black/80"></div>
       <div className="relative z-10">
         <Section
+          showAvailability={true}
           id="cta"
-          title="Ready? "
+          title=""
           bigFont={true}
-          subtitle=" Let’s build 
+          subtitle=" Ready?  Let’s build 
 your project together. "
           className="py-0"
         >

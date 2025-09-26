@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface SectionHeaderProps {
   className?: string;
@@ -57,22 +58,7 @@ export default function SectionHeader({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <svg
-            width="120"
-            height="120"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-white sm:h-[150px] sm:w-[150px] md:h-[180px] md:w-[180px] lg:h-[200px] lg:w-[200px]"
-          >
-            <path
-              d="M7 17L17 7M17 7H7M17 7V17"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Image width={120} height={120} src={`/arrow.svg`} alt={`arrow`} />
         </motion.div>
       </div>
     </motion.div>

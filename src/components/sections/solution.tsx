@@ -12,7 +12,7 @@ const images = [
   '/solution2.svg', //e-commerce
   '/solution3.svg',
   '/solution4.svg', //software custom
-  'https://i.ibb.co/4ZBpYTFh/72250354-9690814.jpg', // website industrial
+  '/solution3.svg', // website industrial
   'https://i.ibb.co/fVV3RL0Y/food.webp',
 ];
 const features = [
@@ -28,14 +28,14 @@ const features = [
     keywords: ['Mobile iOS', 'Fintech', 'LLM'],
     description:
       'Revolutionize customer acquisition with AI-powered marketing automation, intelligent lead scoring, personalized campaigns, and predictive analytics that maximize ROI.',
-    image: images[4],
+    image: images[1],
   },
   {
     title: 'Web App',
     keywords: ['Web App', 'Restaurant Franchise', 'AI Admin Integration'],
     description:
       'Streamline recruitment and workforce management with AI-driven candidate screening, automated onboarding, performance analytics, and intelligent talent matching.',
-    image: images[1],
+    image: images[2],
   },
   {
     title: 'Fitness Tracking App',
@@ -55,6 +55,7 @@ const features = [
 
 export default function Component() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const squared = true;
   return (
     <div className="relative bg-black py-24">
       {/* Header Section */}
@@ -65,7 +66,7 @@ export default function Component() {
 
       {/* 2x2 Grid Container with Border */}
       <div className={`mx-auto max-w-7xl px-${isMobile ? '0' : '6'}px`}>
-        <div className={` ${isMobile ? 'p-0px' : 'p-8px rounded-lg'}`}>
+        <div className={` ${isMobile ? 'p-0px' : 'p-8px'}`}>
           <div className="space-y-8">
             {/* First Row - 65% / 35% split */}
             <div
@@ -74,7 +75,7 @@ export default function Component() {
               {/* First Card - 65% */}
               <div>
                 <motion.div
-                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300 ${isMobile ? 'h-[400px]' : 'h-[400px]'}`}
+                  className={`rounded-${squared ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300 ${isMobile ? 'h-[400px]' : 'h-[400px]'}`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -88,7 +89,7 @@ export default function Component() {
                 >
                   {/* Content */}
                   <div
-                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                    className={`relative h-[400px] w-full overflow-hidden ${squared ? 'rounded-md' : 'rounded-2xl'}`}
                   >
                     <Image
                       src={features[0].image}
@@ -101,7 +102,7 @@ export default function Component() {
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
                       <div
-                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                        className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
@@ -137,7 +138,7 @@ export default function Component() {
               {/* Second Card - 35% */}
               <div>
                 <motion.div
-                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300`}
+                  className={`rounded-${squared ? '0px' : '2xl'} group relative overflow-hidden transition-all duration-300`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -151,7 +152,7 @@ export default function Component() {
                 >
                   {/* Content */}
                   <div
-                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                    className={`relative h-[400px] w-full overflow-hidden ${squared ? 'rounded-0px' : 'rounded-2xl'}`}
                   >
                     <Image
                       src={features[1].image}
@@ -164,7 +165,7 @@ export default function Component() {
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
                       <div
-                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                        className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
@@ -202,7 +203,7 @@ export default function Component() {
             <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
               <div>
                 <motion.div
-                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300`}
+                  className={`rounded-${squared ? '0px' : '2xl'} group relative overflow-hidden transition-all duration-300`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -216,7 +217,7 @@ export default function Component() {
                 >
                   {/* Content */}
                   <div
-                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                    className={`relative h-[400px] w-full overflow-hidden ${squared ? 'rounded-0px' : 'rounded-2xl'}`}
                   >
                     <Image
                       src={features[2].image}
@@ -229,7 +230,7 @@ export default function Component() {
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
                       <div
-                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                        className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
@@ -264,7 +265,7 @@ export default function Component() {
 
               <div>
                 <motion.div
-                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300`}
+                  className={`rounded-${squared ? '0px' : '2xl'} group relative overflow-hidden transition-all duration-300`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -278,7 +279,7 @@ export default function Component() {
                 >
                   {/* Content */}
                   <div
-                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                    className={`relative h-[400px] w-full overflow-hidden ${squared ? 'rounded-0px' : 'rounded-2xl'}`}
                   >
                     <Image
                       src={features[3].image}
@@ -291,7 +292,7 @@ export default function Component() {
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
                       <div
-                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                        className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">

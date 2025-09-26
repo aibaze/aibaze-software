@@ -8,12 +8,17 @@ interface SectionProps {
   children?: React.ReactNode;
   className?: string;
   bigFont?: boolean;
+  showAvailability?: boolean;
   blackTitle?: boolean;
 }
+import { motion } from 'framer-motion';
+
+const ease = [0.16, 1, 0.3, 1];
 
 export default function Section({
   id,
   title,
+  showAvailability,
   subtitle,
   description,
   children,
@@ -24,7 +29,28 @@ export default function Section({
   const sectionId = title ? title.toLowerCase().replace(/\s+/g, '-') : id;
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
-    <section id={id || sectionId}>
+    <section
+      id={id || sectionId}
+      className={
+        showAvailability ? 'flex flex-col items-center justify-center' : ''
+      }
+    >
+      {showAvailability && (
+        <motion.div
+          className="flex items-center space-x-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease }}
+        >
+          <div className="relative">
+            <div className="h-3 w-3 rounded-full bg-lime-400"></div>
+            <div className="absolute inset-0 h-3 w-3 animate-ping rounded-full bg-lime-400/30"></div>
+          </div>
+          <span className="text-sm font-medium text-white">
+            Available for projects
+          </span>
+        </motion.div>
+      )}
       <div className={className}>
         <div className="container relative mx-auto max-w-7xl px-4 py-16">
           <div
@@ -43,10 +69,18 @@ export default function Section({
             )}
             {subtitle && (
               <h3
-                style={{ fontFamily: 'proxima-nova, sans-serif' }}
+                style={
+                  bigFont && !isMobile
+                    ? {
+                        fontFamily: 'proxima-nova, sans-serif',
+                        fontSize: 'clamp(6rem, 8vw, 4.5rem)',
+                      }
+                    : {
+                        fontFamily: 'proxima-nova, sans-serif',
+                      }
+                }
                 className={cn(
-                  'mx-auto mt-4 max-w-xs text-4xl sm:max-w-none sm:text-4xl md:text-5xl',
-                  bigFont && 'text-6xl'
+                  'mx-auto mt-4 max-w-xs text-4xl sm:max-w-none sm:text-4xl md:text-5xl'
                 )}
               >
                 {subtitle}
