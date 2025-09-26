@@ -4,6 +4,7 @@ import Section from '@/components/section';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive';
 import SectionHeader from '@/components/sections/portfolio-header';
 
 const images = [
@@ -53,6 +54,7 @@ const features = [
 ];
 
 export default function Component() {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <div className="relative bg-black py-24">
       {/* Header Section */}
@@ -62,15 +64,17 @@ export default function Component() {
       />
 
       {/* 2x2 Grid Container with Border */}
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="rounded-lg p-8">
+      <div className={`mx-auto max-w-7xl px-${isMobile ? '0' : '6'}px`}>
+        <div className={` ${isMobile ? 'p-0px' : 'p-8px rounded-lg'}`}>
           <div className="space-y-8">
             {/* First Row - 65% / 35% split */}
-            <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-[62.5%_35%]">
+            <div
+              className={`grid w-full grid-cols-1 gap-${isMobile ? '0' : '8'} md:grid-cols-[62.5%_35%]`}
+            >
               {/* First Card - 65% */}
               <div>
                 <motion.div
-                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300 ${isMobile ? 'h-[400px]' : 'h-[400px]'}`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -83,7 +87,9 @@ export default function Component() {
                   viewport={{ once: true }}
                 >
                   {/* Content */}
-                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                  <div
+                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                  >
                     <Image
                       src={features[0].image}
                       alt={features[0].title}
@@ -94,7 +100,9 @@ export default function Component() {
 
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
-                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                      <div
+                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                      >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[0].title}
@@ -129,7 +137,7 @@ export default function Component() {
               {/* Second Card - 35% */}
               <div>
                 <motion.div
-                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -142,7 +150,9 @@ export default function Component() {
                   viewport={{ once: true }}
                 >
                   {/* Content */}
-                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                  <div
+                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                  >
                     <Image
                       src={features[1].image}
                       alt={features[1].title}
@@ -153,7 +163,9 @@ export default function Component() {
 
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
-                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                      <div
+                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                      >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[1].title}
@@ -190,7 +202,7 @@ export default function Component() {
             <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
               <div>
                 <motion.div
-                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -203,7 +215,9 @@ export default function Component() {
                   viewport={{ once: true }}
                 >
                   {/* Content */}
-                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                  <div
+                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                  >
                     <Image
                       src={features[2].image}
                       alt={features[2].title}
@@ -214,7 +228,9 @@ export default function Component() {
 
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
-                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                      <div
+                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                      >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[2].title}
@@ -248,7 +264,7 @@ export default function Component() {
 
               <div>
                 <motion.div
-                  className="group relative overflow-hidden rounded-2xl transition-all duration-300"
+                  className={`rounded-${isMobile ? 'md' : '2xl'} group relative overflow-hidden transition-all duration-300`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -261,7 +277,9 @@ export default function Component() {
                   viewport={{ once: true }}
                 >
                   {/* Content */}
-                  <div className="relative h-[400px] w-full overflow-hidden rounded-2xl">
+                  <div
+                    className={`relative h-[400px] w-full overflow-hidden ${isMobile ? 'rounded-md' : 'rounded-2xl'}`}
+                  >
                     <Image
                       src={features[3].image}
                       alt={features[3].title}
@@ -272,7 +290,9 @@ export default function Component() {
 
                     {/* Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-0">
-                      <div className="rounded-b-2xl border-t border-white/20 bg-black/40 backdrop-blur-md">
+                      <div
+                        className={`rounded-b-${isMobile ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
+                      >
                         <div className="flex items-center justify-between p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[3].title}

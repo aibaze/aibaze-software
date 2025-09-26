@@ -13,7 +13,6 @@ const ease = [0.16, 1, 0.3, 1];
 
 function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-  console.log(isMobile);
 
   const fonts = !isMobile
     ? [
@@ -43,7 +42,27 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
         },
       ];
   return (
-    <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-8 pt-[25%] sm:gap-12 md:gap-20">
+    <div
+      className={`flex w-full max-w-6xl flex-col items-center justify-center gap-8 sm:gap-12 md:gap-20 ${
+        isMobile ? 'pt-[5%]' : 'pt-[0%]'
+      }`}
+    >
+      {/* Availability Pill */}
+      <motion.div
+        className="flex items-center space-x-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease }}
+      >
+        <div className="relative">
+          <div className="h-3 w-3 rounded-full bg-lime-400"></div>
+          <div className="absolute inset-0 h-3 w-3 animate-ping rounded-full bg-lime-400/30"></div>
+        </div>
+        <span className="text-sm font-medium text-white">
+          Available for projects
+        </span>
+      </motion.div>
+
       {/* Glassmorphic Container */}
       <motion.div
         className="relative w-[100%] rounded-2xl border border-white/20 bg-white/5 p-4 shadow-2xl backdrop-blur-2xl sm:p-8 md:p-12"
@@ -65,7 +84,26 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
           }}
         >
           {!isMobile
-            ? ['Software & AI solutions for', ' Industry Leaders.']
+            ? ['Software & AI solutions for', 'Industry Leaders.'].map(
+                (text, index) => (
+                  <motion.span
+                    key={index}
+                    className={`block text-balance font-semibold`}
+                    style={{
+                      ...fonts[index],
+                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.8,
+                      delay: index * 0.2,
+                      ease,
+                    }}
+                  >
+                    {text}
+                  </motion.span>
+                )
+              )
             : ['Software ', ' AI solutions for', ' Industry Leaders.'].map(
                 (text, index) => (
                   <motion.span
@@ -91,6 +129,15 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
         <motion.p
           className={`mx-auto mt-6 max-w-3xl text-base font-bold leading-6 text-white/90 sm:mt-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-10 ${isMobile ? 'text-left' : 'text-center'}`}
           initial={{ opacity: 0, y: 20 }}
+          style={
+            isMobile
+              ? {
+                  fontSize: 'clamp(12px, 8vw, 24px)',
+                }
+              : {
+                  fontSize: 'clamp(16px, 8vw, 24px)',
+                }
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{
             delay: 0.6,

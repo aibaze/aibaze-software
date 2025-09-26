@@ -20,6 +20,7 @@ export default function CtaSection({
         <Section
           id="cta"
           title="Ready? "
+          bigFont={true}
           subtitle=" Let’s build 
 your project together. "
           className="py-0"

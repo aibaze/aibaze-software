@@ -8,6 +8,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Vapi from '@vapi-ai/web';
 import toast, { Toaster } from 'react-hot-toast';
+import { useMediaQuery } from 'react-responsive';
 import mixpanel from 'mixpanel-browser';
 import { EmailModal } from '@/components/email-modal';
 import { api } from '@/api';
@@ -31,6 +32,7 @@ const callStatuses = {
 };
 
 export default function AgentsExample() {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const [selectedAgent, setSelectedAgent] = useState<number | null>(null);
   const [callStatus, setCallStatus] = useState<string>('');
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
@@ -198,9 +200,11 @@ export default function AgentsExample() {
       <SectionHeader
         portfolioLabel="CALL US NOW"
         clientsVision={['Talk to Liam now.', "let's work together."]}
-        className="mb-16 py-24 pb-0"
+        className={isMobile ? 'pb-0' : 'py-16 pb-0 pt-8'}
       />
-      <div className="relative flex min-h-screen items-center justify-center py-4">
+      <div
+        className={`relative flex items-center justify-center py-4 ${!isMobile ? 'min-h-screen' : 'min-h-[75vh]'}`}
+      >
         {/* Background Image */}
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
@@ -225,7 +229,7 @@ export default function AgentsExample() {
             {/* Glassmorphic Card containing agent */}
             <div className="relative w-full rounded-2xl border border-white/20 bg-white/5 p-8 shadow-2xl backdrop-blur-2xl md:w-auto">
               {/* Centered agents display */}
-              <div className="flex w-full flex-col items-center gap-16 md:w-auto md:flex-row md:gap-10">
+              <div className="flex w-full flex-col items-center gap-4 md:w-auto md:flex-row md:gap-10 lg:gap-16">
                 {agentData.map(agent => (
                   <div
                     key={agent.id}
@@ -408,7 +412,7 @@ export default function AgentsExample() {
                 ))}
 
                 {/* Spinning circle inside the card */}
-                <div className="hidden w-full flex-col items-center justify-center gap-10 md:flex md:w-1/2">
+                <div className="w-full flex-col items-center justify-center gap-10 md:flex md:w-1/2">
                   {/* Live Call Pill */}
                   <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
                     <div className="h-2 w-2 rounded-full bg-green-500"></div>
@@ -417,7 +421,7 @@ export default function AgentsExample() {
                   <motion.div
                     className="w-100 h-100 relative"
                     animate={
-                      callStatus === callStatuses.CONNECTED
+                      callStatus === callStatuses.CONNECTED || isMobile
                         ? {
                             rotate: 360,
                             scale: [1, 1.05, 1],
@@ -425,7 +429,7 @@ export default function AgentsExample() {
                         : {}
                     }
                     transition={
-                      callStatus === callStatuses.CONNECTED
+                      callStatus === callStatuses.CONNECTED || isMobile
                         ? {
                             duration: 20,
                             repeat: Infinity,
@@ -448,6 +452,9 @@ export default function AgentsExample() {
                   </motion.div>
                 </div>
               </div>
+              <p className="text-center text-sm text-white">
+                Agenticaller.com <br /> powered by Aibaze
+              </p>
             </div>
           </div>
         </div>

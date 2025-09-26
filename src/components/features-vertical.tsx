@@ -12,6 +12,7 @@ import React, {
 
 import { cn } from '@/lib/utils';
 import { BorderBeam } from '@/components/magicui/border-beam';
+import { useMediaQuery } from 'react-responsive';
 
 type AccordionItemProps = {
   children: React.ReactNode;
@@ -123,6 +124,7 @@ export default function Features({
   hideImage = false,
   data = [],
 }: FeaturesProps) {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const carouselRef = useRef<HTMLUListElement>(null);
   const ref = useRef(null);
@@ -305,25 +307,26 @@ export default function Features({
                       className="align-center relative flex w-full items-center"
                     >
                       {/* Enhanced Icon Container */}
-                      <motion.div
-                        className={cn(
-                          'item-box mx-3 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border shadow-lg transition-all duration-300 sm:mx-4 lg:mx-5 lg:h-16 lg:w-16',
-                          currentIndex === index
-                            ? 'border-primary/40 bg-gradient-to-br from-primary/30 to-primary/20 shadow-primary/20'
-                            : 'border-primary/20 bg-gradient-to-br from-primary/20 to-primary/10'
-                        )}
-                      >
+                      {!isMobile && (
                         <motion.div
-                          animate={{
-                            scale: currentIndex === index ? 1.1 : 1,
-                            rotate: currentIndex === index ? 3 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
+                          className={cn(
+                            'item-box mx-3 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border shadow-lg transition-all duration-300 sm:mx-4 lg:mx-5 lg:h-16 lg:w-16',
+                            currentIndex === index
+                              ? 'border-primary/40 bg-gradient-to-br from-primary/30 to-primary/20 shadow-primary/20'
+                              : 'border-primary/20 bg-gradient-to-br from-primary/20 to-primary/10'
+                          )}
                         >
-                          {item.icon}
+                          <motion.div
+                            animate={{
+                              scale: currentIndex === index ? 1.1 : 1,
+                              rotate: currentIndex === index ? 3 : 0,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            {item.icon}
+                          </motion.div>
                         </motion.div>
-                      </motion.div>
-
+                      )}
                       <div className="flex-1">
                         <div className="pl-0 text-left text-lg font-bold transition-colors duration-300 lg:text-xl">
                           <motion.span

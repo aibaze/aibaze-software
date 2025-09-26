@@ -1,6 +1,6 @@
 import Marquee from '@/components/magicui/marquee';
 import Image from 'next/image';
-import LogosSvg from '/public/logos.svg';
+import { useMediaQuery } from 'react-responsive';
 
 const companies = [
   { name: 'Revai', image: '/Revai.webp' },
@@ -19,13 +19,17 @@ export default function TrustedBy({
 }: {
   staticVersion?: boolean;
 }) {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  console.log(isMobile);
+
   if (staticVersion) {
     return (
       <div className="container flex items-center justify-center">
         <Image
           width={1200}
           height={200}
-          src={`/logos.svg`}
+          src={isMobile ? `/trusted-by-mobile.svg` : `/logos.svg`}
           alt={`Logos Logo`}
         />
       </div>

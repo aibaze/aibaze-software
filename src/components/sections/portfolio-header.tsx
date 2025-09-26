@@ -15,7 +15,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <motion.div
-      className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${className || ''}`}
+      className={`mx-auto max-w-7xl pl-[3rem] pr-[3rem] sm:px-6 lg:px-8 ${className || ''}`}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -24,7 +24,7 @@ export default function SectionHeader({
         {/* Text Content */}
         <div className="flex-1">
           <motion.div
-            className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-400 sm:mb-4 sm:text-sm"
+            className="sm:text-md mb-3 text-xs font-medium uppercase tracking-wider text-gray-400 sm:mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -33,7 +33,7 @@ export default function SectionHeader({
           </motion.div>
 
           <motion.h2
-            className="font-proxima-nova text-3xl leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+            className="font-proxima-nova text-4xl leading-tight text-white sm:text-8xl md:text-5xl lg:text-6xl"
             style={{
               fontFamily: 'proxima-nova, sans-serif',
             }}
