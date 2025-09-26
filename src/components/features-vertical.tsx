@@ -222,7 +222,7 @@ export default function Features({
               }`}
             >
               <Accordion.Root
-                className={`space-y-3 ${hideImage ? 'w-full max-w-2xl' : 'w-full'}`}
+                className={`space-y-3 ${hideImage ? 'w-full' : 'w-full'} ${isMobile ? 'max-w-2xl' : 'max-w-4xl'}`}
                 type="single"
                 defaultValue={`item-${currentIndex}`}
                 value={`item-${currentIndex}`}
