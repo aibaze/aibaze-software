@@ -91,11 +91,10 @@ export default function Component() {
                   <div
                     className={`relative h-[400px] w-full overflow-hidden ${squared ? 'rounded-md' : 'rounded-2xl'}`}
                   >
-                    <Image
+                    <img
                       src={features[0].image}
                       alt={features[0].title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
 
@@ -154,9 +153,10 @@ export default function Component() {
                   <div
                     className={`relative h-[400px] w-full overflow-hidden ${squared ? 'rounded-0px' : 'rounded-2xl'}`}
                   >
-                    <img
+                    <Image
                       src={features[1].image}
                       alt={features[1].title}
+                      fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
