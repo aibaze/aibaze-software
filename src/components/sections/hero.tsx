@@ -18,27 +18,36 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
     ? [
         {
           fontFamily: 'proxima-nova, sans-serif',
-          fontSize: 'clamp(2rem, 8vw, 4.5rem)', // Responsive: 32px to 72px
+          fontWeight: '500',
+          fontSize: 'clamp(3rem, 8vw, 4.5rem)', // Responsive: 32px to 72px
         },
         {
           fontFamily: 'pacifico, cursive',
+          fontWeight: '500',
+
           fontSize: 'clamp(3rem, 12vw, 7.5rem)', // Responsive: 47px to 120px
         },
       ]
     : [
         {
           fontFamily: 'proxima-nova, sans-serif',
-          fontSize: 'clamp(47px, 8vw, 100px)', // Responsive: 42% to 100px
+          fontWeight: '500',
+
+          fontSize: 'clamp(44px, 8vw, 100px)', // Responsive: 42% to 100px
         },
         {
           fontFamily: 'proxima-nova, sans-serif',
-          fontSize: 'clamp(47px, 8vw, 100px)', // Responsive: 47% to 100px
+          fontWeight: '500',
+
+          fontSize: 'clamp(44px, 8vw, 100px)', // Responsive: 47% to 100px
         },
 
         {
           fontFamily: 'pacifico, cursive',
           lineHeight: '0.9',
-          fontSize: 'clamp(100px, 12vw, 150px)', // Responsive: 150px to 250px
+          fontWeight: '500',
+
+          fontSize: 'clamp(90px, 12vw, 150px)', // Responsive: 150px to 250px
         },
       ];
   return (
@@ -127,15 +136,17 @@ function HeroTitles({ onContactClick }: { onContactClick?: () => void }) {
         </motion.h1>
 
         <motion.p
-          className={`mx-auto mt-6 max-w-3xl text-base font-bold leading-6 text-white/90 sm:mt-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-10 ${isMobile ? 'text-left' : 'text-center'}`}
+          className={`mx-auto mt-6 max-w-3xl text-base leading-6 text-white/90 sm:mt-8 sm:text-xl sm:leading-8 md:text-2xl md:leading-10 ${isMobile ? 'text-left' : 'text-center'}`}
           initial={{ opacity: 0, y: 20 }}
           style={
             isMobile
               ? {
-                  fontSize: 'clamp(12px, 8vw, 24px)',
+                  fontSize: 'clamp(12px, 8vw, 16px)',
+                  fontWeight: '400',
                 }
               : {
                   fontSize: 'clamp(16px, 8vw, 24px)',
+                  fontWeight: '400',
                 }
           }
           animate={{ opacity: 1, y: 0 }}

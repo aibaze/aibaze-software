@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive';
 
 interface SectionHeaderProps {
   className?: string;
@@ -14,9 +15,11 @@ export default function SectionHeader({
   portfolioLabel = 'PORTFOLIO',
   clientsVision = ['Our clients vision.', 'Engineered. Elevated.'],
 }: SectionHeaderProps) {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
   return (
     <motion.div
-      className={`mx-auto max-w-7xl pl-[3rem] pr-[3rem] sm:px-6 lg:px-8 ${className || ''}`}
+      className={`mx-auto max-w-7xl ${!isMobile ? 'pl-0 pr-0' : 'pl-8 pr-12'} ${className || ''}`}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -25,7 +28,7 @@ export default function SectionHeader({
         {/* Text Content */}
         <div className="flex-1">
           <motion.div
-            className="sm:text-md mb-3 text-xs font-medium uppercase tracking-wider text-gray-400 sm:mb-4"
+            className="mb-3 text-xs font-medium uppercase tracking-wider sm:mb-4 sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -34,7 +37,7 @@ export default function SectionHeader({
           </motion.div>
 
           <motion.h2
-            className="font-proxima-nova text-4xl leading-tight text-white sm:text-8xl md:text-5xl lg:text-6xl"
+            className="font-proxima-nova text-bold text-4xl leading-tight text-white sm:text-8xl md:text-5xl lg:text-6xl"
             style={{
               fontFamily: 'proxima-nova, sans-serif',
             }}
