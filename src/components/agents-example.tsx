@@ -414,10 +414,12 @@ export default function AgentsExample() {
                 {/* Spinning circle inside the card */}
                 <div className="w-full flex-col items-center justify-center gap-10 md:flex md:w-1/2">
                   {/* Live Call Pill */}
-                  <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
-                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                    Live Call
-                  </div>
+                  {!isMobile && (
+                    <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm sm:hidden">
+                      <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                      Live Call
+                    </div>
+                  )}
                   <motion.div
                     className="w-100 h-100 relative"
                     animate={

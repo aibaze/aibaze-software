@@ -30,7 +30,7 @@ export default function Section({
 }: SectionProps) {
   const sectionId = title ? title.toLowerCase().replace(/\s+/g, '-') : id;
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-  const textAlign = centeredTitle ? 'center' : isMobile ? 'left' : 'center';
+  const textAlign = isMobile ? 'left' : 'center';
   return (
     <section
       id={id || sectionId}
@@ -96,6 +96,7 @@ export default function Section({
                         fontFamily: 'proxima-nova, sans-serif',
                         fontSize: '62px',
                         fontWeight: '500',
+                        textAlign: 'left',
                       }
                     : {
                         fontFamily: 'proxima-nova, sans-serif',
@@ -103,7 +104,7 @@ export default function Section({
                         paddingLeft: '7%',
                         fontSize: '28px',
 
-                        fontWeight: '600',
+                        fontWeight: '500',
                       }
                 }
                 className={cn(
