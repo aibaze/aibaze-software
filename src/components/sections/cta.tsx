@@ -2,20 +2,21 @@ import { Icons } from '@/components/icons';
 import Section from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
+import { useMediaQuery } from 'react-responsive';
 export default function CtaSection({
   onContactClick,
 }: {
   onContactClick?: () => void;
 }) {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <div
-      className="relative rounded-xl bg-cover bg-center bg-no-repeat py-16"
+      className={`} relative bg-cover bg-center bg-no-repeat`}
       style={{
         backgroundImage: 'url(/background-footer.svg)',
       }}
     >
-      <div className="absolute inset-0 rounded-xl bg-black/80"></div>
+      <div className="absolute inset-0 bg-black/80"></div>
       <div className="relative z-10">
         <Section
           showAvailability={true}
@@ -29,9 +30,12 @@ your project together. "
           <div className="flex w-full flex-col items-center justify-center space-y-4 pt-4 sm:flex-row sm:space-x-4 sm:space-y-0">
             <button
               onClick={onContactClick}
+              style={{
+                maxWidth: '200px',
+              }}
               className={cn(
                 buttonVariants({ variant: 'default' }),
-                'flex w-full gap-2 text-background sm:w-auto'
+                'flex gap-2 text-background sm:w-auto'
               )}
             >
               <strong>Book a meeting</strong>

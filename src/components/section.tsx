@@ -32,15 +32,33 @@ export default function Section({
     <section
       id={id || sectionId}
       className={
-        showAvailability ? 'flex flex-col items-center justify-center' : ''
+        showAvailability
+          ? 'flex flex-col items-center justify-center pt-10'
+          : ''
       }
     >
       {showAvailability && (
         <motion.div
           className="flex items-center space-x-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease }}
+          initial={{ opacity: 0, y: -20, scale: 0.8 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: [0, -8, 0],
+          }}
+          transition={{
+            duration: 0.8,
+            ease: 'easeOut',
+            y: {
+              duration: 1.5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            },
+          }}
+          whileHover={{
+            scale: 1.05,
+            y: -2,
+          }}
         >
           <div className="relative">
             <div className="h-3 w-3 rounded-full bg-lime-400"></div>
@@ -52,7 +70,9 @@ export default function Section({
         </motion.div>
       )}
       <div className={className}>
-        <div className="container relative mx-auto max-w-7xl px-4 py-16">
+        <div
+          className={`container relative mx-auto max-w-7xl px-4 ${isMobile ? 'py-16 pt-5' : 'py-16'}`}
+        >
           <div
             className={`mx-auto space-y-4 pb-6 text-${isMobile ? 'left' : 'center'}`}
           >
@@ -77,6 +97,9 @@ export default function Section({
                       }
                     : {
                         fontFamily: 'proxima-nova, sans-serif',
+                        fontSize: 'clamp(2rem, 8vw, 4.5rem)',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
                       }
                 }
                 className={cn(
