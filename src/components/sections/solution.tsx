@@ -17,8 +17,8 @@ const images = [
 ];
 const features = [
   {
-    title: 'Webb Admin',
-    keywords: ['Webb Admin', 'Fintech', 'AI'],
+    title: 'Web Admin',
+    keywords: ['Web Admin', 'Fintech', 'AI'],
     description:
       'Transform property management with AI-driven market analysis, automated property valuations, intelligent lead scoring, and predictive analytics for real estate professionals.',
     image: images[0],
@@ -154,10 +154,9 @@ export default function Component() {
                   <div
                     className={`relative h-[400px] w-full overflow-hidden ${squared ? 'rounded-0px' : 'rounded-2xl'}`}
                   >
-                    <Image
+                    <img
                       src={features[1].image}
                       alt={features[1].title}
-                      fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
