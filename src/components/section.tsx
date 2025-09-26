@@ -22,7 +22,6 @@ export default function Section({
   showAvailability,
   subtitle,
   description,
-  centeredTitle,
   children,
   className,
   bigFont,
@@ -96,11 +95,11 @@ export default function Section({
                         fontFamily: 'proxima-nova, sans-serif',
                         fontSize: '62px',
                         fontWeight: '500',
-                        textAlign: 'left',
+                        textAlign: 'center',
                       }
                     : {
+                        textAlign: 'left',
                         fontFamily: 'proxima-nova, sans-serif',
-                        textAlign: 'center',
                         paddingLeft: '7%',
                         fontSize: '28px',
 
