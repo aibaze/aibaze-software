@@ -71,6 +71,7 @@ export default function Component() {
             {/* First Row - 65% / 35% split */}
             <div
               className={`grid w-full grid-cols-1 gap-${isMobile ? '0' : '8'} md:grid-cols-[62.5%_35%]`}
+              style={isMobile ? { marginTop: '0px' } : {}}
             >
               {/* First Card - 65% */}
               <div>
@@ -103,7 +104,7 @@ export default function Component() {
                       <div
                         className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
-                        <div className="flex items-center justify-between p-4">
+                        <div className="flex flex-col items-start justify-between gap-5 p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[0].title}
                           </h3>
@@ -166,7 +167,7 @@ export default function Component() {
                       <div
                         className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
-                        <div className="flex items-center justify-between p-4">
+                        <div className="flex flex-col items-start justify-between gap-5 p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[1].title}
                           </h3>
@@ -199,7 +200,10 @@ export default function Component() {
             </div>
 
             {/* Second Row - Equal split */}
-            <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+            <div
+              className={`grid w-full grid-cols-1 gap-${isMobile ? '0' : '8'} md:grid-cols-2`}
+              style={isMobile ? { marginTop: '0px' } : {}}
+            >
               <div>
                 <motion.div
                   className={`rounded-${squared ? '0px' : '2xl'} group relative overflow-hidden transition-all duration-300`}
@@ -231,7 +235,7 @@ export default function Component() {
                       <div
                         className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
-                        <div className="flex items-center justify-between p-4">
+                        <div className="flex flex-col items-start justify-between gap-5 p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[2].title}
                           </h3>
@@ -293,7 +297,7 @@ export default function Component() {
                       <div
                         className={`rounded-b-${squared ? '0px' : '2xl'} border-t border-white/20 bg-black/40 backdrop-blur-md`}
                       >
-                        <div className="flex items-center justify-between p-4">
+                        <div className="flex flex-col items-start justify-between gap-5 p-4">
                           <h3 className="text-xl font-semibold text-white drop-shadow-lg">
                             {features[3].title}
                           </h3>
