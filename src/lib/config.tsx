@@ -14,6 +14,13 @@ export const siteConfig = {
     'Startup Development',
     'AI Software',
     'AI Agency',
+    'Software Development',
+    'Software Agency',
+    'Software Development Agency',
+    'Software Development Company',
+    'Software Development Services',
+    'Software Development Solutions',
+    'Software Development Projects',
   ],
   ctaLink: 'https://calendar.app.google/SdCB8dsnamqTVUbCA',
   aiLink: 'https://site.aibaze.com?from=agency-website',
@@ -36,22 +43,22 @@ export const siteConfig = {
       content: {
         items: [
           {
-            title: 'AI Development',
+            title: 'Web app development',
             href: '#',
             description:
-              'Custom AI-powered solutions for startups and growing businesses.',
+              'Web apps are the backbone of modern business. We build custom web apps that are fast, secure, and easy to use.',
           },
           {
-            title: 'AI Business Strategy',
+            title: 'Mobile app development',
             href: '#',
             description:
-              'Complete AI business development from concept to launch.',
+              'Mobile apps are the present and future of business. We build custom mobile apps that are fast, secure, and easy to use.',
           },
           {
-            title: 'AI Integration Services',
+            title: 'AI Integrations',
             href: '#',
             description:
-              'Seamless AI integration into your existing business platform.',
+              'Custom producst or AI integrations : AI Chatbot, Whatsapp agent, AI Voice agent, CMR Integration, Lead qualification expert, and custom solutions',
           },
         ],
       },
